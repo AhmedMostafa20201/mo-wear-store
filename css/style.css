@@ -1,0 +1,112 @@
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#e50914;--black:#050505;--dark:#0d0d0d;--card:#111;--line:#252525;--white:#f5f5f5;--muted:#9b9b9b}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:Inter,Arial,sans-serif;line-height:1.5}
+button,a{font:inherit}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;color:inherit}
+.announcement{background:var(--red);color:#fff;text-align:center;padding:8px;font-size:11px;font-weight:800;letter-spacing:2px}
+.header{height:82px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:rgba(5,5,5,.96);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;backdrop-filter:blur(10px)}
+.brand img{width:92px;height:58px;object-fit:cover;mix-blend-mode:screen}
+.nav{display:flex;gap:34px;text-transform:uppercase;font-size:12px;font-weight:800;letter-spacing:1.5px}
+.nav a{position:relative;padding:8px 0}
+.nav a:after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--red);transition:.25s}
+.nav a:hover:after{width:100%}
+.cart-button{border:1px solid #444;background:transparent;padding:10px 15px;text-transform:uppercase;font-size:11px;font-weight:800;letter-spacing:1px}
+.cart-button span{background:var(--red);border-radius:50%;display:inline-grid;place-items:center;width:20px;height:20px;margin-left:7px}
+.menu-button{display:none;background:none;border:0;font-size:25px}
+.hero{min-height:78vh;display:flex;align-items:center;padding:80px 7vw;position:relative;overflow:hidden;background:
+radial-gradient(circle at 80% 45%,rgba(229,9,20,.18),transparent 30%),
+linear-gradient(115deg,#050505 45%,#121212 100%)}
+.hero:before{content:"MO";position:absolute;right:-4vw;bottom:-18vh;font:900 48vw/1 Anton,sans-serif;color:#101010;letter-spacing:-.08em}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,5,5,.98),rgba(5,5,5,.45),rgba(5,5,5,.7))}
+.hero-content{position:relative;z-index:1;max-width:760px}
+.eyebrow{font-size:11px;letter-spacing:4px;color:var(--red);font-weight:800;margin-bottom:14px}
+h1,h2{font-family:Anton,Impact,sans-serif;letter-spacing:1px}
+h1{font-size:clamp(64px,10vw,150px);line-height:.86}
+h1 span,h2 span{color:var(--red)}
+.hero-text{margin:25px 0 30px;color:#ccc;max-width:430px}
+.btn{display:inline-flex;justify-content:center;align-items:center;min-height:48px;padding:0 25px;border:1px solid transparent;font-weight:900;font-size:11px;letter-spacing:1.8px;transition:.2s}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#b80710;transform:translateY(-2px)}
+.btn-outline{background:transparent;border-color:#555}
+.btn-outline:hover{border-color:var(--red);color:var(--red)}
+.full{width:100%}
+.ticker{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;color:#777;font-size:11px;font-weight:800;letter-spacing:3px}
+.ticker div{display:inline-block;animation:ticker 24s linear infinite}
+@keyframes ticker{to{transform:translateX(-50%)}}
+.section{padding:100px 7vw}
+.section-heading{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:35px}
+.section-heading h2,.statement h2,.about h2,.contact h2{font-size:clamp(42px,6vw,78px);line-height:.95}
+.filters{display:flex;gap:7px;flex-wrap:wrap}
+.filter{border:1px solid #333;background:#0b0b0b;padding:9px 13px;font-size:10px;text-transform:uppercase;font-weight:800;letter-spacing:1px}
+.filter.active,.filter:hover{background:var(--red);border-color:var(--red)}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product-card{background:var(--card);border:1px solid var(--line);overflow:hidden}
+.product-image{aspect-ratio:1/1.15;background:linear-gradient(135deg,#1b1b1b,#090909);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.product-image:after{content:"MO-WEAR";font:90px Anton,sans-serif;color:#191919;position:absolute;transform:rotate(-45deg)}
+.product-image .mock-shirt{width:55%;height:65%;background:linear-gradient(135deg,#111,#222);clip-path:polygon(25% 0,75% 0,100% 25%,82% 35%,75% 100%,25% 100%,18% 35%,0 25%);z-index:1;box-shadow:0 0 60px rgba(229,9,20,.08)}
+.product-info{padding:17px}
+.product-name{font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:1px}
+.product-meta{display:flex;justify-content:space-between;gap:10px;margin-top:9px;color:#aaa;font-size:12px}
+.product-price{color:#fff;font-weight:800}
+.product-category{font-size:10px;text-transform:uppercase;letter-spacing:1px}
+.product-actions{display:flex;gap:8px;margin-top:15px}
+.product-actions button{flex:1}
+.add-btn{border:0;background:#fff;color:#000;padding:11px;font-size:10px;font-weight:900;letter-spacing:1px}
+.add-btn:hover{background:var(--red);color:#fff}
+.view-btn{border:1px solid #444;background:transparent;padding:11px;font-size:10px;font-weight:900}
+.statement{padding:100px 7vw;background:#101010;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1.4fr .6fr;gap:70px;align-items:end}
+.statement>p{color:#999;max-width:380px}
+.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.category-card{height:360px;border:1px solid #252525;background:#111;position:relative;overflow:hidden;display:flex;align-items:end;padding:25px;text-align:left}
+.category-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 35%,rgba(229,9,20,.15),transparent 45%),linear-gradient(145deg,#181818,#060606);transition:.3s}
+.category-card:hover:before{transform:scale(1.08);filter:brightness(1.3)}
+.category-card span{position:relative;z-index:1;font:42px Anton,sans-serif}
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
+.about-image{background:#090909;border:1px solid var(--line);padding:35px;display:grid;place-items:center}
+.about-image img{width:100%;max-width:500px;mix-blend-mode:screen}
+.about-copy p:not(.eyebrow){color:#aaa;max-width:550px;margin-top:18px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:60px;background:#080808}
+.contact>div:first-child>p:last-child{color:#aaa;max-width:430px;margin-top:18px}
+.contact-links{display:flex;flex-direction:column;justify-content:center}
+.contact-links a{padding:17px 0;border-bottom:1px solid #292929;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:1px}
+.contact-links a:hover{color:var(--red)}
+.footer{padding:40px 7vw;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;color:#666;font-size:10px;letter-spacing:1px}
+.footer img{width:80px;height:50px;object-fit:cover;mix-blend-mode:screen}
+.drawer-backdrop,.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);opacity:0;pointer-events:none;transition:.25s;z-index:70}
+.drawer-backdrop.show,.modal-backdrop.show{opacity:1;pointer-events:auto}
+.cart-drawer{position:fixed;right:0;top:0;height:100%;width:min(440px,94vw);background:#0b0b0b;border-left:1px solid #333;z-index:80;transform:translateX(100%);transition:.3s;display:flex;flex-direction:column}
+.cart-drawer.open{transform:translateX(0)}
+.drawer-header{padding:25px;border-bottom:1px solid #292929;display:flex;justify-content:space-between;align-items:center}
+.drawer-header h2{font-size:28px}
+.drawer-header button,.modal-close{background:none;border:0;font-size:32px;color:#aaa}
+.cart-items{flex:1;overflow:auto;padding:18px}
+.empty-cart{text-align:center;color:#777;padding:60px 20px}
+.cart-item{display:grid;grid-template-columns:72px 1fr auto;gap:12px;padding:15px 0;border-bottom:1px solid #252525}
+.cart-thumb{background:#161616;display:grid;place-items:center;font:22px Anton;color:#333}
+.cart-item h3{font-size:12px;text-transform:uppercase}
+.cart-item p{font-size:11px;color:#999;margin-top:4px}
+.qty{display:flex;align-items:center;gap:8px;margin-top:8px}
+.qty button{width:23px;height:23px;border:1px solid #444;background:transparent}
+.remove{background:none;border:0;color:#777;font-size:10px;text-transform:uppercase}
+.cart-footer{padding:20px;border-top:1px solid #292929}
+.total-row{display:flex;justify-content:space-between;margin-bottom:15px;font-size:14px}
+.cart-footer .btn{margin-top:8px}
+.modal{position:fixed;z-index:90;left:50%;top:50%;transform:translate(-50%,-45%);width:min(520px,92vw);max-height:90vh;overflow:auto;background:#0c0c0c;border:1px solid #333;padding:30px;opacity:0;pointer-events:none;transition:.25s}
+.modal.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%)}
+.modal h2{font-size:45px;margin-bottom:7px}
+.modal .small{font-size:11px;color:#888;margin-bottom:20px}
+.modal-close{position:absolute;right:18px;top:12px}
+#checkoutForm{display:grid;gap:14px}
+#checkoutForm label{font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:800}
+#checkoutForm input,#checkoutForm textarea{display:block;width:100%;margin-top:7px;background:#151515;border:1px solid #333;color:#fff;padding:12px;outline:none}
+#checkoutForm textarea{min-height:80px;resize:vertical}
+#checkoutForm input:focus,#checkoutForm textarea:focus{border-color:var(--red)}
+.order-success{display:none;text-align:center;padding:30px 0}
+.order-success.show{display:block}
+.order-success h3{font:35px Anton;margin-bottom:10px}
+.order-success p{color:#aaa;font-size:12px;margin-bottom:20px}
+@media(max-width:900px){.products{grid-template-columns:repeat(2,1fr)}.category-grid{grid-template-columns:1fr}.category-card{height:250px}.statement,.about,.contact{grid-template-columns:1fr;gap:35px}}
+@media(max-width:650px){.header{height:70px}.nav{display:none;position:absolute;top:70px;left:0;right:0;background:#080808;border-bottom:1px solid #333;padding:20px 7vw;flex-direction:column;gap:12px}.nav.open{display:flex}.menu-button{display:block}.cart-button{margin-left:auto;margin-right:12px}.hero{min-height:72vh;padding:60px 7vw}.section{padding:70px 6vw}.section-heading{align-items:flex-start;flex-direction:column}.products{grid-template-columns:1fr 1fr;gap:10px}.product-info{padding:12px}.product-actions{flex-direction:column}.statement{padding:70px 6vw}.footer{flex-direction:column;align-items:flex-start}}
+@media(max-width:420px){.products{grid-template-columns:1fr}.hero h1{font-size:62px}}
