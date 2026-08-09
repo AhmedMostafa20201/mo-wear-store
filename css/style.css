@@ -115,6 +115,7 @@ h1 span,h2 span{color:var(--red)}
 
 
 /* ===== MO-WEAR REAL PRODUCTS V2 ===== */
+
 .product-image.real-product-image {
   aspect-ratio: 1 / 1.15;
   background: #080808;
@@ -267,29 +268,3 @@ h1 span,h2 span{color:var(--red)}
     padding: 5px 10px 20px;
   }
 }
-
-/* MO-WEAR color selector + recolored product previews */
-.mw-real-image{background:#080808;position:relative;overflow:hidden;aspect-ratio:1/1.15}
-.mw-product-canvas{display:block;width:100%;height:100%;object-fit:cover}
-.mw-badge{position:absolute;top:12px;left:12px;background:var(--red);color:#fff;padding:6px 9px;font-size:9px;font-weight:900;letter-spacing:1.5px;z-index:2}
-.mw-color-swatches,.mw-modal-swatches{display:flex;gap:7px;margin-top:12px;align-items:center}
-.mw-swatch{width:22px;height:22px;border-radius:50%;border:2px solid #333;background:var(--swatch);padding:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:.18s}
-.mw-swatch:hover{transform:scale(1.12);border-color:#aaa}
-.mw-swatch.selected{border-color:#fff;box-shadow:0 0 0 2px var(--red),inset 0 0 0 1px rgba(255,255,255,.15)}
-.mw-size-note{font-size:9px;color:#777;margin-top:8px;letter-spacing:1px}
-.mw-product-modal{width:min(900px,94vw);display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:18px}
-.mw-modal-image{background:#080808;border:1px solid #262626;min-height:460px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.mw-modal-image canvas{display:block;width:100%;height:100%;object-fit:cover}
-.mw-modal-copy{padding:22px 18px 22px 4px}
-.mw-modal-copy h2{font-size:clamp(38px,5vw,60px);line-height:.95;margin-bottom:8px}
-.mw-modal-price{font-weight:900;font-size:20px;margin-bottom:14px}
-.mw-modal-desc{font-size:12px;color:#999;margin-bottom:22px}
-.mw-label{display:block;font-size:9px;font-weight:900;letter-spacing:1.5px;color:#aaa;margin:18px 0 8px}
-.mw-selected-color{font-size:10px;color:#bbb;margin-top:8px;text-transform:uppercase;letter-spacing:1px}
-.mw-size-buttons{display:flex;gap:7px}
-.mw-size{background:#111;border:1px solid #333;color:#ddd;padding:10px 15px;font-size:10px;font-weight:900}
-.mw-size:hover,.mw-size.selected{background:var(--red);border-color:var(--red);color:#fff}
-.mw-cart-variant{color:#777!important;font-size:10px!important}
-.cart-thumb img{width:72px;height:90px;display:block;object-fit:cover}
-@media(max-width:700px){.mw-product-modal{grid-template-columns:1fr;max-height:92vh}.mw-modal-image{min-height:320px;height:320px}.mw-modal-copy{padding:5px 10px 20px}}
-
