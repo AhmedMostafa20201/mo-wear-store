@@ -268,3 +268,11 @@ h1 span,h2 span{color:var(--red)}
     padding: 5px 10px 20px;
   }
 }
+
+
+/* REMOVE PRODUCT IMAGE WATERMARK */
+.product-image::after,
+.product-image:after {
+  content: none !important;
+  display: none !important;
+}
