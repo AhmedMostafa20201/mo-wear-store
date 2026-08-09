@@ -1,98 +1,308 @@
+/* =========================================================
+   MO-WEAR - COLOR SWITCH FIX
+   Replace your current js/script.js with this file.
+   Your existing CSS already contains the needed mw-* styles.
+
+   Image names supported:
+   Model 1: images/model-1.png (fallback: images/model-00.png)
+   Model 2: images/model-02.png
+   Model 3: images/model-03.png
+   Model 4: images/model-04.png
+   Model 5: images/model-05.png
+   ========================================================= */
+
+const COLORS = {
+  Black:    { rgb: [18, 18, 18],   swatch: "#111111" },
+  White:    { rgb: [238, 236, 231], swatch: "#f2f0e9" },
+  Burgundy: { rgb: [112, 22, 42],  swatch: "#70162a" },
+  Beige:    { rgb: [215, 191, 160], swatch: "#d7bfa0" }
+};
+
+const SIZES = ["M", "L", "XL"];
+
 const products = [
   {
     id: 1,
     name: "Fire Graphic Tee",
-    category: "tshirts",
+    imageCandidates: ["images/model-1.png", "images/model-00.png"],
     price: 400,
-    desc: "Oversized black MO-WEAR graphic tee.",
-    image: "images/model-1.png",
-    colors: ["Black", "White", "Burgundy", "Beige"],
-    sizes: ["M", "L", "XL"]
+    category: "tshirts",
+    desc: "Oversized MO-WEAR graphic tee.",
+    mask: [[.03,.37],[.18,.25],[.36,.19],[.50,.17],[.65,.19],[.82,.25],[.98,.38],
+           [.92,.64],[.87,.90],[.78,.96],[.22,.96],[.13,.89],[.07,.63]]
   },
   {
     id: 2,
     name: "Rose California Tee",
-    category: "tshirts",
+    imageCandidates: ["images/model-02.png"],
     price: 400,
-    desc: "Clean cream tee with rose California graphic.",
-    image: "images/model-02.png",
-    colors: ["Black", "White", "Burgundy", "Beige"],
-    sizes: ["M", "L", "XL"]
+    category: "tshirts",
+    desc: "Clean oversized tee with rose California graphic.",
+    mask: [[.07,.30],[.21,.22],[.40,.18],[.53,.18],[.69,.21],[.84,.28],[.96,.40],
+           [.89,.62],[.84,.91],[.24,.93],[.15,.73],[.06,.56]]
   },
   {
     id: 3,
     name: "Warrior Tee",
-    category: "tshirts",
+    imageCandidates: ["images/model-03.png"],
     price: 400,
-    desc: "Black streetwear tee with warrior-inspired graphic.",
-    image: "images/model-03.png",
-    colors: ["Black", "White", "Burgundy", "Beige"],
-    sizes: ["M", "L", "XL"]
+    category: "tshirts",
+    desc: "Streetwear tee with warrior-inspired graphics.",
+    mask: [[.07,.30],[.20,.23],[.38,.19],[.52,.18],[.68,.20],[.83,.27],[.95,.38],
+           [.89,.63],[.85,.91],[.20,.92],[.14,.70],[.06,.56]]
   },
   {
     id: 4,
     name: "Courage Tee",
-    category: "tshirts",
+    imageCandidates: ["images/model-04.png"],
     price: 400,
-    desc: "Dark green tee with minimal Courage graphic.",
-    image: "images/model-04.png",
-    colors: ["Black", "White", "Burgundy", "Beige"],
-    sizes: ["M", "L", "XL"]
+    category: "tshirts",
+    desc: "Minimal Courage tee with a clean streetwear fit.",
+    mask: [[.05,.32],[.20,.23],[.38,.18],[.52,.17],[.68,.20],[.83,.27],[.96,.39],
+           [.90,.64],[.84,.92],[.21,.93],[.13,.71],[.05,.57]]
   },
   {
     id: 5,
     name: "Red Shadow Tee",
-    category: "tshirts",
+    imageCandidates: ["images/model-05.png", "images/model-01.png"],
     price: 400,
+    category: "tshirts",
     desc: "Black statement tee with bold red graphic.",
-    image: "images/model-05.png",
-    colors: ["Black", "White", "Burgundy", "Beige"],
-    sizes: ["M", "L", "XL"]
+    mask: [[.08,.32],[.21,.24],[.40,.20],[.53,.19],[.68,.22],[.83,.29],[.95,.40],
+           [.89,.64],[.85,.91],[.20,.92],[.14,.70],[.06,.57]]
   }
 ];
 
 let cart = JSON.parse(localStorage.getItem("moWearCart") || "[]");
+const imageCache = new Map();
 
-const productsEl = document.getElementById("products");
-const cartItemsEl = document.getElementById("cartItems");
-const cartCountEl = document.getElementById("cartCount");
-const cartTotalEl = document.getElementById("cartTotal");
-const cartDrawer = document.getElementById("cartDrawer");
-const drawerBackdrop = document.getElementById("drawerBackdrop");
-const checkoutModal = document.getElementById("checkoutModal");
-const checkoutBackdrop = document.getElementById("checkoutBackdrop");
-
-function money(value){
-  return "EGP " + value.toLocaleString("en-EG");
+function money(value) {
+  return "EGP " + Number(value).toLocaleString("en-EG");
 }
 
-function escapeHtml(value){
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+function escapeHtml(value) {
+  return String(value).replace(/[&<>'"]/g, c => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;"
+  }[c]));
 }
 
-/* Remove HOODIES and PANTS tabs/links from the existing HTML. */
-document.querySelectorAll(".filter, [data-category-link]").forEach(el => {
-  const category = el.dataset.category || el.dataset.categoryLink;
-  if(category === "hoodies" || category === "pants"){
-    el.remove();
+function hideOldCategories() {
+  document.querySelectorAll(".filter").forEach(btn => {
+    const text = btn.textContent.trim().toLowerCase();
+    const cat = (btn.dataset.category || "").toLowerCase();
+    if (["hoodie","hoodies","pants"].includes(text) ||
+        ["hoodie","hoodies","pants"].includes(cat)) {
+      btn.remove();
+    }
+  });
+}
+
+function pointInPolygon(x, y, polygon) {
+  let inside = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i][0], yi = polygon[i][1];
+    const xj = polygon[j][0], yj = polygon[j][1];
+    const hit = ((yi > y) !== (yj > y)) &&
+      (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+    if (hit) inside = !inside;
   }
-});
+  return inside;
+}
 
-function renderProducts(category = "all"){
+async function loadFirstAvailableImage(candidates) {
+  const key = candidates.join("|");
+  if (imageCache.has(key)) return imageCache.get(key);
+
+  const promise = new Promise((resolve, reject) => {
+    let index = 0;
+
+    const tryNext = () => {
+      if (index >= candidates.length) {
+        reject(new Error("Product image not found: " + candidates.join(", ")));
+        return;
+      }
+
+      const src = candidates[index++];
+      const img = new Image();
+
+      img.onload = () => resolve({ img, src });
+      img.onerror = tryNext;
+      img.src = src;
+    };
+
+    tryNext();
+  });
+
+  imageCache.set(key, promise);
+  return promise;
+}
+
+/*
+  The color change is done here.
+  We recolor pixels that look like fabric while leaving:
+  - the background fire
+  - bright print/highlights
+  - strong red/orange artwork
+  as much as possible.
+*/
+function recolorCanvas(canvas, product, colorName, image) {
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  const w = canvas.width;
+  const h = canvas.height;
+
+  ctx.clearRect(0, 0, w, h);
+  ctx.drawImage(image, 0, 0, w, h);
+
+  if (colorName === "Black") return;
+
+  const data = ctx.getImageData(0, 0, w, h);
+  const px = data.data;
+  const target = COLORS[colorName].rgb;
+
+  for (let y = 0; y < h; y++) {
+    const ny = y / h;
+
+    for (let x = 0; x < w; x++) {
+      const nx = x / w;
+      if (!pointInPolygon(nx, ny, product.mask)) continue;
+
+      const i = (y * w + x) * 4;
+      const r = px[i];
+      const g = px[i + 1];
+      const b = px[i + 2];
+
+      const max = Math.max(r, g, b);
+      const min = Math.min(r, g, b);
+      const lum = (0.2126*r + 0.7152*g + 0.0722*b) / 255;
+      const sat = max === 0 ? 0 : (max - min) / max;
+
+      /*
+        Background protection:
+        Fire/background is strongly orange/red.
+        Keep it untouched.
+      */
+      const orangeBackground =
+        r > g * 1.35 && r > b * 1.55 && sat > 0.35;
+
+      if (orangeBackground) continue;
+
+      /*
+        Keep the main graphic artwork.
+        Strong red/orange graphics should stay visible.
+      */
+      const strongWarmGraphic =
+        r > g * 1.30 && r > b * 1.35 && sat > 0.45;
+
+      if (strongWarmGraphic) continue;
+
+      /*
+        Very bright pixels can be print/highlights.
+        Keep only a portion of them so white/beige can still work.
+      */
+      if (lum > 0.96 && sat < 0.15) {
+        if (colorName !== "White") continue;
+      }
+
+      /*
+        Estimate original fabric brightness and transfer it
+        to the selected target color.
+      */
+      let shade = 0.32 + lum * 0.90;
+
+      if (colorName === "White") {
+        shade = 0.72 + lum * 0.48;
+      }
+
+      if (colorName === "Beige") {
+        shade = 0.52 + lum * 0.82;
+      }
+
+      if (colorName === "Burgundy") {
+        shade = 0.42 + lum * 0.78;
+      }
+
+      let nr = target[0] * shade;
+      let ng = target[1] * shade;
+      let nb = target[2] * shade;
+
+      /*
+        Keep a little of the original pixel for realistic
+        texture, folds and lighting.
+      */
+      const texture = colorName === "White" ? 0.16 : 0.20;
+
+      nr = nr * (1-texture) + r * texture;
+      ng = ng * (1-texture) + g * texture;
+      nb = nb * (1-texture) + b * texture;
+
+      px[i]     = Math.max(0, Math.min(255, nr));
+      px[i + 1] = Math.max(0, Math.min(255, ng));
+      px[i + 2] = Math.max(0, Math.min(255, nb));
+    }
+  }
+
+  ctx.putImageData(data, 0, 0);
+}
+
+async function prepareCanvas(canvas, product, color) {
+  try {
+    const { img } = await loadFirstAvailableImage(product.imageCandidates);
+
+    canvas.width = img.naturalWidth || img.width;
+    canvas.height = img.naturalHeight || img.height;
+
+    recolorCanvas(canvas, product, color, img);
+  } catch (error) {
+    console.error(error);
+
+    canvas.width = 300;
+    canvas.height = 400;
+
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#111";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#e50914";
+    ctx.font = "bold 16px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("IMAGE NOT FOUND", 150, 200);
+  }
+}
+
+function swatches(product, selected = "Black") {
+  return `
+    <div class="mw-color-swatches" data-product-swatches="${product.id}">
+      ${Object.entries(COLORS).map(([name, c]) => `
+        <button
+          class="mw-swatch ${name === selected ? "selected" : ""}"
+          title="${name}"
+          aria-label="${name}"
+          data-color="${name}"
+          style="--swatch:${c.swatch}"
+          onclick="event.stopPropagation(); selectCardColor(${product.id}, '${name}')">
+        </button>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderProducts(category = "all") {
+  const productsEl = document.getElementById("products");
+  if (!productsEl) return;
+
+  hideOldCategories();
+
   const list = category === "all"
     ? products
     : products.filter(p => p.category === category);
 
   productsEl.innerHTML = list.map(p => `
     <article class="product-card">
-      <div class="product-image real-product-image">
-        <img src="${p.image}" alt="${escapeHtml(p.name)}">
-        <span class="product-badge">NEW</span>
+      <div class="product-image mw-real-image">
+        <canvas
+          class="mw-product-canvas"
+          data-canvas-product="${p.id}">
+        </canvas>
+        <span class="mw-badge">NEW</span>
       </div>
 
       <div class="product-info">
@@ -103,34 +313,69 @@ function renderProducts(category = "all"){
           <span class="product-price">${money(p.price)}</span>
         </div>
 
-        <div class="product-options-preview">
-          <span>Colors: Black · White · Burgundy · Beige</span>
-          <span>Sizes: M · L · XL</span>
-        </div>
+        ${swatches(p)}
+
+        <div class="mw-size-note">M · L · XL</div>
 
         <div class="product-actions">
-          <button class="add-btn" onclick="showProduct(${p.id})">ADD TO CART</button>
-          <button class="view-btn" onclick="showProduct(${p.id})">DETAILS</button>
+          <button class="add-btn" onclick="showProduct(${p.id})">
+            ADD TO CART
+          </button>
+
+          <button class="view-btn" onclick="showProduct(${p.id})">
+            DETAILS
+          </button>
         </div>
       </div>
     </article>
   `).join("");
+
+  list.forEach(async product => {
+    const canvas = document.querySelector(
+      `[data-canvas-product="${product.id}"]`
+    );
+
+    if (canvas) {
+      await prepareCanvas(canvas, product, "Black");
+    }
+  });
 }
 
-function saveCart(){
+async function selectCardColor(id, color) {
+  const product = products.find(p => p.id === id);
+  if (!product) return;
+
+  const canvas = document.querySelector(
+    `[data-canvas-product="${id}"]`
+  );
+
+  if (canvas) {
+    await prepareCanvas(canvas, product, color);
+  }
+
+  document.querySelectorAll(
+    `[data-product-swatches="${id}"] .mw-swatch`
+  ).forEach(btn => {
+    btn.classList.toggle("selected", btn.dataset.color === color);
+  });
+}
+
+function saveCart() {
   localStorage.setItem("moWearCart", JSON.stringify(cart));
   renderCart();
 }
 
-function addToCart(id, color, size){
+function addToCart(id, color, size) {
   const existing = cart.find(
-    item => item.id === id && item.color === color && item.size === size
+    item => item.id === id &&
+            item.color === color &&
+            item.size === size
   );
 
-  if(existing){
+  if (existing) {
     existing.qty++;
-  }else{
-    cart.push({id, color, size, qty: 1});
+  } else {
+    cart.push({ id, color, size, qty: 1 });
   }
 
   saveCart();
@@ -138,24 +383,29 @@ function addToCart(id, color, size){
   openCart();
 }
 
-function changeQty(index, amount){
-  const item = cart[index];
-  if(!item) return;
+function changeQty(index, amount) {
+  if (!cart[index]) return;
 
-  item.qty += amount;
+  cart[index].qty += amount;
 
-  if(item.qty <= 0){
+  if (cart[index].qty <= 0) {
     cart.splice(index, 1);
   }
 
   saveCart();
 }
 
-function renderCart(){
+function renderCart() {
+  const cartItemsEl = document.getElementById("cartItems");
+  const cartCountEl = document.getElementById("cartCount");
+  const cartTotalEl = document.getElementById("cartTotal");
+
+  if (!cartItemsEl || !cartCountEl || !cartTotalEl) return;
+
   const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
   cartCountEl.textContent = totalQty;
 
-  if(!cart.length){
+  if (!cart.length) {
     cartItemsEl.innerHTML = `
       <div class="empty-cart">
         YOUR CART IS EMPTY.<br><br>
@@ -170,20 +420,22 @@ function renderCart(){
 
   cartItemsEl.innerHTML = cart.map((item, index) => {
     const p = products.find(x => x.id === item.id);
-    if(!p) return "";
+    if (!p) return "";
 
     total += p.price * item.qty;
 
     return `
       <div class="cart-item">
-        <img class="cart-product-image" src="${p.image}" alt="${escapeHtml(p.name)}">
+        <div class="cart-thumb">
+          <img src="${p.imageCandidates[0]}" alt="${escapeHtml(p.name)}">
+        </div>
 
         <div>
           <h3>${escapeHtml(p.name)}</h3>
           <p>${money(p.price)}</p>
-          <p class="cart-variant">
-            Color: ${escapeHtml(item.color || "—")} ·
-            Size: ${escapeHtml(item.size || "—")}
+          <p class="mw-cart-variant">
+            Color: ${escapeHtml(item.color || "Black")}
+            · Size: ${escapeHtml(item.size || "M")}
           </p>
 
           <div class="qty">
@@ -193,7 +445,9 @@ function renderCart(){
           </div>
         </div>
 
-        <button class="remove" onclick="changeQty(${index}, -${item.qty})">
+        <button
+          class="remove"
+          onclick="changeQty(${index}, -${item.qty})">
           Remove
         </button>
       </div>
@@ -203,225 +457,269 @@ function renderCart(){
   cartTotalEl.textContent = money(total);
 }
 
-function showProduct(id){
-  const p = products.find(x => x.id === id);
-  if(!p) return;
+async function showProduct(id) {
+  const product = products.find(p => p.id === id);
+  if (!product) return;
 
-  let modal = document.getElementById("productModal");
+  let modal = document.getElementById("mwProductModal");
+  let backdrop = document.getElementById("mwProductBackdrop");
 
-  if(!modal){
+  if (!backdrop) {
+    backdrop = document.createElement("div");
+    backdrop.id = "mwProductBackdrop";
+    backdrop.className = "modal-backdrop";
+    backdrop.onclick = closeProductModal;
+    document.body.appendChild(backdrop);
+  }
+
+  if (!modal) {
     modal = document.createElement("div");
-    modal.id = "productModal";
-    modal.className = "modal product-modal";
+    modal.id = "mwProductModal";
+    modal.className = "modal mw-product-modal";
     document.body.appendChild(modal);
   }
 
   modal.innerHTML = `
     <button class="modal-close" onclick="closeProductModal()">×</button>
 
-    <div class="product-modal-image">
-      <img src="${p.image}" alt="${escapeHtml(p.name)}">
+    <div class="mw-modal-image">
+      <canvas id="mwModalCanvas"></canvas>
     </div>
 
-    <div class="product-modal-copy">
-      <p class="eyebrow">MO-WEAR / NEW DROP</p>
-      <h2>${escapeHtml(p.name)}</h2>
-      <div class="product-modal-price">${money(p.price)}</div>
-      <p class="product-modal-desc">${escapeHtml(p.desc)}</p>
+    <div class="mw-modal-copy">
+      <p class="eyebrow">MO-WEAR / T-SHIRT</p>
 
-      <label class="variant-label">COLOR</label>
-      <div class="variant-buttons" id="colorOptions">
-        ${p.colors.map((color, i) => `
+      <h2>${escapeHtml(product.name)}</h2>
+
+      <div class="mw-modal-price">
+        ${money(product.price)}
+      </div>
+
+      <p class="mw-modal-desc">
+        ${escapeHtml(product.desc)}
+      </p>
+
+      <label class="mw-label">COLOR</label>
+
+      <div class="mw-modal-swatches">
+        ${Object.entries(COLORS).map(([name, c]) => `
           <button
-            type="button"
-            class="variant-btn ${i === 0 ? "selected" : ""}"
-            data-color="${escapeHtml(color)}"
-            onclick="selectVariant(this, 'colorOptions')">
-            ${escapeHtml(color)}
+            class="mw-swatch mw-modal-swatch ${name === "Black" ? "selected" : ""}"
+            title="${name}"
+            aria-label="${name}"
+            data-color="${name}"
+            style="--swatch:${c.swatch}"
+            onclick="selectModalColor(${product.id}, '${name}')">
           </button>
         `).join("")}
       </div>
 
-      <label class="variant-label">SIZE</label>
-      <div class="variant-buttons" id="sizeOptions">
-        ${p.sizes.map((size, i) => `
+      <div class="mw-selected-color" id="mwSelectedColor">
+        Black
+      </div>
+
+      <label class="mw-label">SIZE</label>
+
+      <div class="mw-size-buttons">
+        ${SIZES.map((size, i) => `
           <button
-            type="button"
-            class="variant-btn ${i === 0 ? "selected" : ""}"
-            data-size="${escapeHtml(size)}"
-            onclick="selectVariant(this, 'sizeOptions')">
-            ${escapeHtml(size)}
+            class="mw-size ${i === 0 ? "selected" : ""}"
+            data-size="${size}"
+            onclick="selectModalSize(this)">
+            ${size}
           </button>
         `).join("")}
       </div>
 
       <button
-        class="btn btn-red full product-add-confirm"
-        onclick="confirmAddToCart(${p.id})">
-        ADD TO CART — ${money(p.price)}
+        class="btn btn-red full"
+        onclick="confirmModalAdd(${product.id})">
+        ADD TO CART — ${money(product.price)}
       </button>
     </div>
   `;
 
   modal.classList.add("show");
-
-  let backdrop = document.getElementById("productBackdrop");
-  if(!backdrop){
-    backdrop = document.createElement("div");
-    backdrop.id = "productBackdrop";
-    backdrop.className = "modal-backdrop";
-    backdrop.addEventListener("click", closeProductModal);
-    document.body.appendChild(backdrop);
-  }
-
   backdrop.classList.add("show");
-}
 
-function selectVariant(button, groupId){
-  document.querySelectorAll(`#${groupId} .variant-btn`)
-    .forEach(btn => btn.classList.remove("selected"));
-
-  button.classList.add("selected");
-}
-
-function confirmAddToCart(id){
-  const colorButton = document.querySelector("#colorOptions .variant-btn.selected");
-  const sizeButton = document.querySelector("#sizeOptions .variant-btn.selected");
-
-  if(!colorButton || !sizeButton) return;
-
-  addToCart(
-    id,
-    colorButton.dataset.color,
-    sizeButton.dataset.size
+  await prepareCanvas(
+    document.getElementById("mwModalCanvas"),
+    product,
+    "Black"
   );
 }
 
-function closeProductModal(){
-  const modal = document.getElementById("productModal");
-  const backdrop = document.getElementById("productBackdrop");
+async function selectModalColor(id, color) {
+  const product = products.find(p => p.id === id);
+  if (!product) return;
 
-  if(modal) modal.classList.remove("show");
-  if(backdrop) backdrop.classList.remove("show");
+  document.querySelectorAll(".mw-modal-swatch").forEach(btn => {
+    btn.classList.toggle("selected", btn.dataset.color === color);
+  });
+
+  const selected = document.getElementById("mwSelectedColor");
+  if (selected) selected.textContent = color;
+
+  const canvas = document.getElementById("mwModalCanvas");
+  if (canvas) {
+    await prepareCanvas(canvas, product, color);
+  }
 }
 
-function openCart(){
-  cartDrawer.classList.add("open");
-  drawerBackdrop.classList.add("show");
+function selectModalSize(btn) {
+  document.querySelectorAll(".mw-size").forEach(b => {
+    b.classList.remove("selected");
+  });
+
+  btn.classList.add("selected");
 }
 
-function closeCart(){
-  cartDrawer.classList.remove("open");
-  drawerBackdrop.classList.remove("show");
+function confirmModalAdd(id) {
+  const color =
+    document.querySelector(".mw-modal-swatch.selected")?.dataset.color ||
+    "Black";
+
+  const size =
+    document.querySelector(".mw-size.selected")?.dataset.size ||
+    "M";
+
+  addToCart(id, color, size);
 }
 
-function openCheckout(){
-  if(!cart.length){
+function closeProductModal() {
+  document.getElementById("mwProductModal")?.classList.remove("show");
+  document.getElementById("mwProductBackdrop")?.classList.remove("show");
+}
+
+function openCart() {
+  document.getElementById("cartDrawer")?.classList.add("open");
+  document.getElementById("drawerBackdrop")?.classList.add("show");
+}
+
+function closeCart() {
+  document.getElementById("cartDrawer")?.classList.remove("open");
+  document.getElementById("drawerBackdrop")?.classList.remove("show");
+}
+
+function openCheckout() {
+  if (!cart.length) {
     alert("Your cart is empty.");
     return;
   }
 
   closeCart();
-  checkoutModal.classList.add("show");
-  checkoutBackdrop.classList.add("show");
+
+  document.getElementById("checkoutModal")?.classList.add("show");
+  document.getElementById("checkoutBackdrop")?.classList.add("show");
 }
 
-function closeCheckout(){
-  checkoutModal.classList.remove("show");
-  checkoutBackdrop.classList.remove("show");
+function closeCheckout() {
+  document.getElementById("checkoutModal")?.classList.remove("show");
+  document.getElementById("checkoutBackdrop")?.classList.remove("show");
 }
 
+/* Filters */
 document.querySelectorAll(".filter").forEach(btn => {
   btn.addEventListener("click", () => {
-    document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".filter")
+      .forEach(b => b.classList.remove("active"));
+
     btn.classList.add("active");
     renderProducts(btn.dataset.category);
   });
 });
 
-document.querySelectorAll("[data-category-link]").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const category = btn.dataset.categoryLink;
+/* Cart */
+document.getElementById("openCart")?.addEventListener("click", openCart);
+document.getElementById("closeCart")?.addEventListener("click", closeCart);
+document.getElementById("drawerBackdrop")?.addEventListener("click", closeCart);
 
-    document.querySelector("#shop").scrollIntoView({behavior:"smooth"});
+document.getElementById("checkoutButton")
+  ?.addEventListener("click", openCheckout);
 
-    setTimeout(() => {
-      document.querySelectorAll(".filter").forEach(b => {
-        b.classList.toggle("active", b.dataset.category === category);
-      });
-      renderProducts(category);
-    }, 250);
+document.getElementById("clearCart")
+  ?.addEventListener("click", () => {
+    cart = [];
+    saveCart();
   });
-});
 
-document.getElementById("openCart").addEventListener("click", openCart);
-document.getElementById("closeCart").addEventListener("click", closeCart);
-drawerBackdrop.addEventListener("click", closeCart);
+/* Checkout */
+document.getElementById("closeCheckout")
+  ?.addEventListener("click", closeCheckout);
 
-document.getElementById("checkoutButton").addEventListener("click", openCheckout);
+document.getElementById("checkoutBackdrop")
+  ?.addEventListener("click", closeCheckout);
 
-document.getElementById("clearCart").addEventListener("click", () => {
-  cart = [];
-  saveCart();
-});
-
-document.getElementById("closeCheckout").addEventListener("click", closeCheckout);
-checkoutBackdrop.addEventListener("click", closeCheckout);
-
-document.getElementById("menuButton").addEventListener("click", () => {
-  document.getElementById("nav").classList.toggle("open");
-});
+/* Mobile menu */
+document.getElementById("menuButton")
+  ?.addEventListener("click", () => {
+    document.getElementById("nav")?.classList.toggle("open");
+  });
 
 document.querySelectorAll(".nav a").forEach(a => {
   a.addEventListener("click", () => {
-    document.getElementById("nav").classList.remove("open");
+    document.getElementById("nav")?.classList.remove("open");
   });
 });
 
-document.getElementById("checkoutForm").addEventListener("submit", (e) => {
-  e.preventDefault();
+/* Checkout form */
+document.getElementById("checkoutForm")
+  ?.addEventListener("submit", e => {
+    e.preventDefault();
 
-  const data = new FormData(e.target);
+    const data = new FormData(e.target);
 
-  const order = {
-    customer: Object.fromEntries(data.entries()),
-    items: cart.map(item => {
-      const p = products.find(p => p.id === item.id);
-      return {
-        product: p ? p.name : "Unknown",
-        color: item.color || "—",
-        size: item.size || "—",
-        qty: item.qty,
-        unitPrice: p ? p.price : 0
-      };
-    }),
-    total: cart.reduce((sum, item) => {
-      const p = products.find(p => p.id === item.id);
-      return sum + (p ? p.price * item.qty : 0);
-    }, 0),
-    createdAt: new Date().toISOString()
-  };
+    const order = {
+      customer: Object.fromEntries(data.entries()),
+      items: cart.map(item => {
+        const p = products.find(x => x.id === item.id);
 
-  console.log("MO-WEAR ORDER", order);
-  localStorage.setItem("lastMoWearOrder", JSON.stringify(order));
+        return {
+          product: p?.name || "Unknown",
+          color: item.color || "Black",
+          size: item.size || "M",
+          qty: item.qty,
+          unitPrice: p?.price || 0
+        };
+      }),
+      total: cart.reduce((sum, item) => {
+        const p = products.find(x => x.id === item.id);
+        return sum + (p ? p.price * item.qty : 0);
+      }, 0),
+      createdAt: new Date().toISOString()
+    };
 
-  e.target.style.display = "none";
-  document.querySelector(".modal .small").style.display = "none";
-  document.getElementById("orderSuccess").classList.add("show");
+    console.log("MO-WEAR ORDER", order);
+    localStorage.setItem("lastMoWearOrder", JSON.stringify(order));
 
-  cart = [];
-  saveCart();
-});
+    e.target.style.display = "none";
+    document.querySelector(".modal .small")?.style.setProperty("display", "none");
+    document.getElementById("orderSuccess")?.classList.add("show");
 
-document.getElementById("closeSuccess").addEventListener("click", () => {
-  document.getElementById("checkoutForm").reset();
-  document.getElementById("checkoutForm").style.display = "grid";
-  document.querySelector(".modal .small").style.display = "block";
-  document.getElementById("orderSuccess").classList.remove("show");
-  closeCheckout();
-});
+    cart = [];
+    saveCart();
+  });
 
-document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("closeSuccess")
+  ?.addEventListener("click", () => {
+    document.getElementById("checkoutForm")?.reset();
 
+    const form = document.getElementById("checkoutForm");
+    if (form) form.style.display = "grid";
+
+    document.querySelector(".modal .small")
+      ?.style.setProperty("display", "block");
+
+    document.getElementById("orderSuccess")
+      ?.classList.remove("show");
+
+    closeCheckout();
+  });
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+/* Start */
+hideOldCategories();
 renderProducts();
 renderCart();
