@@ -113,10 +113,14 @@ h1 span,h2 span{color:var(--red)}
 
 /* ===== REAL PRODUCT IMAGE / VARIANT UI ===== */
 
+
+/* ===== MO-WEAR REAL PRODUCTS V2 ===== */
+
 .product-image.real-product-image {
   aspect-ratio: 1 / 1.15;
   background: #080808;
   position: relative;
+  overflow: hidden;
 }
 
 .product-image.real-product-image img {
@@ -264,3 +268,4 @@ h1 span,h2 span{color:var(--red)}
     padding: 5px 10px 20px;
   }
 }
+

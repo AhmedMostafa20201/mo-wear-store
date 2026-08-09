@@ -1,11 +1,51 @@
 const products = [
   {
     id: 1,
-    name: "MO-WEAR Fire Tee",
+    name: "Fire Graphic Tee",
     category: "tshirts",
     price: 400,
-    desc: "Oversized black streetwear tee with the MO-WEAR graphic.",
+    desc: "Oversized black MO-WEAR graphic tee.",
     image: "images/model-1.png",
+    colors: ["Black", "White", "Burgundy", "Beige"],
+    sizes: ["M", "L", "XL"]
+  },
+  {
+    id: 2,
+    name: "Rose California Tee",
+    category: "tshirts",
+    price: 400,
+    desc: "Clean cream tee with rose California graphic.",
+    image: "images/model-02.png",
+    colors: ["Black", "White", "Burgundy", "Beige"],
+    sizes: ["M", "L", "XL"]
+  },
+  {
+    id: 3,
+    name: "Warrior Tee",
+    category: "tshirts",
+    price: 400,
+    desc: "Black streetwear tee with warrior-inspired graphic.",
+    image: "images/model-03.png",
+    colors: ["Black", "White", "Burgundy", "Beige"],
+    sizes: ["M", "L", "XL"]
+  },
+  {
+    id: 4,
+    name: "Courage Tee",
+    category: "tshirts",
+    price: 400,
+    desc: "Dark green tee with minimal Courage graphic.",
+    image: "images/model-04.png",
+    colors: ["Black", "White", "Burgundy", "Beige"],
+    sizes: ["M", "L", "XL"]
+  },
+  {
+    id: 5,
+    name: "Red Shadow Tee",
+    category: "tshirts",
+    price: 400,
+    desc: "Black statement tee with bold red graphic.",
+    image: "images/model-05.png",
     colors: ["Black", "White", "Burgundy", "Beige"],
     sizes: ["M", "L", "XL"]
   }
@@ -35,6 +75,14 @@ function escapeHtml(value){
     .replaceAll("'", "&#039;");
 }
 
+/* Remove HOODIES and PANTS tabs/links from the existing HTML. */
+document.querySelectorAll(".filter, [data-category-link]").forEach(el => {
+  const category = el.dataset.category || el.dataset.categoryLink;
+  if(category === "hoodies" || category === "pants"){
+    el.remove();
+  }
+});
+
 function renderProducts(category = "all"){
   const list = category === "all"
     ? products
@@ -51,13 +99,13 @@ function renderProducts(category = "all"){
         <div class="product-name">${escapeHtml(p.name)}</div>
 
         <div class="product-meta">
-          <span class="product-category">${escapeHtml(p.category)}</span>
+          <span class="product-category">T-SHIRT</span>
           <span class="product-price">${money(p.price)}</span>
         </div>
 
         <div class="product-options-preview">
-          <span>Colors: ${p.colors.join(" · ")}</span>
-          <span>Sizes: ${p.sizes.join(" · ")}</span>
+          <span>Colors: Black · White · Burgundy · Beige</span>
+          <span>Sizes: M · L · XL</span>
         </div>
 
         <div class="product-actions">
