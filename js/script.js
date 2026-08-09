@@ -48,14 +48,14 @@ function money(value) {
 
 function escapeHtml(value) {
     return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
-/* Remove HOODIES and PANTS tabs/links */
+// Remove HOODIES and PANTS filters/links if they exist in the HTML.
 document.querySelectorAll(".filter, [data-category-link]").forEach(el => {
     const category = el.dataset.category || el.dataset.categoryLink;
 
@@ -71,59 +71,29 @@ function renderProducts(category = "all") {
 
     productsEl.innerHTML = list.map(p => `
         <article class="product-card">
-
             <div class="product-image real-product-image">
                 <img src="${p.image}" alt="${escapeHtml(p.name)}">
-
-                <div class="product-badge">
-                    NEW
-                </div>
+                <div class="product-badge">NEW</div>
             </div>
 
             <div class="product-info">
-
-                <div class="product-name">
-                    ${escapeHtml(p.name)}
-                </div>
+                <div class="product-name">${escapeHtml(p.name)}</div>
 
                 <div class="product-meta">
-                    <span class="product-category">
-                        T-SHIRT
-                    </span>
-
-                    <span class="product-price">
-                        ${money(p.price)}
-                    </span>
+                    <span class="product-category">T-SHIRT</span>
+                    <span class="product-price">${money(p.price)}</span>
                 </div>
 
                 <div class="product-options-preview">
-                    <span>
-                        Colors: Black · White · Burgundy · Beige
-                    </span>
-
-                    <span>
-                        Sizes: M · L · XL
-                    </span>
+                    <span>Colors: Black · White · Burgundy · Beige</span>
+                    <span>Sizes: M · L · XL</span>
                 </div>
 
                 <div class="product-actions">
-
-                    <button
-                        class="add-btn"
-                        onclick="showProduct(${p.id})">
-                        ADD TO CART
-                    </button>
-
-                    <button
-                        class="view-btn"
-                        onclick="showProduct(${p.id})">
-                        DETAILS
-                    </button>
-
+                    <button class="add-btn" onclick="showProduct(${p.id})">ADD TO CART</button>
+                    <button class="view-btn" onclick="showProduct(${p.id})">DETAILS</button>
                 </div>
-
             </div>
-
         </article>
     `).join("");
 }
@@ -134,35 +104,23 @@ function saveCart() {
 }
 
 function addToCart(id, color, size) {
-
     const existing = cart.find(
-        item =>
-            item.id === id &&
-            item.color === color &&
-            item.size === size
+        item => item.id === id && item.color === color && item.size === size
     );
 
     if (existing) {
         existing.qty++;
     } else {
-        cart.push({
-            id,
-            color,
-            size,
-            qty: 1
-        });
+        cart.push({ id, color, size, qty: 1 });
     }
 
     saveCart();
-
     closeProductModal();
     openCart();
 }
 
 function changeQty(index, amount) {
-
     const item = cart[index];
-
     if (!item) return;
 
     item.qty += amount;
@@ -175,92 +133,50 @@ function changeQty(index, amount) {
 }
 
 function renderCart() {
-
-    const totalQty = cart.reduce(
-        (sum, item) => sum + item.qty,
-        0
-    );
-
+    const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
     cartCountEl.textContent = totalQty;
 
     if (!cart.length) {
-
         cartItemsEl.innerHTML = `
             <div class="empty-cart">
-                YOUR CART IS EMPTY.
-                <br><br>
+                YOUR CART IS EMPTY.<br><br>
                 ADD SOMETHING YOU LIKE.
             </div>
         `;
-
         cartTotalEl.textContent = money(0);
-
         return;
     }
 
     let total = 0;
 
     cartItemsEl.innerHTML = cart.map((item, index) => {
-
         const p = products.find(x => x.id === item.id);
-
         if (!p) return "";
 
         total += p.price * item.qty;
 
         return `
             <div class="cart-item">
-
-                <img
-                    class="cart-product-image"
-                    src="${p.image}"
-                    alt="${escapeHtml(p.name)}"
-                >
+                <img class="cart-product-image" src="${p.image}" alt="${escapeHtml(p.name)}">
 
                 <div>
-
-                    <h3>
-                        ${escapeHtml(p.name)}
-                    </h3>
-
-                    <p>
-                        ${money(p.price)}
-                    </p>
-
+                    <h3>${escapeHtml(p.name)}</h3>
+                    <p>${money(p.price)}</p>
                     <p class="cart-variant">
-                        Color:
-                        ${escapeHtml(item.color || "—")}
-                        ·
-                        Size:
-                        ${escapeHtml(item.size || "—")}
+                        Color: ${escapeHtml(item.color || "—")} ·
+                        Size: ${escapeHtml(item.size || "—")}
                     </p>
 
                     <div class="qty">
-
-                        <button
-                            onclick="changeQty(${index}, -1)">
-                            −
-                        </button>
-
-                        <strong>
-                            ${item.qty}
-                        </strong>
-
-                        <button
-                            onclick="changeQty(${index}, 1)">
-                            +
-                        </button>
-
+                        <button onclick="changeQty(${index}, -1)">−</button>
+                        <strong>${item.qty}</strong>
+                        <button onclick="changeQty(${index}, 1)">+</button>
                     </div>
-
                 </div>
 
-                <button
-                    class="remove"
-                    onclick="changeQty(${index}, -${item.qty})">
-                    REMOVE
+                <button class="remove" onclick="changeQty(${index}, -${item.qty})">
+                    Remove
                 </button>
-
             </div>
         `;
     }).join("");
@@ -269,109 +185,62 @@ function renderCart() {
 }
 
 function showProduct(id) {
-
     const p = products.find(x => x.id === id);
-
     if (!p) return;
 
     let modal = document.getElementById("productModal");
 
     if (!modal) {
-
         modal = document.createElement("div");
-
         modal.id = "productModal";
         modal.className = "modal product-modal";
-
         document.body.appendChild(modal);
     }
 
     modal.innerHTML = `
-        <button
-            class="modal-close"
-            onclick="closeProductModal()">
-            ×
-        </button>
+        <button class="modal-close" onclick="closeProductModal()">×</button>
 
         <div class="product-modal-image">
-
-            <img
-                src="${p.image}"
-                alt="${escapeHtml(p.name)}"
-            >
-
+            <img src="${p.image}" alt="${escapeHtml(p.name)}">
         </div>
 
         <div class="product-modal-copy">
+            <p class="eyebrow">MO-WEAR / NEW DROP</p>
+            <h2>${escapeHtml(p.name)}</h2>
+            <div class="product-modal-price">${money(p.price)}</div>
+            <p class="product-modal-desc">${escapeHtml(p.desc)}</p>
 
-            <p class="eyebrow">
-                MO-WEAR / NEW DROP
-            </p>
-
-            <h2>
-                ${escapeHtml(p.name)}
-            </h2>
-
-            <div class="product-modal-price">
-                ${money(p.price)}
-            </div>
-
-            <p class="product-modal-desc">
-                ${escapeHtml(p.desc)}
-            </p>
-
-            <label class="variant-label">
-                COLOR
-            </label>
-
-            <div
-                class="variant-buttons"
-                id="colorOptions">
-
+            <label class="variant-label">COLOR</label>
+            <div class="variant-buttons" id="colorOptions">
                 ${p.colors.map((color, i) => `
                     <button
                         type="button"
                         class="variant-btn ${i === 0 ? "selected" : ""}"
                         data-color="${escapeHtml(color)}"
                         onclick="selectVariant(this, 'colorOptions')">
-
                         ${escapeHtml(color)}
-
                     </button>
                 `).join("")}
-
             </div>
 
-            <label class="variant-label">
-                SIZE
-            </label>
-
-            <div
-                class="variant-buttons"
-                id="sizeOptions">
-
+            <label class="variant-label">SIZE</label>
+            <div class="variant-buttons" id="sizeOptions">
                 ${p.sizes.map((size, i) => `
                     <button
                         type="button"
                         class="variant-btn ${i === 0 ? "selected" : ""}"
                         data-size="${escapeHtml(size)}"
                         onclick="selectVariant(this, 'sizeOptions')">
-
                         ${escapeHtml(size)}
-
                     </button>
                 `).join("")}
-
             </div>
 
             <button
                 class="btn btn-red full product-add-confirm"
                 onclick="confirmAddToCart(${p.id})">
-
                 ADD TO CART — ${money(p.price)}
-
             </button>
-
         </div>
     `;
 
@@ -380,17 +249,10 @@ function showProduct(id) {
     let backdrop = document.getElementById("productBackdrop");
 
     if (!backdrop) {
-
         backdrop = document.createElement("div");
-
         backdrop.id = "productBackdrop";
         backdrop.className = "modal-backdrop";
-
-        backdrop.addEventListener(
-            "click",
-            closeProductModal
-        );
-
+        backdrop.addEventListener("click", closeProductModal);
         document.body.appendChild(backdrop);
     }
 
@@ -398,27 +260,16 @@ function showProduct(id) {
 }
 
 function selectVariant(button, groupId) {
-
     document
         .querySelectorAll(`#${groupId} .variant-btn`)
-        .forEach(btn => {
-            btn.classList.remove("selected");
-        });
+        .forEach(btn => btn.classList.remove("selected"));
 
     button.classList.add("selected");
 }
 
 function confirmAddToCart(id) {
-
-    const colorButton =
-        document.querySelector(
-            "#colorOptions .variant-btn.selected"
-        );
-
-    const sizeButton =
-        document.querySelector(
-            "#sizeOptions .variant-btn.selected"
-        );
+    const colorButton = document.querySelector("#colorOptions .variant-btn.selected");
+    const sizeButton = document.querySelector("#sizeOptions .variant-btn.selected");
 
     if (!colorButton || !sizeButton) return;
 
@@ -430,280 +281,164 @@ function confirmAddToCart(id) {
 }
 
 function closeProductModal() {
+    const modal = document.getElementById("productModal");
+    const backdrop = document.getElementById("productBackdrop");
 
-    const modal =
-        document.getElementById("productModal");
-
-    const backdrop =
-        document.getElementById("productBackdrop");
-
-    if (modal) {
-        modal.classList.remove("show");
-    }
-
-    if (backdrop) {
-        backdrop.classList.remove("show");
-    }
+    if (modal) modal.classList.remove("show");
+    if (backdrop) backdrop.classList.remove("show");
 }
 
 function openCart() {
-
     cartDrawer.classList.add("open");
     drawerBackdrop.classList.add("show");
 }
 
 function closeCart() {
-
     cartDrawer.classList.remove("open");
     drawerBackdrop.classList.remove("show");
 }
 
 function openCheckout() {
-
     if (!cart.length) {
-
         alert("Your cart is empty.");
-
         return;
     }
 
     closeCart();
-
     checkoutModal.classList.add("show");
     checkoutBackdrop.classList.add("show");
 }
 
 function closeCheckout() {
-
     checkoutModal.classList.remove("show");
     checkoutBackdrop.classList.remove("show");
 }
 
 document.querySelectorAll(".filter").forEach(btn => {
-
     btn.addEventListener("click", () => {
-
-        document
-            .querySelectorAll(".filter")
-            .forEach(b => {
-                b.classList.remove("active");
-            });
-
+        document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-
         renderProducts(btn.dataset.category);
     });
-
 });
 
-document
-    .querySelectorAll("[data-category-link]")
-    .forEach(btn => {
+document.querySelectorAll("[data-category-link]").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const category = btn.dataset.categoryLink;
 
-        btn.addEventListener("click", () => {
+        document.querySelector("#shop").scrollIntoView({ behavior: "smooth" });
 
-            const category =
-                btn.dataset.categoryLink;
-
-            document
-                .querySelector("#shop")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-
-            setTimeout(() => {
-
-                document
-                    .querySelectorAll(".filter")
-                    .forEach(b => {
-
-                        b.classList.toggle(
-                            "active",
-                            b.dataset.category === category
-                        );
-
-                    });
-
-                renderProducts(category);
-
-            }, 250);
-
-        });
-
+        setTimeout(() => {
+            document.querySelectorAll(".filter").forEach(b => {
+                b.classList.toggle("active", b.dataset.category === category);
+            });
+            renderProducts(category);
+        }, 250);
     });
+});
 
-document
-    .getElementById("openCart")
-    .addEventListener("click", openCart);
+const openCartButton = document.getElementById("openCart");
+if (openCartButton) openCartButton.addEventListener("click", openCart);
 
-document
-    .getElementById("closeCart")
-    .addEventListener("click", closeCart);
+const closeCartButton = document.getElementById("closeCart");
+if (closeCartButton) closeCartButton.addEventListener("click", closeCart);
 
-drawerBackdrop.addEventListener(
-    "click",
-    closeCart
-);
+if (drawerBackdrop) drawerBackdrop.addEventListener("click", closeCart);
 
-document
-    .getElementById("checkoutButton")
-    .addEventListener("click", openCheckout);
+const checkoutButton = document.getElementById("checkoutButton");
+if (checkoutButton) checkoutButton.addEventListener("click", openCheckout);
 
-document
-    .getElementById("clearCart")
-    .addEventListener("click", () => {
-
+const clearCartButton = document.getElementById("clearCart");
+if (clearCartButton) {
+    clearCartButton.addEventListener("click", () => {
         cart = [];
-
         saveCart();
-
     });
+}
 
-document
-    .getElementById("closeCheckout")
-    .addEventListener("click", closeCheckout);
+const closeCheckoutButton = document.getElementById("closeCheckout");
+if (closeCheckoutButton) closeCheckoutButton.addEventListener("click", closeCheckout);
 
-checkoutBackdrop.addEventListener(
-    "click",
-    closeCheckout
-);
+if (checkoutBackdrop) checkoutBackdrop.addEventListener("click", closeCheckout);
 
-document
-    .getElementById("menuButton")
-    .addEventListener("click", () => {
-
-        document
-            .getElementById("nav")
-            .classList.toggle("open");
-
+const menuButton = document.getElementById("menuButton");
+if (menuButton) {
+    menuButton.addEventListener("click", () => {
+        document.getElementById("nav").classList.toggle("open");
     });
+}
 
-document
-    .querySelectorAll(".nav a")
-    .forEach(a => {
-
-        a.addEventListener("click", () => {
-
-            document
-                .getElementById("nav")
-                .classList.remove("open");
-
-        });
-
+document.querySelectorAll(".nav a").forEach(a => {
+    a.addEventListener("click", () => {
+        document.getElementById("nav").classList.remove("open");
     });
+});
 
-document
-    .getElementById("checkoutForm")
-    .addEventListener("submit", (e) => {
+const checkoutForm = document.getElementById("checkoutForm");
 
+if (checkoutForm) {
+    checkoutForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
         const data = new FormData(e.target);
 
         const order = {
-
-            customer:
-                Object.fromEntries(data.entries()),
-
+            customer: Object.fromEntries(data.entries()),
             items: cart.map(item => {
-
-                const p =
-                    products.find(
-                        p => p.id === item.id
-                    );
+                const p = products.find(p => p.id === item.id);
 
                 return {
-
-                    product:
-                        p ? p.name : "Unknown",
-
-                    color:
-                        item.color || "—",
-
-                    size:
-                        item.size || "—",
-
-                    qty:
-                        item.qty,
-
-                    unitPrice:
-                        p ? p.price : 0
-
+                    product: p ? p.name : "Unknown",
+                    color: item.color || "—",
+                    size: item.size || "—",
+                    qty: item.qty,
+                    unitPrice: p ? p.price : 0
                 };
-
             }),
-
-            total: cart.reduce(
-                (sum, item) => {
-
-                    const p =
-                        products.find(
-                            p => p.id === item.id
-                        );
-
-                    return sum +
-                        (p
-                            ? p.price * item.qty
-                            : 0);
-
-                },
-                0
-            ),
-
-            createdAt:
-                new Date().toISOString()
+            total: cart.reduce((sum, item) => {
+                const p = products.find(p => p.id === item.id);
+                return sum + (p ? p.price * item.qty : 0);
+            }, 0),
+            createdAt: new Date().toISOString()
         };
 
-        console.log(
-            "MO-WEAR ORDER",
-            order
-        );
-
-        localStorage.setItem(
-            "lastMoWearOrder",
-            JSON.stringify(order)
-        );
+        console.log("MO-WEAR ORDER", order);
+        localStorage.setItem("lastMoWearOrder", JSON.stringify(order));
 
         e.target.style.display = "none";
 
-        document
-            .querySelector(".modal .small")
-            .style.display = "none";
+        const smallText = document.querySelector(".modal .small");
+        if (smallText) smallText.style.display = "none";
 
-        document
-            .getElementById("orderSuccess")
-            .classList.add("show");
+        const orderSuccess = document.getElementById("orderSuccess");
+        if (orderSuccess) orderSuccess.classList.add("show");
 
         cart = [];
-
         saveCart();
     });
+}
 
-document
-    .getElementById("closeSuccess")
-    .addEventListener("click", () => {
+const closeSuccessButton = document.getElementById("closeSuccess");
 
-        document
-            .getElementById("checkoutForm")
-            .reset();
+if (closeSuccessButton) {
+    closeSuccessButton.addEventListener("click", () => {
+        if (checkoutForm) {
+            checkoutForm.reset();
+            checkoutForm.style.display = "grid";
+        }
 
-        document
-            .getElementById("checkoutForm")
-            .style.display = "grid";
+        const smallText = document.querySelector(".modal .small");
+        if (smallText) smallText.style.display = "block";
 
-        document
-            .querySelector(".modal .small")
-            .style.display = "block";
-
-        document
-            .getElementById("orderSuccess")
-            .classList.remove("show");
+        const orderSuccess = document.getElementById("orderSuccess");
+        if (orderSuccess) orderSuccess.classList.remove("show");
 
         closeCheckout();
     });
+}
 
-document.getElementById("year").textContent =
-    new Date().getFullYear();
+const yearElement = document.getElementById("year");
+if (yearElement) yearElement.textContent = new Date().getFullYear();
 
 renderProducts();
 renderCart();
