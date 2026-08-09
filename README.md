@@ -25,3 +25,11 @@ For real customer orders, the next step is to connect the checkout to:
 
 ## Free hosting options
 You can later upload this static site to a free static hosting service such as GitHub Pages or Netlify.
+
+
+## Current products
+- Samurai Yin Yang Tee
+- California Rose Tee
+- Falling Man Tee
+
+Old placeholder products have been removed from `js/script.js`.

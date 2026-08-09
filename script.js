@@ -4,7 +4,7 @@ const products = [
     name: "Samurai Yin Yang Tee",
     category: "tshirts",
     price: 400,
-    desc: "Oversized black tee with a Yin Yang graphic and Japanese-inspired warrior lettering.",
+    desc: "Oversized black streetwear tee with Yin Yang and Japanese-inspired Samurai graphics.",
     image: "images/samurai-yin-yang.jpg",
     colors: ["Black"],
     sizes: ["M", "L", "XL"]
@@ -14,7 +14,7 @@ const products = [
     name: "California Rose Tee",
     category: "tshirts",
     price: 400,
-    desc: "Oversized cream tee with a bold rose graphic and California lettering.",
+    desc: "Oversized cream tee with a vintage rose California graphic.",
     image: "images/california-rose.jpg",
     colors: ["Cream"],
     sizes: ["M", "L", "XL"]
@@ -24,7 +24,7 @@ const products = [
     name: "Falling Man Tee",
     category: "tshirts",
     price: 400,
-    desc: "Oversized black streetwear tee featuring the Falling Man graphic.",
+    desc: "Oversized black tee with the Falling Man graphic in white.",
     image: "images/falling-man.png",
     colors: ["Black"],
     sizes: ["M", "L", "XL"]
@@ -84,8 +84,8 @@ function renderProducts(category = "all"){
         </div>
 
         <div class="product-options-preview">
-          <span>Colors: Black · White · Burgundy · Beige</span>
-          <span>Sizes: M · L · XL</span>
+          <span>Colors: ${p.colors.join(" · ")}</span>
+          <span>Sizes: ${p.sizes.join(" · ")}</span>
         </div>
 
         <div class="product-actions">
