@@ -1,113 +1,161 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MO-WEAR | Streetwear Store</title>
-  <meta name="description" content="MO-WEAR Streetwear Store - Oversized & Box Fit T-Shirts">
+  <meta name="description" content="MO-WEAR — Streetwear made for your attitude. Est. 2022.">
+  <title>MO-WEAR | Streetwear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="header">
-  <a class="logo" href="#">MO<span>-</span>WEAR</a>
-  <nav>
-    <a href="#products">المنتجات</a>
-    <a href="#about">عن MO-WEAR</a>
-    <a href="#contact">تواصل معنا</a>
-  </nav>
-  <button class="cart-btn" onclick="openCart()">السلة <span id="cartCount">0</span></button>
-</header>
+  <div class="announcement">FREE SHIPPING ON ORDERS OVER EGP 1,500</div>
 
-<section class="hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="eyebrow">STREETWEAR • EGYPT</p>
-    <h1>WEAR YOUR<br><span>ATTITUDE.</span></h1>
-    <p class="hero-copy" dir="rtl">تيشيرتات Oversized و Box Fit بتصميمات مختلفة، خامة مريحة وستايل مناسب ليك.</p>
-    <a href="#products" class="cta">شوف الكولكشن</a>
-  </div>
-</section>
+  <header class="header">
+    <a class="brand" href="#home" aria-label="MO-WEAR Home">
+      <img src="images/logo.jpg" alt="MO-WEAR logo">
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cart-button" id="openCart" aria-label="Open shopping cart">
+      Cart <span id="cartCount">0</span>
+    </button>
+    <button class="menu-button" id="menuButton" aria-label="Open menu">☰</button>
+  </header>
 
-<section class="features" dir="rtl">
-  <div><b>400 EGP</b><span>سعر ثابت لكل الموديلات</span></div>
-  <div><b>M — 3XL</b><span>كل المقاسات متاحة</span></div>
-  <div><b>OVERSIZED</b><span>ومتاح Box Fit</span></div>
-  <div><b>5 COLORS</b><span>بيج • أبيض • أسود • نبيتي • زيتي</span></div>
-</section>
-
-<main id="products" class="products-section">
-  <div class="section-head" dir="rtl">
-    <div>
-      <p class="eyebrow">THE COLLECTION</p>
-      <h2>اختار ستايلك</h2>
-    </div>
-    <div class="filters">
-      <button class="filter active" data-filter="all">الكل</button>
-      <button class="filter" data-filter="black">أسود</button>
-      <button class="filter" data-filter="beige">بيج</button>
-      <button class="filter" data-filter="white">أبيض</button>
-      <button class="filter" data-filter="burgundy">نبيتي</button>
-      <button class="filter" data-filter="olive">زيتي</button>
-    </div>
-  </div>
-  <div id="productGrid" class="product-grid"></div>
-</main>
-
-<section id="about" class="about">
-  <div>
-    <p class="eyebrow">MO-WEAR</p>
-    <h2>مش مجرد تيشيرت.</h2>
-  </div>
-  <p>ستايل streetwear بسيط وجريء. اختار التصميم، اللون، المقاس والـFit المناسب ليك، وحط طلبك في السلة.</p>
-</section>
-
-<footer id="contact">
-  <div>
-    <div class="logo">MO<span>-</span>WEAR</div>
-    <p>Streetwear Store • Egypt</p>
-  </div>
-  <div>
-    <p>للطلب والاستفسار</p>
-    <a id="whatsappFooter" href="#" target="_blank">WhatsApp</a>
-  </div>
-  <div>
-    <p>© 2026 MO-WEAR</p>
-  </div>
-</footer>
-
-<div id="modal" class="modal hidden">
-  <div class="modal-card">
-    <button class="close" onclick="closeModal()">×</button>
-    <img id="modalImage" src="" alt="">
-    <div class="modal-info">
-      <p class="eyebrow">MO-WEAR</p>
-      <h3 id="modalName"></h3>
-      <div class="price">400 EGP</div>
-      <label>اللون</label>
-      <div id="colorOptions" class="options"></div>
-      <label>المقاس</label>
-      <div id="sizeOptions" class="options"></div>
-      <label>Fit</label>
-      <div id="fitOptions" class="options">
-        <button class="option fit-option active" data-fit="Oversized">Oversized</button>
-        <button class="option fit-option" data-fit="Box Fit">Box Fit</button>
+  <main id="home">
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="eyebrow">EST. 2022 · EGYPT</p>
+        <h1>WEAR YOUR<br><span>ATTITUDE.</span></h1>
+        <p class="hero-text">Streetwear for people who don't follow the crowd.</p>
+        <a class="btn btn-red" href="#shop">SHOP THE DROP</a>
       </div>
-      <button class="add-btn" onclick="addToCart()">أضف للسلة</button>
+    </section>
+
+    <section class="ticker" aria-label="MO-WEAR statement">
+      <div>MO-WEAR · STREET CULTURE · EST. 2022 · MO-WEAR · STREET CULTURE · EST. 2022 ·</div>
+    </section>
+
+    <section class="section" id="shop">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE COLLECTION</p>
+          <h2>LATEST DROPS</h2>
+        </div>
+        <div class="filters">
+          <button class="filter active" data-category="all">All</button>
+          <button class="filter" data-category="tshirts">T-Shirts</button>
+          <button class="filter" data-category="hoodies">Hoodies</button>
+          <button class="filter" data-category="pants">Pants</button>
+        </div>
+      </div>
+      <div class="products" id="products"></div>
+    </section>
+
+    <section class="statement">
+      <div>
+        <p class="eyebrow">MO-WEAR</p>
+        <h2>NOT JUST CLOTHES.<br><span>IT'S A STATEMENT.</span></h2>
+      </div>
+      <p>Built around bold graphics, dark aesthetics and everyday confidence. Pick your fit. Make it yours.</p>
+    </section>
+
+    <section class="section categories">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">EXPLORE</p>
+          <h2>SHOP BY STYLE</h2>
+        </div>
+      </div>
+      <div class="category-grid">
+        <button class="category-card cat-one" data-category-link="tshirts">
+          <span>T-SHIRTS</span>
+        </button>
+        <button class="category-card cat-two" data-category-link="hoodies">
+          <span>HOODIES</span>
+        </button>
+        <button class="category-card cat-three" data-category-link="pants">
+          <span>PANTS</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="about section" id="about">
+      <div class="about-image">
+        <img src="images/logo.jpg" alt="MO-WEAR logo">
+      </div>
+      <div class="about-copy">
+        <p class="eyebrow">OUR STORY</p>
+        <h2>EST. <span>2022</span></h2>
+        <p>MO-WEAR was built with one simple idea: clothing should reflect who you are, not who you're expected to be.</p>
+        <p>Our style combines street culture with a sharp, unapologetic visual identity.</p>
+      </div>
+    </section>
+
+    <section class="contact section" id="contact">
+      <div>
+        <p class="eyebrow">GET IN TOUCH</p>
+        <h2>LET'S TALK.</h2>
+        <p>For orders, sizing, collaborations or anything else, reach out to us.</p>
+      </div>
+      <div class="contact-links">
+        <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram ↗</a>
+        <a href="mailto:hello@mowear.com">Email ↗</a>
+        <a href="tel:+201000000000">WhatsApp / Phone ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <img src="images/logo.jpg" alt="MO-WEAR">
+    <p>© <span id="year"></span> MO-WEAR. ALL RIGHTS RESERVED.</p>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="drawer-header">
+      <h2>YOUR CART</h2>
+      <button id="closeCart" aria-label="Close cart">×</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="total-row"><span>Subtotal</span><strong id="cartTotal">EGP 0</strong></div>
+      <button class="btn btn-red full" id="checkoutButton">CHECKOUT</button>
+      <button class="btn btn-outline full" id="clearCart">CLEAR CART</button>
+    </div>
+  </aside>
+
+  <!-- Checkout Modal -->
+  <div class="modal-backdrop" id="checkoutBackdrop"></div>
+  <div class="modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <button class="modal-close" id="closeCheckout">×</button>
+    <p class="eyebrow">ORDER DETAILS</p>
+    <h2 id="checkoutTitle">CHECKOUT</h2>
+    <p class="small">This first version collects the order. Connect it to your preferred payment/order system later.</p>
+    <form id="checkoutForm">
+      <label>Full Name<input required name="name" type="text" placeholder="Your name"></label>
+      <label>Phone<input required name="phone" type="tel" placeholder="01xxxxxxxxx"></label>
+      <label>City<input required name="city" type="text" placeholder="Cairo"></label>
+      <label>Address<textarea required name="address" placeholder="Full delivery address"></textarea></label>
+      <label>Notes<textarea name="notes" placeholder="Size notes or delivery instructions"></textarea></label>
+      <button class="btn btn-red full" type="submit">PLACE ORDER</button>
+    </form>
+    <div class="order-success" id="orderSuccess">
+      <h3>ORDER RECEIVED ✓</h3>
+      <p>Your order summary has been prepared. In the next step, connect this form to WhatsApp, Google Sheets or a backend.</p>
+      <button class="btn btn-outline full" id="closeSuccess">DONE</button>
     </div>
   </div>
-</div>
 
-<div id="cartModal" class="modal hidden">
-  <div class="cart-card">
-    <button class="close" onclick="closeCart()">×</button>
-    <p class="eyebrow">YOUR CART</p>
-    <h2>سلة المشتريات</h2>
-    <div id="cartItems"></div>
-    <div class="cart-total"><span>الإجمالي</span><b id="cartTotal">0 EGP</b></div>
-    <button class="add-btn" onclick="checkoutWhatsApp()">إتمام الطلب عبر WhatsApp</button>
-  </div>
-</div>
-
-<script src="js/app.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
