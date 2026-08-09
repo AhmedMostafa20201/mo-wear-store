@@ -44,7 +44,7 @@ h1 span,h2 span{color:var(--red)}
 .products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .product-card{background:var(--card);border:1px solid var(--line);overflow:hidden}
 .product-image{aspect-ratio:1/1.15;background:linear-gradient(135deg,#1b1b1b,#090909);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.product-image:after{content:"MO-WEAR";font:90px Anton,sans-serif;color:#191919;position:absolute;transform:rotate(-45deg)}
+
 .product-image .mock-shirt{width:55%;height:65%;background:linear-gradient(135deg,#111,#222);clip-path:polygon(25% 0,75% 0,100% 25%,82% 35%,75% 100%,25% 100%,18% 35%,0 25%);z-index:1;box-shadow:0 0 60px rgba(229,9,20,.08)}
 .product-info{padding:17px}
 .product-name{font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:1px}
