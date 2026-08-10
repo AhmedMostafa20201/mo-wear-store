@@ -1704,3 +1704,358 @@ h2 span{
   }
 
 }
+/* =====================================================
+   MO-WEAR - FINAL PRODUCT IMAGE FIX
+   IMAGE SIZE = 1536 x 1024
+   RATIO = 3 / 2
+   ===================================================== */
+
+/* PRODUCT GRID */
+.products {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 22px !important;
+}
+
+
+/* =====================================================
+   PRODUCT IMAGE CONTAINER
+   ===================================================== */
+
+.product-image,
+.product-image.real-product-image,
+.mw-real-image {
+    width: 100% !important;
+
+    /* أهم سطر */
+    aspect-ratio: 3 / 2 !important;
+
+    /* يلغي الارتفاع القديم */
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    position: relative !important;
+    overflow: hidden !important;
+
+    background: #080808 !important;
+
+    display: block !important;
+}
+
+
+/* =====================================================
+   ALL PRODUCT IMAGES
+   ===================================================== */
+
+.product-image img,
+.product-image.real-product-image img,
+.mw-real-image img {
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-width: 0 !important;
+    min-height: 0 !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    display: block !important;
+
+    /* مهم جدًا */
+    object-fit: contain !important;
+
+    object-position: center center !important;
+
+    transform: none !important;
+}
+
+
+/* =====================================================
+   CANVAS PRODUCT
+   ===================================================== */
+
+.product-image canvas,
+.mw-real-image canvas,
+.mw-product-canvas {
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-width: 0 !important;
+    min-height: 0 !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    display: block !important;
+
+    object-fit: contain !important;
+    object-position: center center !important;
+}
+
+
+/* =====================================================
+   REMOVE OLD IMAGE EFFECTS
+   ===================================================== */
+
+.product-image::after,
+.product-image.real-product-image::after,
+.mw-real-image::after {
+
+    display: none !important;
+    content: none !important;
+}
+
+
+/* =====================================================
+   HOVER
+   ===================================================== */
+
+.product-card:hover
+.product-image img,
+.product-card:hover
+.product-image.real-product-image img {
+
+    transform: none !important;
+    filter: none !important;
+}
+
+
+/* =====================================================
+   BADGE
+   ===================================================== */
+
+.product-badge,
+.mw-badge {
+
+    position: absolute !important;
+
+    top: 12px !important;
+    left: 12px !important;
+
+    z-index: 20 !important;
+
+    background: #e50914 !important;
+    color: white !important;
+
+    padding: 7px 10px !important;
+
+    font-size: 9px !important;
+    font-weight: 900 !important;
+
+    letter-spacing: 1.5px !important;
+}
+
+
+/* =====================================================
+   PRODUCT INFO
+   ===================================================== */
+
+.product-info {
+
+    width: 100% !important;
+
+    padding: 18px !important;
+
+    background: #111 !important;
+}
+
+
+/* =====================================================
+   DESKTOP
+   ===================================================== */
+
+@media (min-width: 901px) {
+
+    .products {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr)) !important;
+    }
+
+    .product-image,
+    .product-image.real-product-image,
+    .mw-real-image {
+
+        aspect-ratio: 3 / 2 !important;
+
+        height: auto !important;
+    }
+
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .products {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+
+        gap: 15px !important;
+    }
+
+    .product-image,
+    .product-image.real-product-image,
+    .mw-real-image {
+
+        aspect-ratio: 3 / 2 !important;
+
+        height: auto !important;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 650px) {
+
+    .products {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+
+        gap: 10px !important;
+    }
+
+    .product-image,
+    .product-image.real-product-image,
+    .mw-real-image {
+
+        aspect-ratio: 3 / 2 !important;
+
+        height: auto !important;
+
+        min-height: 0 !important;
+    }
+
+    .product-info {
+
+        padding: 12px !important;
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 420px) {
+
+    .products {
+
+        grid-template-columns: 1fr !important;
+    }
+
+    .product-image,
+    .product-image.real-product-image,
+    .mw-real-image {
+
+        aspect-ratio: 3 / 2 !important;
+    }
+
+}
+
+
+/* =====================================================
+   MODAL PRODUCT IMAGE
+   ===================================================== */
+
+.product-modal-image {
+
+    width: 100% !important;
+
+    aspect-ratio: 3 / 2 !important;
+
+    height: auto !important;
+
+    min-height: 0 !important;
+
+    overflow: hidden !important;
+
+    background: #080808 !important;
+
+    display: block !important;
+}
+
+
+.product-modal-image img {
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-height: 0 !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    display: block !important;
+}
+
+
+/* =====================================================
+   MW MODAL
+   ===================================================== */
+
+.mw-modal-image {
+
+    width: 100% !important;
+
+    aspect-ratio: 3 / 2 !important;
+
+    height: auto !important;
+
+    min-height: 0 !important;
+
+    overflow: hidden !important;
+
+    background: #080808 !important;
+}
+
+
+.mw-modal-image canvas {
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-height: 0 !important;
+
+    object-fit: contain !important;
+}
+
+
+/* =====================================================
+   MOBILE MODAL
+   ===================================================== */
+
+@media (max-width: 650px) {
+
+    .product-modal-image {
+
+        aspect-ratio: 3 / 2 !important;
+
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    .mw-modal-image {
+
+        aspect-ratio: 3 / 2 !important;
+
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+}
