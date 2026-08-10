@@ -1391,3 +1391,316 @@ h2 span{
     height:auto !important;
   }
 }
+/* =========================================================
+   MO-WEAR PRODUCT IMAGES - FIXED
+   Original images: 1536 x 1024 = 3:2
+   ========================================================= */
+
+/* Product card */
+.product-card {
+  overflow: hidden;
+}
+
+/* Main product image */
+.product-image.real-product-image,
+.mw-real-image {
+  width: 100%;
+  aspect-ratio: 3 / 2 !important;
+  height: auto !important;
+
+  background: #080808;
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Product image itself */
+.product-image.real-product-image img {
+  width: 100% !important;
+  height: 100% !important;
+
+  display: block;
+  object-fit: contain !important;
+  object-position: center center !important;
+
+  transform: none !important;
+  filter: none;
+}
+
+/* Hover */
+.product-card:hover .product-image.real-product-image img {
+  transform: scale(1.02) !important;
+  filter: brightness(1.04);
+}
+
+/* Badge */
+.product-badge,
+.mw-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+
+  z-index: 5;
+
+  background: var(--red);
+  color: #fff;
+
+  padding: 7px 11px;
+
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+/* =========================================================
+   PRODUCT INFO
+   ========================================================= */
+
+.product-info {
+  padding: 18px !important;
+  background: #111;
+}
+
+.product-name {
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 10px;
+}
+
+.product-price {
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.product-category {
+  font-size: 10px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product-options-preview {
+  margin-top: 12px;
+
+  font-size: 9px;
+  line-height: 1.6;
+
+  color: #777;
+}
+
+/* =========================================================
+   PRODUCT GRID
+   ========================================================= */
+
+.products {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 22px;
+
+  width: 100%;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+
+  .product-image.real-product-image,
+  .mw-real-image {
+    aspect-ratio: 3 / 2 !important;
+  }
+
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .product-image.real-product-image,
+  .mw-real-image {
+    aspect-ratio: 3 / 2 !important;
+  }
+
+  .product-info {
+    padding: 12px !important;
+  }
+
+  .product-name {
+    font-size: 11px;
+  }
+
+  .product-meta {
+    font-size: 10px;
+  }
+
+  .product-options-preview {
+    font-size: 8px;
+  }
+
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  .products {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .product-image.real-product-image,
+  .mw-real-image {
+    aspect-ratio: 3 / 2 !important;
+  }
+
+  .product-name {
+    font-size: 13px;
+  }
+
+}
+
+/* =========================================================
+   IMPORTANT:
+   Prevent old 1536/1024 rules from changing the layout
+   ========================================================= */
+
+.product-image.real-product-image {
+  aspect-ratio: 3 / 2 !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.product-image.real-product-image img {
+  aspect-ratio: auto !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  object-fit: contain !important;
+}
+
+/* =========================================================
+   MO-WEAR CANVAS
+   ========================================================= */
+
+.mw-product-canvas {
+  width: 100% !important;
+  height: 100% !important;
+
+  display: block;
+
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* =========================================================
+   PRODUCT MODAL IMAGE
+   ========================================================= */
+
+.product-modal-image {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+
+  min-height: 0 !important;
+
+  background: #080808;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.product-modal-image img {
+  width: 100% !important;
+  height: 100% !important;
+
+  min-height: 0 !important;
+
+  object-fit: contain !important;
+  object-position: center !important;
+
+  display: block;
+}
+
+/* =========================================================
+   MW MODAL
+   ========================================================= */
+
+.mw-modal-image {
+  width: 100%;
+
+  aspect-ratio: 3 / 2;
+
+  min-height: 0 !important;
+
+  background: #080808;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.mw-modal-image canvas {
+  width: 100% !important;
+  height: 100% !important;
+
+  display: block;
+
+  object-fit: contain !important;
+}
+
+/* =========================================================
+   MOBILE MODAL
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .product-modal-image {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 3 / 2;
+  }
+
+  .product-modal-image img {
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+
+  .mw-modal-image {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 3 / 2;
+  }
+
+}
