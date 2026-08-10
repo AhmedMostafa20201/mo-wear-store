@@ -303,3 +303,30 @@ h1 span,h2 span{color:var(--red)}
   .product-image.real-product-image{aspect-ratio:1536 / 1024}
   .hero h1{font-size:62px}
 }
+/* ==========================================
+   FIX PRODUCT DETAILS IMAGE
+   SAME 3:2 RATIO AS ORIGINAL PRODUCT IMAGE
+========================================== */
+
+.product-modal-image {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 1536 / 1024 !important;
+  background: #080808 !important;
+  border: 1px solid #242424 !important;
+  overflow: hidden !important;
+  align-self: start !important;
+}
+
+.product-modal-image img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  object-fit: contain !important;
+  object-position: center center !important;
+
+  display: block !important;
+}
