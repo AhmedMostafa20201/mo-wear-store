@@ -376,6 +376,8 @@ document.querySelectorAll(".nav a").forEach(a => {
 
 const checkoutForm = document.getElementById("checkoutForm");
 
+const checkoutForm = document.getElementById("checkoutForm");
+
 if (checkoutForm) {
     checkoutForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -384,6 +386,7 @@ if (checkoutForm) {
 
         const order = {
             customer: Object.fromEntries(data.entries()),
+
             items: cart.map(item => {
                 const p = products.find(p => p.id === item.id);
 
@@ -395,24 +398,80 @@ if (checkoutForm) {
                     unitPrice: p ? p.price : 0
                 };
             }),
+
             total: cart.reduce((sum, item) => {
                 const p = products.find(p => p.id === item.id);
                 return sum + (p ? p.price * item.qty : 0);
             }, 0),
+
             createdAt: new Date().toISOString()
         };
 
-        console.log("MO-WEAR ORDER", order);
-        localStorage.setItem("lastMoWearOrder", JSON.stringify(order));
+        // Save order locally
+        localStorage.setItem(
+            "lastMoWearOrder",
+            JSON.stringify(order)
+        );
+
+        // ==============================
+        // WHATSAPP ORDER
+        // ==============================
+
+        const whatsappNumber = "201112687108";
+
+        let whatsappMessage = "🛍️ MO-WEAR NEW ORDER\n\n";
+
+        whatsappMessage += "CUSTOMER INFORMATION\n";
+        whatsappMessage += "----------------------\n";
+
+        whatsappMessage += `Name: ${order.customer.name || "—"}\n`;
+        whatsappMessage += `Phone: ${order.customer.phone || "—"}\n`;
+        whatsappMessage += `Address: ${order.customer.address || "—"}\n\n`;
+
+        whatsappMessage += "ORDER DETAILS\n";
+        whatsappMessage += "----------------------\n";
+
+        order.items.forEach((item, index) => {
+
+            whatsappMessage += `${index + 1}. ${item.product}\n`;
+            whatsappMessage += `Color: ${item.color}\n`;
+            whatsappMessage += `Size: ${item.size}\n`;
+            whatsappMessage += `Quantity: ${item.qty}\n`;
+            whatsappMessage += `Unit Price: EGP ${item.unitPrice.toLocaleString("en-EG")}\n`;
+
+            whatsappMessage += "\n";
+        });
+
+        whatsappMessage += "----------------------\n";
+        whatsappMessage += `TOTAL: EGP ${order.total.toLocaleString("en-EG")}\n\n`;
+
+        whatsappMessage += "Thank you for shopping with MO-WEAR ❤️";
+
+        const whatsappURL =
+            `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+        // Open WhatsApp
+        window.open(whatsappURL, "_blank");
+
+        // ==============================
+        // SUCCESS MESSAGE
+        // ==============================
 
         e.target.style.display = "none";
 
         const smallText = document.querySelector(".modal .small");
-        if (smallText) smallText.style.display = "none";
+
+        if (smallText) {
+            smallText.style.display = "none";
+        }
 
         const orderSuccess = document.getElementById("orderSuccess");
-        if (orderSuccess) orderSuccess.classList.add("show");
 
+        if (orderSuccess) {
+            orderSuccess.classList.add("show");
+        }
+
+        // Clear cart
         cart = [];
         saveCart();
     });
