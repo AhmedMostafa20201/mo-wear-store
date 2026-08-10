@@ -67,7 +67,7 @@ const products = [
         image: "images/model-05.png",
         colors:  ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
-    },
+    }
 ];
 
 let cart = JSON.parse(localStorage.getItem("moWearCart") || "[]");
