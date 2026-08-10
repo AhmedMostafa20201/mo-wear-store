@@ -918,69 +918,51 @@ h2 span{
 }
 
 /* =========================================
-   PRODUCT DETAILS MODAL
-   IMPORTANT:
-   IMAGE = 1536 x 1024
-   RATIO = 3 : 2
+   PRODUCT DETAILS MODAL - FIXED IMAGE
+   SOURCE PRODUCT IMAGE: 1536 x 1024 (3:2)
 ========================================= */
 
 .product-modal{
   display:grid !important;
-  grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr) !important;
+  grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr) !important;
   gap:25px !important;
   padding:18px !important;
-
-  width:min(1100px,94vw) !important;
-
+  width:min(1000px,94vw) !important;
   max-height:92vh !important;
-  overflow-y:auto !important;
-  overflow-x:hidden !important;
+  overflow:auto !important;
 }
 
-/* IMAGE CONTAINER */
 .product-modal-image{
   width:100% !important;
-
-  /* SAME RATIO AS 1536x1024 */
-  aspect-ratio:1536 / 1024 !important;
-
   height:auto !important;
   min-height:0 !important;
   max-height:none !important;
-
+  aspect-ratio:3 / 2 !important;
   background:#080808 !important;
   border:1px solid #242424 !important;
-
   overflow:hidden !important;
-  position:relative !important;
-
   align-self:start !important;
+  position:relative !important;
 }
 
-/* ACTUAL PRODUCT IMAGE */
 .product-modal-image img{
+  display:block !important;
   width:100% !important;
   height:100% !important;
-
+  min-width:0 !important;
   min-height:0 !important;
-  max-height:none !important;
-
-  display:block !important;
-
-  /*
-    IMPORTANT:
-    contain = NEVER CUT FRONT/BACK
-  */
+  max-width:100% !important;
+  max-height:100% !important;
+  margin:0 !important;
+  padding:0 !important;
   object-fit:contain !important;
   object-position:center center !important;
 }
 
-/* =========================================
-   PRODUCT MODAL TEXT
-========================================= */
-
 .product-modal-copy{
-  padding:25px 20px 25px 5px
+  min-width:0 !important;
+  padding:25px 20px 25px 5px !important;
+  align-self:start !important;
 }
 
 .product-modal-copy h2{
@@ -1000,10 +982,6 @@ h2 span{
   font-size:12px;
   margin-bottom:25px
 }
-
-/* =========================================
-   VARIANTS
-========================================= */
 
 .variant-label{
   display:block;
@@ -1253,8 +1231,8 @@ h2 span{
   /* Product Modal Tablet */
   .product-modal{
     width:min(900px,94vw) !important;
-    grid-template-columns:1.4fr 1fr !important;
-    gap:18px !important
+    grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr) !important;
+    gap:18px !important;
   }
 }
 
@@ -1338,41 +1316,35 @@ h2 span{
 
   .product-modal{
     display:block !important;
-
     width:94vw !important;
-
     max-height:94vh !important;
-
     overflow-y:auto !important;
     overflow-x:hidden !important;
-
-    padding:12px !important
+    padding:12px !important;
   }
 
   .product-modal-image{
     width:100% !important;
-
-    aspect-ratio:1536 / 1024 !important;
-
+    aspect-ratio:3 / 2 !important;
     height:auto !important;
     min-height:0 !important;
     max-height:none !important;
-
-    overflow:hidden !important
+    overflow:hidden !important;
   }
 
   .product-modal-image img{
     width:100% !important;
     height:100% !important;
-
+    min-width:0 !important;
     min-height:0 !important;
-
+    max-width:100% !important;
+    max-height:100% !important;
     object-fit:contain !important;
-    object-position:center center !important
+    object-position:center center !important;
   }
 
   .product-modal-copy{
-    padding:20px 10px 20px !important
+    padding:20px 10px 20px !important;
   }
 
   .mw-product-modal{
@@ -1414,8 +1386,8 @@ h2 span{
   }
 
   .product-modal-image{
-    aspect-ratio:1536 / 1024 !important;
+    aspect-ratio:3 / 2 !important;
     min-height:0 !important;
-    height:auto !important
+    height:auto !important;
   }
 }
