@@ -45,7 +45,6 @@ const products = [
         White: "images/model-05.png",
         Black: "images/model-05-black.png"
     },
-
     sizes: ["M", "L", "XL"]
 },
     {
