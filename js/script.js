@@ -29,30 +29,6 @@ const products = [
         colors: ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
     }
- id: 4,
-    name: "Basic White",
-    category: "basic",
-    price: 250,
-    desc: "Clean slim basic.",
-    image: "images/Basic-1.png",
-    colors: ["white"],
-    sizes: ["M", "L", "XL"]
-id: 5,
-    name: "Basic Black ",
-    category: "basic",
-    price: 250,
-    desc: "Clean slim basic.",
-    image: "images/Basic-02.png",
-    colors: ["Black"],
-    sizes: ["M", "L", "XL"]
-id: 6,
-    name: "Basic Burgundy ",
-    category: "basic",
-    price: 250,
-    desc: "Clean slim basic.",
-    image: "images/Basic-03.png",
-    colors: ["Burgundy"],
-    sizes: ["M", "L", "XL"]
 ];
 
 let cart = JSON.parse(localStorage.getItem("moWearCart") || "[]");
