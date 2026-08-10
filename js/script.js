@@ -36,11 +36,8 @@ const products = [
     category: "tshirts",
     price: 400,
     desc: "White streetwear tee with Future graphic.",
-
     image: "images/model-05.png",
-
     colors: ["White", "Black"],
-
     colorImages: {
         White: "images/model-05.png",
         Black: "images/model-05-black.png"
@@ -254,7 +251,29 @@ function showProduct(id) {
         document.body.appendChild(modal);
     }
 
-    modal.innerHTML = `
+    modal.innerHTML = `const modalImage = document.getElementById("productModalImage");
+
+document
+    .querySelectorAll("#colorOptions .variant-btn")
+    .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const color = button.dataset.color;
+
+            if (
+                p.colorImages &&
+                p.colorImages[color]
+            ) {
+                modalImage.src =
+                    p.colorImages[color];
+            } else {
+                modalImage.src = p.image;
+            }
+
+        });
+
+    });
         <button class="modal-close" onclick="closeProductModal()">×</button>
 
       <div class="product-modal-image">
