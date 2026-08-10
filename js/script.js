@@ -19,6 +19,7 @@ const products = [
         colors: ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
     },
+    
     {
         id: 3,
         name: "Warrior Tee",
@@ -29,8 +30,18 @@ const products = [
         colors: ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
     },
+    {
+        id: 4,
+        name: "Future",
+        category: "tshirts",
+        price: 400,
+        desc: "white streetwear tee with future.",
+        image: "images/model-05.png",
+        colors:  ["Black", "White", "Burgundy", "Beige"],
+        sizes: ["M", "L", "XL"]
+    },
      {
-      id: 4,
+      id: 5,
         name: "Basic White",
         category: "basic",
         price: 250,
@@ -40,7 +51,7 @@ const products = [
         sizes: ["M", "L", "XL"]
     },
      {
-        id: 5,
+        id: 6,
         name: "Basic Black",
         category: "basic",
         price: 250,
@@ -49,23 +60,13 @@ const products = [
         colors: ["Black"],
         sizes: ["M", "L", "XL"]
     },   {
-        id: 6,
+        id: 7,
         name: "Basic Burgundy",
         category: "basic",
         price: 250,
         desc: "Clean slim basic burgundy tee.",
         image: "images/Basic-03.png",
         colors: ["Burgundy"],
-        sizes: ["M", "L", "XL"]
-    },
- {
-        id: 7,
-        name: "Future",
-        category: "tshirts",
-        price: 400,
-        desc: "white streetwear tee with future.",
-        image: "images/model-05.png",
-        colors:  ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
     }
 ];
