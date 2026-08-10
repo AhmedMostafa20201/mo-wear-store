@@ -57,8 +57,17 @@ const products = [
         image: "images/Basic-03.png",
         colors: ["Burgundy"],
         sizes: ["M", "L", "XL"]
-    }
-
+    },
+ {
+        id: 7,
+        name: "Future",
+        category: "tshirts",
+        price: 400,
+        desc: "white streetwear tee with future.",
+        image: "images/model-05.png",
+        colors:  ["Black", "White", "Burgundy", "Beige"],
+        sizes: ["M", "L", "XL"]
+    },
 ];
 
 let cart = JSON.parse(localStorage.getItem("moWearCart") || "[]");
