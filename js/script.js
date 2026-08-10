@@ -30,7 +30,8 @@ const products = [
         image: "images/model-03.png",
         colors: ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
-    },
+    }
+];
 
 
     {
