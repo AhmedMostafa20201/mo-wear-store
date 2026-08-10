@@ -439,8 +439,35 @@ e.preventDefault();
     console.log("MO-WEAR ORDER", order);
     localStorage.setItem("lastMoWearOrder", JSON.stringify(order));
 
-    e.target.style.display = "none";
+    e.target.style.display = "none"; // Send order to WhatsApp
+```
 
+const whatsappNumber = "201112687108";
+
+let whatsappMessage = "🛍️ MO-WEAR NEW ORDER\n\n";
+
+whatsappMessage += `Customer: ${order.customer.name || "—"}\n`;
+whatsappMessage += `Phone: ${order.customer.phone || "—"}\n`;
+whatsappMessage += `Address: ${order.customer.address || "—"}\n\n`;
+
+whatsappMessage += "ORDER DETAILS:\n";
+
+order.items.forEach((item, index) => {
+whatsappMessage += `${index + 1}. ${item.product}\n`;
+whatsappMessage += `Color: ${item.color}\n`;
+whatsappMessage += `Size: ${item.size}\n`;
+whatsappMessage += `Qty: ${item.qty}\n`;
+whatsappMessage += `Price: EGP ${item.unitPrice}\n\n`;
+});
+
+whatsappMessage += `TOTAL: EGP ${order.total.toLocaleString("en-EG")}`;
+
+const whatsappURL =
+`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+window\.open(whatsappURL, "\_blank");
+
+```
     const smallText = document.querySelector(".modal .small");
     if (smallText) smallText.style.display = "none";
 
@@ -482,4 +509,3 @@ if (yearElement) yearElement.textContent = new Date().getFullYear();
 renderProducts();
 renderCart();
 
-ديه البيانات الي في الداتا كلها 
