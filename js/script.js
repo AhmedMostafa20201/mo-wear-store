@@ -1,7 +1,7 @@
 const products = [
     {
         id: 1,
-        name: "Rose California Tee",Rose California Tee
+        name: "Rose California Tee",
         category: "tshirts",
         price: 400,
         desc: "Clean cream tee with rose California graphic..",
