@@ -1,10 +1,10 @@
 const products = [
     {
         id: 1,
-        name: "Rose California Tee",
+        name: "Fire Graphic Tee",
         category: "tshirts",
         price: 400,
-        desc: "Clean cream tee with rose California graphic.",
+        desc: "Oversized black MO-WEAR graphic tee.",
         image: "images/model-1.png",
         colors: ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
@@ -12,10 +12,10 @@ const products = [
 
     {
         id: 2,
-        name: "Fire Graphic Tee",
+        name: "Rose California Tee",
         category: "tshirts",
         price: 400,
-        desc: "Oversized black MO-WEAR graphic tee.",
+        desc: "Clean cream tee with rose California graphic.",
         image: "images/model-02.png",
         colors: ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
@@ -30,21 +30,28 @@ const products = [
         image: "images/model-03.png",
         colors: ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
-    },
+    }
 
+    /*
+    ==========================================
+    ADD BASIC PRODUCTS HERE
+    ==========================================
+
+    Example:
 
     {
         id: 4,
-        name: "Basic White ",
+        name: "Basic Black Tee",
         category: "basic",
         price: 400,
-        desc: "Clean slim basic",
+        desc: "Clean oversized basic tee.",
         image: "images/basic-01.png",
-        colors: ["White"],
+        colors: ["Black"],
         sizes: ["M", "L", "XL"]
     },
 
-    
+    */
+];
 
 let cart = JSON.parse(
     localStorage.getItem("moWearCart") || "[]"
