@@ -30,16 +30,24 @@ const products = [
         colors: ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
     },
-    {
-        id: 4,
-        name: "Future",
-        category: "tshirts",
-        price: 400,
-        desc: "white streetwear tee with future.",
-        image: "images/model-05.png",
-        colors:  ["Black", "White", "Burgundy", "Beige"],
-        sizes: ["M", "L", "XL"]
+  {
+    id: 4,
+    name: "Future",
+    category: "tshirts",
+    price: 400,
+    desc: "White streetwear tee with Future graphic.",
+
+    image: "images/model-05.png",
+
+    colors: ["White", "Black"],
+
+    colorImages: {
+        White: "images/model-05.png",
+        Black: "images/model-05-black.png"
     },
+
+    sizes: ["M", "L", "XL"]
+},
     {
     id: 5,
     name: "Courage Tee",
@@ -250,9 +258,15 @@ function showProduct(id) {
     modal.innerHTML = `
         <button class="modal-close" onclick="closeProductModal()">×</button>
 
-        <div class="product-modal-image">
-            <img src="${p.image}" alt="${escapeHtml(p.name)}">
-        </div>
+      <div class="product-modal-image">
+
+    <img
+        id="productModalImage"
+        src="${p.image}"
+        alt="${escapeHtml(p.name)}"
+    >
+
+</div>
 
         <div class="product-modal-copy">
             <p class="eyebrow">MO-WEAR / NEW DROP</p>
