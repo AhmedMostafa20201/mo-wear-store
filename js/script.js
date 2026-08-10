@@ -29,6 +29,36 @@ const products = [
         colors: ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
     }
+     {
+      id: 4,
+        name: "Basic White",
+        category: "basic",
+        price: 400,
+        desc: "Clean slim basic white tee.",
+        image: "images/Basic-01.png",
+        colors: ["White"],
+        sizes: ["M", "L", "XL"]
+    },
+     {
+        id: 5,
+        name: "Basic Black",
+        category: "basic",
+        price: 400,
+        desc: "Clean slim basic black tee.",
+        image: "images/Basic-02.png",
+        colors: ["Black"],
+        sizes: ["M", "L", "XL"]
+    },   {
+        id: 6,
+        name: "Basic Burgundy",
+        category: "basic",
+        price: 400,
+        desc: "Clean slim basic burgundy tee.",
+        image: "images/Basic-03.png",
+        colors: ["Burgundy"],
+        sizes: ["M", "L", "XL"]
+    }
+
 ];
 
 let cart = JSON.parse(localStorage.getItem("moWearCart") || "[]");
