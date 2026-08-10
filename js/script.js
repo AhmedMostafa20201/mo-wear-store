@@ -15,7 +15,7 @@ const products = [
         name: "Fire Graphic Tee",
         category: "tshirts",
         price: 400,
-        desc: "Oversized black MO-WEAR graphic tee."
+        desc: "Oversized black MO-WEAR graphic tee.",
         image: "images/model-02.png",
         colors: ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
@@ -43,9 +43,6 @@ const products = [
         colors: ["White"],
         sizes: ["M", "L", "XL"]
     },
-
-    
-];
 
 let cart = JSON.parse(
     localStorage.getItem("moWearCart") || "[]"
