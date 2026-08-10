@@ -40,8 +40,18 @@ const products = [
         colors:  ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
     },
+    {
+    id: 5,
+    name: "Courage Tee",
+    category: "tshirts",
+    price: 400,
+    desc: "Oversized deep forest green tee with Courage chest graphic.",
+    image: "images/model-04.png",
+    colors: ["Deep Forest Green"],
+    sizes: ["M", "L", "XL"]
+},
      {
-      id: 5,
+      id: 6,
         name: "Basic White",
         category: "basic",
         price: 250,
@@ -51,7 +61,7 @@ const products = [
         sizes: ["M", "L", "XL"]
     },
      {
-        id: 6,
+        id: 7,
         name: "Basic Black",
         category: "basic",
         price: 250,
@@ -60,7 +70,7 @@ const products = [
         colors: ["Black"],
         sizes: ["M", "L", "XL"]
     },   {
-        id: 7,
+        id: 8,
         name: "Basic Burgundy",
         category: "basic",
         price: 250,
