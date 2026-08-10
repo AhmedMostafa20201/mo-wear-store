@@ -5,7 +5,7 @@ const products = [
         category: "tshirts",
         price: 400,
         desc: "Oversized black MO-WEAR graphic tee.",
-        image: "images/model-02.png",
+        image: "images/model-02",
         colors: ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
     },
@@ -15,7 +15,7 @@ const products = [
         category: "tshirts",
         price: 400,
         desc: "Clean cream tee with rose California graphic.",
-        image: "images/model-01.png",
+        image: "images/model-01",
         colors: ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
     },
@@ -25,7 +25,7 @@ const products = [
         category: "tshirts",
         price: 400,
         desc: "Black streetwear tee with warrior-inspired graphic.",
-        image: "images/model-03.png",
+        image: "images/model-03",
         colors: ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
     }
