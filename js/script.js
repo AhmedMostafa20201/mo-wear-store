@@ -4,7 +4,7 @@ const products = [
         name: "Rose California Tee",
         category: "tshirts",
         price: 400,
-        desc: "Clean cream tee with rose California graphic..",
+        desc: "Clean cream tee with rose California graphic.",
         image: "images/model-1.png",
         colors: ["Black", "White", "Burgundy", "Beige"],
         sizes: ["M", "L", "XL"]
