@@ -13,35 +13,95 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    .language-switcher{
-      display:flex;
-      align-items:center;
-      gap:6px;
-      margin-left:14px;
-    }
+  /* =========================
+   LANGUAGE SWITCHER
+========================= */
 
-    .language-btn{
-      border:none;
-      background:transparent;
-      color:inherit;
-      font-weight:700;
-      cursor:pointer;
-      padding:4px;
-    }
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: 18px;
+  white-space: nowrap;
+}
 
-    .language-btn.active{
-      text-decoration:underline;
-      text-underline-offset:4px;
-    }
+.language-btn {
+  border: 0 !important;
+  background: transparent !important;
+  color: #ffffff !important;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 4px 2px !important;
+  margin: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  cursor: pointer;
+}
 
-    html[dir="rtl"] .language-switcher{
-      margin-left:0;
-      margin-right:14px;
-    }
+.language-btn.active {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
 
-    html[dir="rtl"] body{
-      text-align:right;
-    }
+.language-switcher span {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+
+/* =========================
+   KEEP CART NORMAL
+========================= */
+
+.cart-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cart-button > span:first-child {
+  position: static !important;
+  display: inline !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  color: inherit !important;
+}
+
+.cart-button #cartCount {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .language-switcher {
+    margin-left: auto;
+    margin-right: 10px;
+    gap: 5px;
+  }
+
+  .language-btn {
+    font-size: 14px;
+  }
+
+  }
   </style>
 </head>
 
