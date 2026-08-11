@@ -1,5 +1,5 @@
-const products = [ 
-
+const products = [
+    
     {
         id: 1,
         name: "Fire Graphic Tee",
@@ -7,19 +7,15 @@ const products = [
         price: 400,
         desc: "Oversized black MO-WEAR graphic tee.",
         image: "images/model-02.png",
-
         colors: ["Black", "White", "Burgundy", "Beige"],
-
-        colorImages: {
+         colorImages: {
             White: "images/model-02-white.png",
             Black: "images/model-02.png",
-            Burgundy: "images/model-02-burgundy.png",
-            Beige: "images/model-02-beige.png"
-        },
-
-        sizes: ["M", "L", "XL", "2XL", "3XL"]
+             Burgundy:"images/model-02-burgundy.png",
+             Beige:"images/model-02-beige.png"
     },
-
+        sizes: ["M", "L", "XL","2XL","3XL"]
+    },
     {
         id: 2,
         name: "Rose California Tee",
@@ -27,19 +23,15 @@ const products = [
         price: 400,
         desc: "Clean cream tee with rose California graphic.",
         image: "images/model-1.png",
-
         colors: ["Black", "White", "Burgundy", "Beige"],
-
-        colorImages: {
+      colorImages: {
             White: "images/model-1-white.png",
             Black: "images/model-1-black.png",
-            Burgundy: "images/model-1-burgundy.png",
-            Beige: "images/model-1.png"
-        },
-
-        sizes: ["M", "L", "XL", "2XL", "3XL"]
+             Burgundy:"images/model-1-burgundy.png",
+             Beige:"images/model-1.png"
     },
-
+        sizes: ["M", "L", "XL","2XL","3XL"]
+},
     {
         id: 3,
         name: "Warrior Tee",
@@ -47,17 +39,14 @@ const products = [
         price: 400,
         desc: "Black streetwear tee with warrior-inspired graphic.",
         image: "images/model-03.png",
-
         colors: ["Black", "White", "Burgundy", "Beige"],
-
-        colorImages: {
-            Black: "images/model-03.png",
+       colorImages: {
             White: "images/model-03-white.png",
-            Burgundy: "images/model-03-burgundy.png",
-            Beige: "images/model-03-beige.png"
-        },
-
-        sizes: ["M", "L", "XL", "2XL", "3XL"]
+            Black: "images/model-03.png",
+             Burgundy:"images/model-03-burgundy.png",
+             Beige:"images/model-03-beige.png"
+    },
+        sizes: ["M", "L", "XL","2XL","3XL"]
     },
 
     {
@@ -75,7 +64,7 @@ const products = [
             Black: "images/model-05-black.png"
         },
 
-        sizes: ["M", "L", "XL", "2XL", "3XL"]
+        sizes: ["M", "L", "XL","2XL","3XL"]
     },
 
     {
@@ -85,14 +74,8 @@ const products = [
         price: 400,
         desc: "Oversized deep forest green tee with Courage chest graphic.",
         image: "images/model-04.png",
-
         colors: ["Deep Forest Green"],
-
-        colorImages: {
-            "Deep Forest Green": "images/model-04.png"
-        },
-
-        sizes: ["M", "L", "XL", "2XL", "3XL"]
+        sizes: ["M", "L", "XL"]
     },
 
     {
@@ -102,14 +85,8 @@ const products = [
         price: 250,
         desc: "Clean slim basic white tee.",
         image: "images/Basic-01.png",
-
         colors: ["White"],
-
-        colorImages: {
-            White: "images/Basic-01.png"
-        },
-
-        sizes: ["M", "L", "XL", "2XL", "3XL"]
+        sizes: ["M", "L", "XL"]
     },
 
     {
@@ -119,14 +96,8 @@ const products = [
         price: 250,
         desc: "Clean slim basic black tee.",
         image: "images/Basic-02.png",
-
         colors: ["Black"],
-
-        colorImages: {
-            Black: "images/Basic-02.png"
-        },
-
-        sizes: ["M", "L", "XL", "2XL", "3XL"]
+        sizes: ["M", "L", "XL"]
     },
 
     {
@@ -136,202 +107,69 @@ const products = [
         price: 250,
         desc: "Clean slim basic burgundy tee.",
         image: "images/Basic-03.png",
-
         colors: ["Burgundy"],
-
-        colorImages: {
-            Burgundy: "images/Basic-03.png"
-        },
-
-        sizes: ["M", "L", "XL", "2XL", "3XL"]
+        sizes: ["M", "L", "XL"]
     }
 
 ];
 
 
-// ======================================================
-// CART
-// ======================================================
+
+/* =========================================
+   CART
+========================================= */
 
 let cart = JSON.parse(
     localStorage.getItem("moWearCart") || "[]"
 );
 
 
-// ======================================================
-// ELEMENTS
-// ======================================================
+/* =========================================
+   HTML ELEMENTS
+========================================= */
 
-const productsEl = document.getElementById("products");
-const cartItemsEl = document.getElementById("cartItems");
-const cartCountEl = document.getElementById("cartCount");
-const cartTotalEl = document.getElementById("cartTotal");
+const productsEl =
+    document.getElementById("products");
 
-const cartDrawer = document.getElementById("cartDrawer");
-const drawerBackdrop = document.getElementById("drawerBackdrop");
+const cartItemsEl =
+    document.getElementById("cartItems");
 
-const checkoutModal = document.getElementById("checkoutModal");
-const checkoutBackdrop = document.getElementById("checkoutBackdrop");
+const cartCountEl =
+    document.getElementById("cartCount");
 
+const cartTotalEl =
+    document.getElementById("cartTotal");
 
-// ======================================================
-// LANGUAGE
-// ======================================================
+const cartDrawer =
+    document.getElementById("cartDrawer");
 
-function isArabic() {
+const drawerBackdrop =
+    document.getElementById("drawerBackdrop");
 
-    return (
-        document.documentElement.lang &&
-        document.documentElement.lang.toLowerCase().startsWith("ar")
-    );
+const checkoutModal =
+    document.getElementById("checkoutModal");
 
-}
-
-
-function t(key) {
-
-    const ar = isArabic();
-
-    const translations = {
-
-        new: {
-            en: "NEW",
-            ar: "جديد"
-        },
-
-        tshirt: {
-            en: "T-SHIRT",
-            ar: "تيشيرت"
-        },
-
-        colors: {
-            en: "Colors",
-            ar: "الألوان"
-        },
-
-        sizes: {
-            en: "Sizes",
-            ar: "المقاسات"
-        },
-
-        details: {
-            en: "DETAILS",
-            ar: "التفاصيل"
-        },
-
-        addToCart: {
-            en: "ADD TO CART",
-            ar: "أضف للسلة"
-        },
-
-        color: {
-            en: "COLOR",
-            ar: "اللون"
-        },
-
-        size: {
-            en: "SIZE",
-            ar: "المقاس"
-        },
-
-        moWearNewDrop: {
-            en: "MO-WEAR / NEW DROP",
-            ar: "MO-WEAR / إصدار جديد"
-        },
-
-        close: {
-            en: "Close",
-            ar: "إغلاق"
-        },
-
-        remove: {
-            en: "Remove",
-            ar: "حذف"
-        },
-
-        cartEmpty: {
-            en: "YOUR CART IS EMPTY.",
-            ar: "السلة فارغة."
-        },
-
-        addSomething: {
-            en: "ADD SOMETHING YOU LIKE.",
-            ar: "أضف شيئًا يعجبك."
-        },
-
-        cartColor: {
-            en: "Color",
-            ar: "اللون"
-        },
-
-        cartSize: {
-            en: "Size",
-            ar: "المقاس"
-        },
-
-        checkout: {
-            en: "CHECKOUT",
-            ar: "إتمام الطلب"
-        }
-
-    };
-
-    if (!translations[key]) {
-        return key;
-    }
-
-    return ar
-        ? translations[key].ar
-        : translations[key].en;
-
-}
+const checkoutBackdrop =
+    document.getElementById("checkoutBackdrop");
 
 
-// ======================================================
-// COLOR TRANSLATION
-// ======================================================
 
-function translateColor(color) {
-
-    if (!isArabic()) {
-        return color;
-    }
-
-    const colors = {
-
-        "Black": "أسود",
-
-        "White": "أبيض",
-
-        "Burgundy": "نبيتي",
-
-        "Beige": "بيج",
-
-        "Deep Forest Green": "أخضر غابة داكن"
-
-    };
-
-    return colors[color] || color;
-}
-
-
-// ======================================================
-// MONEY
-// ======================================================
+/* =========================================
+   MONEY
+========================================= */
 
 function money(value) {
 
-    if (isArabic()) {
-        return value.toLocaleString("ar-EG") + " جنيه";
-    }
+    return "EGP " +
+        Number(value).toLocaleString("en-EG");
 
-    return "EGP " + value.toLocaleString("en-EG");
 }
 
 
-// ======================================================
-// ESCAPE HTML
-// ======================================================
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
 
 function escapeHtml(value) {
 
@@ -345,12 +183,15 @@ function escapeHtml(value) {
 }
 
 
-// ======================================================
-// REMOVE HOODIES / PANTS
-// ======================================================
+
+/* =========================================
+   REMOVE OLD CATEGORIES
+========================================= */
 
 document
-    .querySelectorAll(".filter, [data-category-link]")
+    .querySelectorAll(
+        ".filter, [data-category-link]"
+    )
     .forEach(el => {
 
         const category =
@@ -369,32 +210,41 @@ document
     });
 
 
-// ======================================================
-// RENDER PRODUCTS
-// ======================================================
+
+/* =========================================
+   RENDER PRODUCTS
+========================================= */
 
 function renderProducts(category = "all") {
 
-    const list = category === "all"
-        ? products
-        : products.filter(p => p.category === category);
+    if (!productsEl) return;
 
-    const isArabic = currentLanguage === "ar";
+
+    const list =
+        category === "all"
+            ? products
+            : products.filter(
+                p => p.category === category
+            );
+
 
     productsEl.innerHTML = list.map(p => `
 
         <article class="product-card">
 
             <div class="product-image real-product-image">
+
                 <img
                     src="${p.image}"
                     alt="${escapeHtml(p.name)}"
                 >
 
                 <div class="product-badge">
-                    ${isArabic ? "جديد" : "NEW"}
+                    NEW
                 </div>
+
             </div>
+
 
             <div class="product-info">
 
@@ -402,11 +252,19 @@ function renderProducts(category = "all") {
                     ${escapeHtml(p.name)}
                 </div>
 
+
                 <div class="product-meta">
 
                     <span class="product-category">
-                        ${isArabic ? "تيشيرت" : "T-SHIRT"}
+
+                        ${
+                            p.category === "basic"
+                                ? "BASIC"
+                                : "T-SHIRT"
+                        }
+
                     </span>
+
 
                     <span class="product-price">
                         ${money(p.price)}
@@ -414,19 +272,26 @@ function renderProducts(category = "all") {
 
                 </div>
 
+
                 <div class="product-options-preview">
 
                     <span>
-                        ${isArabic ? "الألوان" : "Colors"}:
-                        ${p.colors.join(" · ")}
+                        Colors:
+                        ${p.colors
+                            .map(escapeHtml)
+                            .join(" · ")}
                     </span>
 
+
                     <span>
-                        ${isArabic ? "المقاسات" : "Sizes"}:
-                        ${p.sizes.join(" · ")}
+                        Sizes:
+                        ${p.sizes
+                            .map(escapeHtml)
+                            .join(" · ")}
                     </span>
 
                 </div>
+
 
                 <div class="product-actions">
 
@@ -434,14 +299,15 @@ function renderProducts(category = "all") {
                         class="add-btn"
                         onclick="showProduct(${p.id})"
                     >
-                        ${isArabic ? "أضف للسلة" : "ADD TO CART"}
+                        ADD TO CART
                     </button>
+
 
                     <button
                         class="view-btn"
                         onclick="showProduct(${p.id})"
                     >
-                        ${isArabic ? "التفاصيل" : "DETAILS"}
+                        DETAILS
                     </button>
 
                 </div>
@@ -451,12 +317,14 @@ function renderProducts(category = "all") {
         </article>
 
     `).join("");
+
 }
 
 
-// ======================================================
-// SAVE CART
-// ======================================================
+
+/* =========================================
+   SAVE CART
+========================================= */
 
 function saveCart() {
 
@@ -470,9 +338,10 @@ function saveCart() {
 }
 
 
-// ======================================================
-// ADD TO CART
-// ======================================================
+
+/* =========================================
+   ADD TO CART
+========================================= */
 
 function addToCart(id, color, size) {
 
@@ -493,11 +362,8 @@ function addToCart(id, color, size) {
         cart.push({
 
             id: id,
-
             color: color,
-
             size: size,
-
             qty: 1
 
         });
@@ -514,9 +380,10 @@ function addToCart(id, color, size) {
 }
 
 
-// ======================================================
-// CHANGE QUANTITY
-// ======================================================
+
+/* =========================================
+   CHANGE QUANTITY
+========================================= */
 
 function changeQty(index, amount) {
 
@@ -540,28 +407,34 @@ function changeQty(index, amount) {
 }
 
 
-// ======================================================
-// RENDER CART
-// ======================================================
+
+/* =========================================
+   RENDER CART
+========================================= */
 
 function renderCart() {
 
-    if (!cartItemsEl) return;
+    if (
+        !cartItemsEl ||
+        !cartCountEl ||
+        !cartTotalEl
+    ) {
 
-
-    const totalQty = cart.reduce(
-        (sum, item) =>
-            sum + item.qty,
-        0
-    );
-
-
-    if (cartCountEl) {
-
-        cartCountEl.textContent =
-            totalQty;
+        return;
 
     }
+
+
+    const totalQty =
+        cart.reduce(
+            (sum, item) =>
+                sum + item.qty,
+            0
+        );
+
+
+    cartCountEl.textContent =
+        totalQty;
 
 
     if (!cart.length) {
@@ -570,23 +443,19 @@ function renderCart() {
 
             <div class="empty-cart">
 
-                ${t("cartEmpty")}
+                YOUR CART IS EMPTY.
 
                 <br><br>
 
-                ${t("addSomething")}
+                ADD SOMETHING YOU LIKE.
 
             </div>
 
         `;
 
 
-        if (cartTotalEl) {
-
-            cartTotalEl.textContent =
-                money(0);
-
-        }
+        cartTotalEl.textContent =
+            money(0);
 
         return;
 
@@ -596,110 +465,123 @@ function renderCart() {
     let total = 0;
 
 
-    cartItemsEl.innerHTML = cart.map(
-        (item, index) => {
+    cartItemsEl.innerHTML =
+        cart.map(
+            (item, index) => {
 
-            const p =
-                products.find(
-                    x => x.id === item.id
-                );
-
-
-            if (!p) return "";
+                const p =
+                    products.find(
+                        x => x.id === item.id
+                    );
 
 
-            total +=
-                p.price *
-                item.qty;
+                if (!p) return "";
 
 
-            return `
-
-            <div class="cart-item">
-
-                <img
-                    class="cart-product-image"
-                    src="${p.image}"
-                    alt="${escapeHtml(p.name)}"
-                >
+                total +=
+                    p.price *
+                    item.qty;
 
 
-                <div>
+                return `
 
-                    <h3>
-                        ${escapeHtml(p.name)}
-                    </h3>
+                    <div class="cart-item">
 
-                    <p>
-                        ${money(p.price)}
-                    </p>
-
-
-                    <p class="cart-variant">
-
-                        ${t("cartColor")}:
-                        ${translateColor(item.color)}
-
-                        ·
-
-                        ${t("cartSize")}:
-                        ${escapeHtml(item.size || "—")}
-
-                    </p>
+                        <img
+                            class="cart-product-image"
+                            src="${p.image}"
+                            alt="${escapeHtml(p.name)}"
+                        >
 
 
-                    <div class="qty">
+                        <div>
+
+                            <h3>
+                                ${escapeHtml(p.name)}
+                            </h3>
+
+
+                            <p>
+                                ${money(p.price)}
+                            </p>
+
+
+                            <p class="cart-variant">
+
+                                Color:
+                                ${escapeHtml(
+                                    item.color || "—"
+                                )}
+
+                                ·
+
+                                Size:
+                                ${escapeHtml(
+                                    item.size || "—"
+                                )}
+
+                            </p>
+
+
+                            <div class="qty">
+
+                                <button
+                                    onclick="changeQty(
+                                        ${index},
+                                        -1
+                                    )"
+                                >
+                                    −
+                                </button>
+
+
+                                <strong>
+                                    ${item.qty}
+                                </strong>
+
+
+                                <button
+                                    onclick="changeQty(
+                                        ${index},
+                                        1
+                                    )"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                        </div>
+
 
                         <button
-                            onclick="changeQty(${index}, -1)">
-                            −
-                        </button>
-
-
-                        <strong>
-                            ${item.qty}
-                        </strong>
-
-
-                        <button
-                            onclick="changeQty(${index}, 1)">
-                            +
+                            class="remove"
+                            onclick="changeQty(
+                                ${index},
+                                -${item.qty}
+                            )"
+                        >
+                            Remove
                         </button>
 
                     </div>
 
-                </div>
+                `;
+
+            }
+        ).join("");
 
 
-                <button
-                    class="remove"
-                    onclick="changeQty(${index}, -${item.qty})">
-
-                    ${t("remove")}
-
-                </button>
-
-            </div>
-
-            `;
-
-        }
-    ).join("");
-
-
-    if (cartTotalEl) {
-
-        cartTotalEl.textContent =
-            money(total);
-
-    }
+    cartTotalEl.textContent =
+        money(total);
 
 }
 
 
-// ======================================================
-// SHOW PRODUCT
-// ======================================================
+
+/* =========================================
+   SHOW PRODUCT
+========================================= */
 
 function showProduct(id) {
 
@@ -721,9 +603,7 @@ function showProduct(id) {
     if (!modal) {
 
         modal =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
         modal.id =
             "productModal";
@@ -743,10 +623,8 @@ function showProduct(id) {
         <button
             class="modal-close"
             onclick="closeProductModal()"
-            aria-label="${t("close")}">
-
+        >
             ×
-
         </button>
 
 
@@ -764,7 +642,7 @@ function showProduct(id) {
         <div class="product-modal-copy">
 
             <p class="eyebrow">
-                ${t("moWearNewDrop")}
+                MO-WEAR / NEW DROP
             </p>
 
 
@@ -784,78 +662,78 @@ function showProduct(id) {
 
 
             <label class="variant-label">
-                ${t("color")}
+                COLOR
             </label>
 
 
             <div
                 class="variant-buttons"
-                id="colorOptions">
+                id="colorOptions"
+            >
 
                 ${p.colors.map(
                     (color, i) => `
 
-                    <button
-                        type="button"
-                        class="variant-btn ${
-                            i === 0
-                                ? "selected"
-                                : ""
-                        }"
-                        data-color="${escapeHtml(color)}"
-                        onclick="
-                            selectVariant(
+                        <button
+                            type="button"
+                            class="variant-btn ${
+                                i === 0
+                                    ? "selected"
+                                    : ""
+                            }"
+                            data-color="${escapeHtml(
+                                color
+                            )}"
+                            onclick="selectVariant(
                                 this,
                                 'colorOptions'
-                            );
-                            changeProductColor(
-                                ${p.id},
-                                '${escapeHtml(color)}'
-                            );
-                        ">
+                            )"
+                        >
 
-                        ${translateColor(color)}
+                            ${escapeHtml(color)}
 
-                    </button>
+                        </button>
 
-                `
+                    `
                 ).join("")}
 
             </div>
 
 
             <label class="variant-label">
-                ${t("size")}
+                SIZE
             </label>
 
 
             <div
                 class="variant-buttons"
-                id="sizeOptions">
+                id="sizeOptions"
+            >
 
                 ${p.sizes.map(
                     (size, i) => `
 
-                    <button
-                        type="button"
-                        class="variant-btn ${
-                            i === 0
-                                ? "selected"
-                                : ""
-                        }"
-                        data-size="${escapeHtml(size)}"
-                        onclick="
-                            selectVariant(
+                        <button
+                            type="button"
+                            class="variant-btn ${
+                                i === 0
+                                    ? "selected"
+                                    : ""
+                            }"
+                            data-size="${escapeHtml(
+                                size
+                            )}"
+                            onclick="selectVariant(
                                 this,
                                 'sizeOptions'
-                            );
-                        ">
+                            )"
+                        >
 
-                        ${escapeHtml(size)}
+                            ${escapeHtml(size)}
 
-                    </button>
+                        </button>
 
-                `
+                    `
                 ).join("")}
 
             </div>
@@ -863,12 +741,11 @@ function showProduct(id) {
 
             <button
                 class="btn btn-red full product-add-confirm"
-                onclick="
-                    confirmAddToCart(${p.id})
-                ">
+                onclick="confirmAddToCart(${p.id})"
+            >
 
-                ${t("addToCart")}
-                — ${money(p.price)}
+                ADD TO CART —
+                ${money(p.price)}
 
             </button>
 
@@ -880,6 +757,57 @@ function showProduct(id) {
     modal.classList.add("show");
 
 
+
+    /* =====================================
+       CHANGE IMAGE BY COLOR
+    ===================================== */
+
+    const modalImage =
+        document.getElementById(
+            "productModalImage"
+        );
+
+
+    document
+        .querySelectorAll(
+            "#colorOptions .variant-btn"
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const color =
+                        button.dataset.color;
+
+
+                    if (
+                        p.colorImages &&
+                        p.colorImages[color]
+                    ) {
+
+                        modalImage.src =
+                            p.colorImages[color];
+
+                    } else {
+
+                        modalImage.src =
+                            p.image;
+
+                    }
+
+                }
+            );
+
+        });
+
+
+
+    /* =====================================
+       BACKDROP
+    ===================================== */
+
     let backdrop =
         document.getElementById(
             "productBackdrop"
@@ -889,9 +817,7 @@ function showProduct(id) {
     if (!backdrop) {
 
         backdrop =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
         backdrop.id =
             "productBackdrop";
@@ -918,51 +844,10 @@ function showProduct(id) {
 }
 
 
-// ======================================================
-// CHANGE PRODUCT COLOR IMAGE
-// ======================================================
 
-function changeProductColor(
-    id,
-    color
-) {
-
-    const p =
-        products.find(
-            x => x.id === id
-        );
-
-
-    const modalImage =
-        document.getElementById(
-            "productModalImage"
-        );
-
-
-    if (!p || !modalImage) return;
-
-
-    if (
-        p.colorImages &&
-        p.colorImages[color]
-    ) {
-
-        modalImage.src =
-            p.colorImages[color];
-
-    } else {
-
-        modalImage.src =
-            p.image;
-
-    }
-
-}
-
-
-// ======================================================
-// SELECT VARIANT
-// ======================================================
+/* =========================================
+   SELECT COLOR / SIZE
+========================================= */
 
 function selectVariant(
     button,
@@ -989,9 +874,10 @@ function selectVariant(
 }
 
 
-// ======================================================
-// CONFIRM ADD TO CART
-// ======================================================
+
+/* =========================================
+   CONFIRM ADD TO CART
+========================================= */
 
 function confirmAddToCart(id) {
 
@@ -1030,9 +916,10 @@ function confirmAddToCart(id) {
 }
 
 
-// ======================================================
-// CLOSE PRODUCT MODAL
-// ======================================================
+
+/* =========================================
+   CLOSE PRODUCT MODAL
+========================================= */
 
 function closeProductModal() {
 
@@ -1068,19 +955,19 @@ function closeProductModal() {
 }
 
 
-// ======================================================
-// CART DRAWER
-// ======================================================
+
+/* =========================================
+   OPEN CART
+========================================= */
 
 function openCart() {
 
-    if (cartDrawer) {
+    if (!cartDrawer) return;
 
-        cartDrawer.classList.add(
-            "open"
-        );
 
-    }
+    cartDrawer.classList.add(
+        "open"
+    );
 
 
     if (drawerBackdrop) {
@@ -1093,6 +980,11 @@ function openCart() {
 
 }
 
+
+
+/* =========================================
+   CLOSE CART
+========================================= */
 
 function closeCart() {
 
@@ -1116,18 +1008,17 @@ function closeCart() {
 }
 
 
-// ======================================================
-// CHECKOUT
-// ======================================================
+
+/* =========================================
+   OPEN CHECKOUT
+========================================= */
 
 function openCheckout() {
 
     if (!cart.length) {
 
         alert(
-            isArabic()
-                ? "السلة فارغة."
-                : "Your cart is empty."
+            "Your cart is empty."
         );
 
         return;
@@ -1158,6 +1049,11 @@ function openCheckout() {
 }
 
 
+
+/* =========================================
+   CLOSE CHECKOUT
+========================================= */
+
 function closeCheckout() {
 
     if (checkoutModal) {
@@ -1180,9 +1076,10 @@ function closeCheckout() {
 }
 
 
-// ======================================================
-// FILTERS
-// ======================================================
+
+/* =========================================
+   FILTER BUTTONS
+========================================= */
 
 document
     .querySelectorAll(".filter")
@@ -1218,9 +1115,10 @@ document
     });
 
 
-// ======================================================
-// CATEGORY LINKS
-// ======================================================
+
+/* =========================================
+   CATEGORY LINKS
+========================================= */
 
 document
     .querySelectorAll(
@@ -1245,8 +1143,7 @@ document
                 if (shop) {
 
                     shop.scrollIntoView({
-                        behavior:
-                            "smooth"
+                        behavior: "smooth"
                     });
 
                 }
@@ -1284,9 +1181,10 @@ document
     });
 
 
-// ======================================================
-// OPEN CART BUTTON
-// ======================================================
+
+/* =========================================
+   CART BUTTONS
+========================================= */
 
 const openCartButton =
     document.getElementById(
@@ -1304,9 +1202,6 @@ if (openCartButton) {
 }
 
 
-// ======================================================
-// CLOSE CART BUTTON
-// ======================================================
 
 const closeCartButton =
     document.getElementById(
@@ -1324,6 +1219,7 @@ if (closeCartButton) {
 }
 
 
+
 if (drawerBackdrop) {
 
     drawerBackdrop.addEventListener(
@@ -1334,9 +1230,10 @@ if (drawerBackdrop) {
 }
 
 
-// ======================================================
-// CHECKOUT BUTTON
-// ======================================================
+
+/* =========================================
+   CHECKOUT BUTTON
+========================================= */
 
 const checkoutButton =
     document.getElementById(
@@ -1354,9 +1251,10 @@ if (checkoutButton) {
 }
 
 
-// ======================================================
-// CLEAR CART
-// ======================================================
+
+/* =========================================
+   CLEAR CART
+========================================= */
 
 const clearCartButton =
     document.getElementById(
@@ -1380,9 +1278,10 @@ if (clearCartButton) {
 }
 
 
-// ======================================================
-// CLOSE CHECKOUT
-// ======================================================
+
+/* =========================================
+   CLOSE CHECKOUT
+========================================= */
 
 const closeCheckoutButton =
     document.getElementById(
@@ -1400,6 +1299,7 @@ if (closeCheckoutButton) {
 }
 
 
+
 if (checkoutBackdrop) {
 
     checkoutBackdrop.addEventListener(
@@ -1410,9 +1310,10 @@ if (checkoutBackdrop) {
 }
 
 
-// ======================================================
-// MOBILE MENU
-// ======================================================
+
+/* =========================================
+   MOBILE MENU
+========================================= */
 
 const menuButton =
     document.getElementById(
@@ -1446,14 +1347,9 @@ if (menuButton) {
 }
 
 
-// ======================================================
-// CLOSE MOBILE MENU
-// ======================================================
 
 document
-    .querySelectorAll(
-        ".nav a"
-    )
+    .querySelectorAll(".nav a")
     .forEach(a => {
 
         a.addEventListener(
@@ -1480,9 +1376,10 @@ document
     });
 
 
-// ======================================================
-// CHECKOUT FORM
-// ======================================================
+
+/* =========================================
+   CHECKOUT FORM
+========================================= */
 
 const checkoutForm =
     document.getElementById(
@@ -1500,9 +1397,7 @@ if (checkoutForm) {
 
 
             const data =
-                new FormData(
-                    e.target
-                );
+                new FormData(e.target);
 
 
             const order = {
@@ -1514,6 +1409,7 @@ if (checkoutForm) {
 
 
                 items:
+
                     cart.map(item => {
 
                         const p =
@@ -1553,8 +1449,12 @@ if (checkoutForm) {
 
 
                 total:
+
                     cart.reduce(
-                        (sum, item) => {
+                        (
+                            sum,
+                            item
+                        ) => {
 
                             const p =
                                 products.find(
@@ -1584,6 +1484,11 @@ if (checkoutForm) {
             };
 
 
+
+            /* =================================
+               SAVE ORDER
+            ================================= */
+
             console.log(
                 "MO-WEAR ORDER",
                 order
@@ -1592,11 +1497,100 @@ if (checkoutForm) {
 
             localStorage.setItem(
                 "lastMoWearOrder",
-                JSON.stringify(
-                    order
-                )
+                JSON.stringify(order)
             );
 
+
+
+            /* =================================
+               WHATSAPP
+            ================================= */
+
+            const whatsappNumber =
+                "201112687108";
+
+
+            let whatsappMessage =
+                "🛍️ MO-WEAR NEW ORDER\n\n";
+
+
+            whatsappMessage +=
+                "Customer: " +
+                (
+                    order.customer.name ||
+                    "—"
+                ) +
+                "\n";
+
+
+            whatsappMessage +=
+                "Phone: " +
+                (
+                    order.customer.phone ||
+                    "—"
+                ) +
+                "\n";
+
+
+            whatsappMessage +=
+                "Address: " +
+                (
+                    order.customer.address ||
+                    "—"
+                ) +
+                "\n\n";
+
+
+            whatsappMessage +=
+                "ORDER DETAILS:\n\n";
+
+
+            order.items.forEach(
+                (item, index) => {
+
+                    whatsappMessage +=
+                        `${index + 1}. ${item.product}\n`;
+
+                    whatsappMessage +=
+                        `Color: ${item.color}\n`;
+
+                    whatsappMessage +=
+                        `Size: ${item.size}\n`;
+
+                    whatsappMessage +=
+                        `Qty: ${item.qty}\n`;
+
+                    whatsappMessage +=
+                        `Price: EGP ${item.unitPrice}\n\n`;
+
+                }
+            );
+
+
+            whatsappMessage +=
+                `TOTAL: EGP ${order.total.toLocaleString("en-EG")}`;
+
+
+
+            const whatsappURL =
+                "https://wa.me/" +
+                whatsappNumber +
+                "?text=" +
+                encodeURIComponent(
+                    whatsappMessage
+                );
+
+
+            window.open(
+                whatsappURL,
+                "_blank"
+            );
+
+
+
+            /* =================================
+               SUCCESS MESSAGE
+            ================================= */
 
             e.target.style.display =
                 "none";
@@ -1633,6 +1627,7 @@ if (checkoutForm) {
 
             cart = [];
 
+
             saveCart();
 
         }
@@ -1641,9 +1636,10 @@ if (checkoutForm) {
 }
 
 
-// ======================================================
-// CLOSE SUCCESS
-// ======================================================
+
+/* =========================================
+   CLOSE SUCCESS
+========================================= */
 
 const closeSuccessButton =
     document.getElementById(
@@ -1704,9 +1700,10 @@ if (closeSuccessButton) {
 }
 
 
-// ======================================================
-// YEAR
-// ======================================================
+
+/* =========================================
+   YEAR
+========================================= */
 
 const yearElement =
     document.getElementById(
@@ -1722,43 +1719,10 @@ if (yearElement) {
 }
 
 
-// ======================================================
-// LANGUAGE CHANGE OBSERVER
-// ======================================================
-//
-// ده الجزء المهم جدًا:
-// لما زر EN / AR يغير <html lang="en">
-// إلى <html lang="ar">
-// الكود ده يعيد رسم المنتجات تلقائيًا.
-//
 
-const languageObserver =
-    new MutationObserver(
-        () => {
-
-            renderProducts();
-
-            renderCart();
-
-        }
-    );
-
-
-languageObserver.observe(
-    document.documentElement,
-    {
-        attributes: true,
-
-        attributeFilter: [
-            "lang"
-        ]
-    }
-);
-
-
-// ======================================================
-// INITIAL RENDER
-// ======================================================
+/* =========================================
+   START WEBSITE
+========================================= */
 
 renderProducts();
 
