@@ -1,4 +1,5 @@
-const products = [
+const products = let currentLanguage = "en"; [
+    
 
     {
         id: 1,
@@ -379,7 +380,7 @@ function renderProducts(category = "all") {
         ? products
         : products.filter(p => p.category === category);
 
-    const isArabic = localStorage.getItem("moWearLanguage") === "ar";
+    const isArabic = currentLanguage === "ar";
 
     productsEl.innerHTML = list.map(p => `
 
