@@ -24,8 +24,13 @@ const products = [
         desc: "Clean cream tee with rose California graphic.",
         image: "images/model-1.png",
         colors: ["Black", "White", "Burgundy", "Beige"],
-        sizes: ["M", "L", "XL"]
+      colorImages: {
+            White: "images/model-1-white.png",
+            Black: "images/model-1-black.png",
+             Burgundy:"images/model-1-burgundy.png",
+             Beige:"images/model-1.png"
     },
+        sizes: ["M", "L", "XL","2XL","3XL
 
     {
         id: 3,
