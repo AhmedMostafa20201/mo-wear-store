@@ -1792,3 +1792,381 @@ const savedLanguage =
     localStorage.getItem("moWearLanguage") || "en";
 
 setLanguage(savedLanguage);
+// ==========================================
+// MO-WEAR - ARABIC / ENGLISH TRANSLATION
+// ADD THIS AT THE VERY END OF script.js
+// ==========================================
+
+(function () {
+
+    // Get current language
+    function getCurrentLanguage() {
+        return localStorage.getItem("moWearLanguage") || "en";
+    }
+
+
+    // Translate all normal HTML elements
+    function translatePage(lang) {
+
+        document.documentElement.lang = lang;
+        document.documentElement.dir =
+            lang === "ar" ? "rtl" : "ltr";
+
+
+        // Translate elements that have data-en and data-ar
+        document
+            .querySelectorAll("[data-en][data-ar]")
+            .forEach(function (element) {
+
+                const text =
+                    lang === "ar"
+                        ? element.getAttribute("data-ar")
+                        : element.getAttribute("data-en");
+
+                if (text !== null) {
+                    element.textContent = text;
+                }
+
+            });
+
+
+        // Update language buttons
+        const enButton =
+            document.getElementById("langEN");
+
+        const arButton =
+            document.getElementById("langAR");
+
+
+        if (enButton) {
+            enButton.classList.toggle(
+                "active",
+                lang === "en"
+            );
+        }
+
+
+        if (arButton) {
+            arButton.classList.toggle(
+                "active",
+                lang === "ar"
+            );
+        }
+
+
+        // Save language
+        localStorage.setItem(
+            "moWearLanguage",
+            lang
+        );
+
+
+        // Update currently opened product
+        const productModal =
+            document.getElementById("productModal");
+
+        if (
+            productModal &&
+            productModal.classList.contains("show")
+        ) {
+
+            const productId =
+                productModal.getAttribute("data-product-id");
+
+            if (productId) {
+                showProduct(
+                    Number(productId)
+                );
+            }
+
+        }
+
+
+        // Update cart
+        if (typeof renderCart === "function") {
+            renderCart();
+        }
+
+    }
+
+
+    // ==========================================
+    // LANGUAGE BUTTONS
+    // ==========================================
+
+    const enButton =
+        document.getElementById("langEN");
+
+    const arButton =
+        document.getElementById("langAR");
+
+
+    if (enButton) {
+
+        enButton.onclick = function () {
+
+            translatePage("en");
+
+        };
+
+    }
+
+
+    if (arButton) {
+
+        arButton.onclick = function () {
+
+            translatePage("ar");
+
+        };
+
+    }
+
+
+    // ==========================================
+    // TRANSLATE PRODUCT MODAL
+    // ==========================================
+
+    window.showProductWithLanguage =
+        function (id) {
+
+            showProduct(id);
+
+            setTimeout(function () {
+
+                translatePage(
+                    getCurrentLanguage()
+                );
+
+            }, 50);
+
+        };
+
+
+    // ==========================================
+    // OVERRIDE SHOW PRODUCT
+    // ==========================================
+
+    const originalShowProduct =
+        window.showProduct;
+
+
+    if (typeof originalShowProduct === "function") {
+
+        window.showProduct = function (id) {
+
+            originalShowProduct(id);
+
+
+            const modal =
+                document.getElementById("productModal");
+
+
+            if (modal) {
+
+                modal.setAttribute(
+                    "data-product-id",
+                    id
+                );
+
+
+                const lang =
+                    getCurrentLanguage();
+
+
+                // ADD TO CART
+                const addButton =
+                    modal.querySelector(
+                        ".product-add-confirm"
+                    );
+
+
+                if (addButton) {
+
+                    const product =
+                        products.find(
+                            function (p) {
+                                return p.id === id;
+                            }
+                        );
+
+
+                    if (product) {
+
+                        addButton.innerHTML =
+                            lang === "ar"
+                                ? "أضف إلى السلة — " +
+                                  money(product.price)
+                                : "ADD TO CART — " +
+                                  money(product.price);
+
+                    }
+
+                }
+
+
+                // COLOR
+                const colorLabel =
+                    modal.querySelector(
+                        ".variant-label"
+                    );
+
+
+                if (colorLabel) {
+
+                    colorLabel.textContent =
+                        lang === "ar"
+                            ? "اللون"
+                            : "COLOR";
+
+                }
+
+
+                // SIZE
+                const labels =
+                    modal.querySelectorAll(
+                        ".variant-label"
+                    );
+
+
+                if (labels.length > 1) {
+
+                    labels[1].textContent =
+                        lang === "ar"
+                            ? "المقاس"
+                            : "SIZE";
+
+                }
+
+            }
+
+        };
+
+    }
+
+
+    // ==========================================
+    // TRANSLATE CART
+    // ==========================================
+
+    const originalRenderCart =
+        window.renderCart;
+
+
+    if (typeof originalRenderCart === "function") {
+
+        window.renderCart = function () {
+
+            originalRenderCart();
+
+
+            const lang =
+                getCurrentLanguage();
+
+
+            const cartItems =
+                document.getElementById(
+                    "cartItems"
+                );
+
+
+            if (!cartItems) return;
+
+
+            // Empty cart
+            const emptyCart =
+                cartItems.querySelector(
+                    ".empty-cart"
+                );
+
+
+            if (emptyCart) {
+
+                emptyCart.innerHTML =
+                    lang === "ar"
+                        ? "السلة فارغة.<br><br>أضف شيئًا يعجبك."
+                        : "YOUR CART IS EMPTY.<br><br>ADD SOMETHING YOU LIKE.";
+
+            }
+
+
+            // Cart Remove buttons
+            cartItems
+                .querySelectorAll(".remove")
+                .forEach(function (button) {
+
+                    button.textContent =
+                        lang === "ar"
+                            ? "حذف"
+                            : "Remove";
+
+                });
+
+
+            // Cart Color / Size
+            cartItems
+                .querySelectorAll(".cart-variant")
+                .forEach(function (element) {
+
+                    const text =
+                        element.textContent;
+
+
+                    const colorMatch =
+                        text.match(
+                            /Color:\s*(.*?)\s*·/
+                        );
+
+
+                    const sizeMatch =
+                        text.match(
+                            /Size:\s*(.*)/
+                        );
+
+
+                    if (
+                        colorMatch &&
+                        sizeMatch
+                    ) {
+
+                        const color =
+                            colorMatch[1].trim();
+
+                        const size =
+                            sizeMatch[1].trim();
+
+
+                        element.textContent =
+                            lang === "ar"
+                                ? "اللون: " +
+                                  color +
+                                  " · المقاس: " +
+                                  size
+                                : "Color: " +
+                                  color +
+                                  " · Size: " +
+                                  size;
+
+                    }
+
+                });
+
+        };
+
+    }
+
+
+    // ==========================================
+    // INITIAL LANGUAGE
+    // ==========================================
+
+    const savedLanguage =
+        getCurrentLanguage();
+
+
+    translatePage(
+        savedLanguage
+    );
+
+
+})();
