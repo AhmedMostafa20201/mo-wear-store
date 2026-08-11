@@ -40,7 +40,13 @@ const products = [
         desc: "Black streetwear tee with warrior-inspired graphic.",
         image: "images/model-03.png",
         colors: ["Black", "White", "Burgundy", "Beige"],
-        sizes: ["M", "L", "XL"]
+       colorImages: {
+            White: "images/model-03-white.png",
+            Black: "images/model-03.png",
+             Burgundy:"images/model-03-burgundy.png",
+             Beige:"images/model-03-beige.png"
+    },
+        sizes: ["M", "L", "XL","2XL","3XL"]
     },
 
     {
