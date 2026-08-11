@@ -1,4 +1,4 @@
-const products = let currentLanguage = "en"; [
+const products = [  let currentLanguage = "en";
     
 
     {
