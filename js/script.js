@@ -1727,3 +1727,68 @@ if (yearElement) {
 renderProducts();
 
 renderCart();
+// ===============================
+// LANGUAGE SWITCHER - EN / AR
+// ===============================
+
+function setLanguage(lang) {
+
+    // Change HTML direction
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+    // Change all elements that have data-en / data-ar
+    document.querySelectorAll("[data-en][data-ar]").forEach(element => {
+
+        const text = element.getAttribute(
+            lang === "ar" ? "data-ar" : "data-en"
+        );
+
+        if (text !== null) {
+            element.textContent = text;
+        }
+
+    });
+
+    // Active button
+    const enButton = document.getElementById("langEN");
+    const arButton = document.getElementById("langAR");
+
+    if (enButton) {
+        enButton.classList.toggle("active", lang === "en");
+    }
+
+    if (arButton) {
+        arButton.classList.toggle("active", lang === "ar");
+    }
+
+    // Save selected language
+    localStorage.setItem("moWearLanguage", lang);
+}
+
+
+// EN button
+const langEN = document.getElementById("langEN");
+
+if (langEN) {
+    langEN.addEventListener("click", () => {
+        setLanguage("en");
+    });
+}
+
+
+// AR button
+const langAR = document.getElementById("langAR");
+
+if (langAR) {
+    langAR.addEventListener("click", () => {
+        setLanguage("ar");
+    });
+}
+
+
+// Load saved language
+const savedLanguage =
+    localStorage.getItem("moWearLanguage") || "en";
+
+setLanguage(savedLanguage);
