@@ -200,8 +200,9 @@ h1,h2{
 }
 
 h1{
-  font-size:clamp(64px,10vw,150px);
-  line-height:.86
+  font-size:clamp(58px,8.5vw,128px);
+  line-height:.84;
+  letter-spacing:0;
 }
 
 h1 span,
@@ -1377,8 +1378,12 @@ h2 span{
   }
 
   .hero h1{
-    font-size:62px
+    font-size:52px;
+    line-height:.86;
+    letter-spacing:0;
   }
+
+}
 
   .product-modal{
     width:95vw !important;
