@@ -30,8 +30,8 @@ const products = [
              Burgundy:"images/model-1-burgundy.png",
              Beige:"images/model-1.png"
     },
-        sizes: ["M", "L", "XL","2XL","3XL
-
+        sizes: ["M", "L", "XL","2XL","3XL"]
+},
     {
         id: 3,
         name: "Warrior Tee",
