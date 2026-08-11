@@ -1,5 +1,4 @@
-const products = [  let currentLanguage = "en";
-    
+const products = [ 
 
     {
         id: 1,
