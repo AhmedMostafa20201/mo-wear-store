@@ -8,8 +8,16 @@ const products = [
         desc: "Oversized black MO-WEAR graphic tee.",
         image: "images/model-02.png",
         colors: ["Black", "White", "Burgundy", "Beige"],
-        sizes: ["M", "L", "XL"]
+         colorImages: {
+            White: "images/model-02-white.png",
+            Black: "images/model-02.png",
+             Burgundy:"images/model-02-burgundy.png",
+             Beige:"images/model-02-beige.png"
     },
+
+        sizes: ["M", "L", "XL","2XL","3XL"]
+    },
+
 
     {
         id: 2,
@@ -48,7 +56,7 @@ const products = [
             Black: "images/model-05-black.png"
         },
 
-        sizes: ["M", "L", "XL"]
+        sizes: ["M", "L", "XL","2XL","3XL"]
     },
 
     {
