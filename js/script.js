@@ -2,10 +2,10 @@ const products = [
     
     {
         id: 1,
-        name: "Fire Graphic Tee",
+        name: "fallen silence",
         category: "tshirts",
         price: 400,
-        desc: "Oversized black MO-WEAR graphic tee.",
+        desc: "Oversized black MO-WEAR fallen silence tee.",
         image: "images/model-02.png",
         colors: ["Black", "White", "Burgundy", "Beige"],
          colorImages: {
@@ -34,10 +34,10 @@ const products = [
 },
     {
         id: 3,
-        name: "Warrior Tee",
+        name: " Yin Yang Tee ",
         category: "tshirts",
         price: 400,
-        desc: "Black streetwear tee with warrior-inspired graphic.",
+        desc: "Black streetwear tee with Yin Yang Tee-inspired graphic.",
         image: "images/model-03.png",
         colors: ["Black", "White", "Burgundy", "Beige"],
        colorImages: {
