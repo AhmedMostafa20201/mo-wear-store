@@ -379,9 +379,7 @@ function renderProducts(category = "all") {
         ? products
         : products.filter(p => p.category === category);
 
-    const isArabic =
-        document.documentElement.lang === "ar" ||
-        localStorage.getItem("moWearLanguage") === "ar";
+    const isArabic = localStorage.getItem("moWearLanguage") === "ar";
 
     productsEl.innerHTML = list.map(p => `
 
