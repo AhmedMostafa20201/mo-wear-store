@@ -375,43 +375,28 @@ document
 
 function renderProducts(category = "all") {
 
-    if (!productsEl) return;
+    const list = category === "all"
+        ? products
+        : products.filter(p => p.category === category);
 
-    const list =
-        category === "all"
-            ? products
-            : products.filter(
-                p => p.category === category
-            );
+    const isArabic =
+        document.documentElement.lang === "ar" ||
+        localStorage.getItem("moWearLanguage") === "ar";
 
-
-    productsEl.innerHTML = list.map(p => {
-
-        const colorsText = p.colors
-            .map(color => translateColor(color))
-            .join(" · ");
-
-
-        const sizesText = p.sizes.join(" · ");
-
-
-        return `
+    productsEl.innerHTML = list.map(p => `
 
         <article class="product-card">
 
             <div class="product-image real-product-image">
-
                 <img
                     src="${p.image}"
                     alt="${escapeHtml(p.name)}"
                 >
 
                 <div class="product-badge">
-                    ${t("new")}
+                    ${isArabic ? "جديد" : "NEW"}
                 </div>
-
             </div>
-
 
             <div class="product-info">
 
@@ -419,11 +404,10 @@ function renderProducts(category = "all") {
                     ${escapeHtml(p.name)}
                 </div>
 
-
                 <div class="product-meta">
 
                     <span class="product-category">
-                        ${t("tshirt")}
+                        ${isArabic ? "تيشيرت" : "T-SHIRT"}
                     </span>
 
                     <span class="product-price">
@@ -432,39 +416,34 @@ function renderProducts(category = "all") {
 
                 </div>
 
-
                 <div class="product-options-preview">
 
                     <span>
-                        ${t("colors")}:
-                        ${colorsText}
+                        ${isArabic ? "الألوان" : "Colors"}:
+                        ${p.colors.join(" · ")}
                     </span>
 
                     <span>
-                        ${t("sizes")}:
-                        ${sizesText}
+                        ${isArabic ? "المقاسات" : "Sizes"}:
+                        ${p.sizes.join(" · ")}
                     </span>
 
                 </div>
 
-
                 <div class="product-actions">
 
                     <button
-                        class="view-btn"
-                        onclick="showProduct(${p.id})">
-
-                        ${t("details")}
-
+                        class="add-btn"
+                        onclick="showProduct(${p.id})"
+                    >
+                        ${isArabic ? "أضف للسلة" : "ADD TO CART"}
                     </button>
 
-
                     <button
-                        class="add-btn"
-                        onclick="showProduct(${p.id})">
-
-                        ${t("addToCart")}
-
+                        class="view-btn"
+                        onclick="showProduct(${p.id})"
+                    >
+                        ${isArabic ? "التفاصيل" : "DETAILS"}
                     </button>
 
                 </div>
@@ -473,10 +452,7 @@ function renderProducts(category = "all") {
 
         </article>
 
-        `;
-
-    }).join("");
-
+    `).join("");
 }
 
 
