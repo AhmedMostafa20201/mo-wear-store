@@ -14,11 +14,8 @@ const products = [
              Burgundy:"images/model-02-burgundy.png",
              Beige:"images/model-02-beige.png"
     },
-
         sizes: ["M", "L", "XL","2XL","3XL"]
     },
-
-
     {
         id: 2,
         name: "Rose California Tee",
