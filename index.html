@@ -1,72 +1,298 @@
-<section class="ticker" aria-label="MO-WEAR statement">
-  <div>MO-WEAR · STREET CULTURE · EST. 2022 · MO-WEAR · STREET CULTURE · EST. 2022 ·</div>
-</section>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MO-WEAR — Streetwear made for your attitude. Est. 2022.">
+  <title>MO-WEAR | Streetwear</title>
 
-<section class="section" id="shop">
-  <div class="section-heading">
-    <div>
-      <p class="eyebrow">THE COLLECTION</p>
-      <h2>LATEST DROPS</h2>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .language-switcher{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      margin-left:14px;
+    }
+
+    .language-btn{
+      border:none;
+      background:transparent;
+      color:inherit;
+      font-weight:700;
+      cursor:pointer;
+      padding:4px;
+    }
+
+    .language-btn.active{
+      text-decoration:underline;
+      text-underline-offset:4px;
+    }
+
+    html[dir="rtl"] .language-switcher{
+      margin-left:0;
+      margin-right:14px;
+    }
+
+    html[dir="rtl"] body{
+      text-align:right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement"
+       data-en="FREE SHIPPING ON ORDERS OVER EGP 1,500"
+       data-ar="شحن مجاني للطلبات فوق ١٥٠٠ جنيه">
+    FREE SHIPPING ON ORDERS OVER EGP 1,500
+  </div>
+
+  <header class="header">
+
+    <a class="brand" href="#home" aria-label="MO-WEAR Home">
+      <img src="images/logo.jpg" alt="MO-WEAR logo">
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
+      <a href="#shop" data-en="Shop" data-ar="المتجر">Shop</a>
+      <a href="#about" data-en="About" data-ar="عنّا">About</a>
+      <a href="#contact" data-en="Contact" data-ar="تواصل">Contact</a>
+    </nav>
+
+    <div class="language-switcher">
+      <button class="language-btn active" id="langEN">EN</button>
+      <span>/</span>
+      <button class="language-btn" id="langAR">AR</button>
     </div>
-    <div class="filters">
-      <button class="filter active" data-category="all">All</button>
-      <button class="filter" data-category="tshirts">T-Shirts</button>
-      <button class="filter" data-category="basic">Basic</button>
+
+    <button class="cart-button" id="openCart" aria-label="Open shopping cart">
+      <span data-en="Cart" data-ar="السلة">Cart</span>
+      <span id="cartCount">0</span>
+    </button>
+
+    <button class="menu-button" id="menuButton" aria-label="Open menu">☰</button>
+
+  </header>
+
+  <main id="home">
+
+    <section class="hero">
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+
+        <p class="eyebrow">EST. 2022 · EGYPT</p>
+
+        <h1>
+          <span data-en="WEAR YOUR" data-ar="البس">WEAR YOUR</span><br>
+          <span data-en="ATTITUDE." data-ar="شخصيتك.">ATTITUDE.</span>
+        </h1>
+
+        <p class="hero-text"
+           data-en="Streetwear for people who don't follow the crowd."
+           data-ar="ملابس شارع للناس اللي مش بتمشي ورا القطيع.">
+          Streetwear for people who don't follow the crowd.
+        </p>
+
+        <a class="btn btn-red" href="#shop"
+           data-en="SHOP THE DROP"
+           data-ar="تسوّق المجموعة">
+          SHOP THE DROP
+        </a>
+
+      </div>
+    </section>
+
+    <section class="ticker">
+      <div>MO-WEAR · STREET CULTURE · EST. 2022 · MO-WEAR · STREET CULTURE · EST. 2022 ·</div>
+    </section>
+
+    <section class="section" id="shop">
+
+      <div class="section-heading">
+
+        <div>
+          <p class="eyebrow" data-en="THE COLLECTION" data-ar="المجموعة">THE COLLECTION</p>
+          <h2 data-en="LATEST DROPS" data-ar="أحدث المنتجات">LATEST DROPS</h2>
+        </div>
+
+        <div class="filters">
+          <button class="filter active" data-category="all" data-en="All" data-ar="الكل">All</button>
+          <button class="filter" data-category="tshirts" data-en="T-Shirts" data-ar="تيشيرتات">T-Shirts</button>
+          <button class="filter" data-category="basic" data-en="Basic" data-ar="أساسي">Basic</button>
+        </div>
+
+      </div>
+
+      <div class="products" id="products"></div>
+
+    </section>
+
+    <section class="statement">
+
+      <div>
+        <p class="eyebrow">MO-WEAR</p>
+
+        <h2>
+          <span data-en="NOT JUST CLOTHES." data-ar="مش مجرد هدوم.">NOT JUST CLOTHES.</span><br>
+          <span data-en="IT'S A STATEMENT." data-ar="دي شخصيتك.">IT'S A STATEMENT.</span>
+        </h2>
+      </div>
+
+      <p data-en="Built around bold graphics, dark aesthetics and everyday confidence. Pick your fit. Make it yours."
+         data-ar="تصميمات جريئة، ستايل مميز وثقة كل يوم. اختار الستايل اللي يمثلك.">
+        Built around bold graphics, dark aesthetics and everyday confidence. Pick your fit. Make it yours.
+      </p>
+
+    </section>
+
+    <section class="section categories">
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow" data-en="EXPLORE" data-ar="اكتشف">EXPLORE</p>
+          <h2 data-en="SHOP BY STYLE" data-ar="تسوّق حسب الستايل">SHOP BY STYLE</h2>
+        </div>
+      </div>
+
+      <div class="category-grid">
+
+        <button class="category-card cat-one" data-category-link="tshirts">
+          <span data-en="T-SHIRTS" data-ar="تيشيرتات">T-SHIRTS</span>
+        </button>
+
+        <button class="category-card cat-two" data-category-link="hoodies">
+          <span data-en="HOODIES" data-ar="هوديز">HOODIES</span>
+        </button>
+
+        <button class="category-card cat-three" data-category-link="pants">
+          <span data-en="PANTS" data-ar="بناطيل">PANTS</span>
+        </button>
+
+      </div>
+
+    </section>
+
+    <section class="about section" id="about">
+
+      <div class="about-image">
+        <img src="images/logo.jpg" alt="MO-WEAR logo">
+      </div>
+
+      <div class="about-copy">
+
+        <p class="eyebrow" data-en="OUR STORY" data-ar="قصتنا">OUR STORY</p>
+
+        <h2>EST. <span>2022</span></h2>
+
+        <p data-en="MO-WEAR was built with one simple idea: clothing should reflect who you are, not who you're expected to be."
+           data-ar="MO-WEAR اتأسست على فكرة بسيطة: هدومك لازم تعبر عن شخصيتك.">
+          MO-WEAR was built with one simple idea: clothing should reflect who you are, not who you're expected to be.
+        </p>
+
+        <p data-en="Our style combines street culture with a sharp, unapologetic visual identity."
+           data-ar="ستايلنا بيجمع ثقافة الشارع مع هوية بصرية قوية.">
+          Our style combines street culture with a sharp, unapologetic visual identity.
+        </p>
+
+      </div>
+
+    </section>
+
+    <section class="contact section" id="contact">
+
+      <div>
+
+        <p class="eyebrow" data-en="GET IN TOUCH" data-ar="تواصل معنا">GET IN TOUCH</p>
+
+        <h2 data-en="LET'S TALK." data-ar="خلينا نتكلم.">LET'S TALK.</h2>
+
+        <p data-en="For orders, sizing, collaborations or anything else, reach out to us."
+           data-ar="للطلبات أو المقاسات أو التعاون، تواصل معنا.">
+          For orders, sizing, collaborations or anything else, reach out to us.
+        </p>
+
+      </div>
+
+      <div class="contact-links">
+
+        <a href="https://www.instagram.com/mo.wear1?utm_source=qr&igsh=a2N4M3l3eXIzNG0x" target="_blank">Instagram ↗</a>
+
+        <a href="https://www.tiktok.com/@mowear1?_t=ZS-906dPKwosBs&_r=1" target="_blank">TikTok ↗</a>
+
+        <a href="tel:+201112687108">WhatsApp / Phone ↗</a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <img src="images/logo.jpg" alt="MO-WEAR">
+    <p>© <span id="year"></span> MO-WEAR. ALL RIGHTS RESERVED.</p>
+  </footer>
+
+  <!-- باقي الـ Cart والـ Checkout كما هو -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <aside class="cart-drawer" id="cartDrawer">
+
+    <div class="drawer-header">
+      <h2>YOUR CART</h2>
+      <button id="closeCart">×</button>
     </div>
-  </div>
-  <div class="products" id="products"></div>
-</section>
 
-<section class="statement">
-  <div>
-    <p class="eyebrow">MO-WEAR</p>
-    <h2>NOT JUST CLOTHES.<br><span>IT'S A STATEMENT.</span></h2>
-  </div>
-  <p>Built around bold graphics, dark aesthetics and everyday confidence. Pick your fit. Make it yours.</p>
-</section>
+    <div class="cart-items" id="cartItems"></div>
 
-<section class="section categories">
-  <div class="section-heading">
-    <div>
-      <p class="eyebrow">EXPLORE</p>
-      <h2>SHOP BY STYLE</h2>
+    <div class="cart-footer">
+      <div class="total-row">
+        <span>Subtotal</span>
+        <strong id="cartTotal">EGP 0</strong>
+      </div>
+
+      <button class="btn btn-red full" id="checkoutButton">CHECKOUT</button>
+      <button class="btn btn-outline full" id="clearCart">CLEAR CART</button>
     </div>
-  </div>
-  <div class="category-grid">
-    <button class="category-card cat-one" data-category-link="tshirts">
-      <span>T-SHIRTS</span>
-    </button>
-    <button class="category-card cat-two" data-category-link="hoodies">
-      <span>HOODIES</span>
-    </button>
-    <button class="category-card cat-three" data-category-link="pants">
-      <span>PANTS</span>
-    </button>
-  </div>
-</section>
 
-<section class="about section" id="about">
-  <div class="about-image">
-    <img src="images/logo.jpg" alt="MO-WEAR logo">
-  </div>
-  <div class="about-copy">
-    <p class="eyebrow">OUR STORY</p>
-    <h2>EST. <span>2022</span></h2>
-    <p>MO-WEAR was built with one simple idea: clothing should reflect who you are, not who you're expected to be.</p>
-    <p>Our style combines street culture with a sharp, unapologetic visual identity.</p>
-  </div>
-</section>
+  </aside>
 
-<section class="contact section" id="contact">
-  <div>
-    <p class="eyebrow">GET IN TOUCH</p>
-    <h2>LET'S TALK.</h2>
-    <p>For orders, sizing, collaborations or anything else, reach out to us.</p>
-  </div>
-  <div class="contact-links">
-    <a href="https://www.instagram.com/mo.wear1?utm_source=qr&igsh=a2N4M3l3eXIzNG0x">Instagram ↗</a>
-    <a href="https://www.tiktok.com/@mowear1?_t=ZS-906dPKwosBs&_r=1&fbclid=IwY2xjawTmVYlwZG9mBWV4dG4DYWVtAjEwAGJyaWQRMWw1ZTdNcFl0dXpxaTVNZENzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeEGq9HB48Ct-7VEjm4xZXLMh3ZBhtlVLrtj4jkuVjLMgO7jnS6qDTEAdQ5S4_aem_Gng28NmE9hA490UHW8T2ZA">tiktok ↗</a>
-    <a href="tel:+201112687108">WhatsApp / Phone ↗</a>
-  </div>
-</section>
+  <div class="modal-backdrop" id="checkoutBackdrop"></div>
 
+  <div class="modal" id="checkoutModal">
+
+    <button class="modal-close" id="closeCheckout">×</button>
+
+    <p class="eyebrow">ORDER DETAILS</p>
+    <h2>CHECKOUT</h2>
+
+    <form id="checkoutForm">
+
+      <label>Full Name<input required name="name"></label>
+      <label>Phone<input required name="phone"></label>
+      <label>City<input required name="city"></label>
+      <label>Address<textarea required name="address"></textarea></label>
+      <label>Notes<textarea name="notes"></textarea></label>
+
+      <button class="btn btn-red full" type="submit">PLACE ORDER</button>
+
+    </form>
+
+    <div class="order-success" id="orderSuccess">
+      <h3>ORDER RECEIVED ✓</h3>
+      <button class="btn btn-outline full" id="closeSuccess">DONE</button>
+    </div>
+
+  </div>
+
+  <script src="js/script.js"></script>
+
+</body>
+</html>
