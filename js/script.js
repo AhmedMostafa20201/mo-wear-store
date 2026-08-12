@@ -1457,30 +1457,14 @@ if (checkoutForm) {
                             );
 
 
-                        return {
-
-                            product:
-                                p
-                                    ? p.name
-                                    : "Unknown",
-
-                            color:
-                                item.color ||
-                                "—",
-
-                            size:
-                                item.size ||
-                                "—",
-
-                            qty:
-                                item.qty,
-
-                            unitPrice:
-                                p
-                                    ? p.price
-                                    : 0
-
-                        };
+                       return {
+    productId: p ? p.id : null,
+    product: p ? p.name : "Unknown",
+    color: item.color || "—",
+    size: item.size || "—",
+    qty: item.qty,
+    unitPrice: p ? p.price : 0
+};
 
                     }),
 
