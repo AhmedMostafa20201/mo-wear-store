@@ -1562,9 +1562,9 @@ if (checkoutForm) {
     "\n";
 
 whatsappMessage +=
-    "Notice: " +
+    "notes: " +
     (
-        order.customer.notice ||
+        order.customer.notes ||
         "—"
     ) +
     "\n\n";
