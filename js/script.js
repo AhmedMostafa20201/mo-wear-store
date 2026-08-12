@@ -78,7 +78,7 @@ oldPrice: 400,
         colors: ["Black", "White", "Burgundy", "Beige"],
 
         colorImages: {
-            White: "images/model-06-.png",
+            White: "images/model-06.png",
             Black: "images/model-06-black.png",
              Burgundy:"images/model-06-burgundy.png",
              Beige:"images/model-06-beige.png"
