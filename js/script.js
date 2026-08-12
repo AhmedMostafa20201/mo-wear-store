@@ -1553,13 +1553,21 @@ if (checkoutForm) {
             "\n";
 
 
-        whatsappMessage +=
-            "Address: " +
-            (
-                order.customer.address ||
-                "—"
-            ) +
-            "\n\n";
+       whatsappMessage +=
+    "Address: " +
+    (
+        order.customer.address ||
+        "—"
+    ) +
+    "\n";
+
+whatsappMessage +=
+    "Notice: " +
+    (
+        order.customer.notice ||
+        "—"
+    ) +
+    "\n\n";
 
 
         whatsappMessage +=
