@@ -268,9 +268,9 @@ function renderProducts(category = "all") {
 
 
                     <span class="product-price">
-                        ${money(p.price)}
-                    </span>
-
+    ${p.oldPrice ? `<del>${money(p.oldPrice)}</del>` : ""}
+    <strong>${money(p.price)}</strong>
+</span>
                 </div>
 
 
