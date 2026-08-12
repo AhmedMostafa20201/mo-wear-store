@@ -67,9 +67,27 @@ oldPrice: 400,
 
         sizes: ["M", "L", "XL","2XL","3XL"]
     },
-
-    {
+{
         id: 5,
+        name: "DARK Tee",
+        category: "tshirts",
+        price: 400,
+        desc: "DARK eyes Tee",
+        image: "images/model-06.png",
+
+        colors: ["Black", "White", "Burgundy", "Beige"],
+
+        colorImages: {
+            White: "images/model-06-.png",
+            Black: "images/model-06-black.png",
+             Burgundy:"images/model-06-burgundy.png",
+             Beige:"images/model-06-beige.png"
+        },
+
+        sizes: ["M", "L", "XL","2XL","3XL"]
+    },
+    {
+        id: 6,
         name: "Courage Tee",
         category: "tshirts",
         price: 400,
@@ -80,7 +98,7 @@ oldPrice: 400,
     },
 
     {
-        id: 6,
+        id: 7,
         name: "Basic White",
         category: "basic",
         price: 250,
@@ -91,7 +109,7 @@ oldPrice: 400,
     },
 
     {
-        id: 7,
+        id: 8,
         name: "Basic Black",
         category: "basic",
         price: 250,
@@ -102,7 +120,7 @@ oldPrice: 400,
     },
 
     {
-        id: 8,
+        id: 9,
         name: "Basic Burgundy",
         category: "basic",
         price: 250,
