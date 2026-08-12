@@ -293,9 +293,11 @@ function renderProducts(category = "all") {
     if (!productsEl) return;
 
 
-    const list =
-        category === "all"
-            ? products
+   const list =
+    category === "all"
+        ? products
+        : category === "sale"
+            ? products.filter(p => p.oldPrice)
             : products.filter(
                 p => p.category === category
             );
