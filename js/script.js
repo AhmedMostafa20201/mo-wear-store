@@ -73,7 +73,7 @@ oldPrice: 400,
         category: "tshirts",
         price: 400,
         desc: "DARK eyes Tee",
-        image: "images/model-06.png",
+        image: "images/model-06-black.png",
 
         colors: ["Black", "White", "Burgundy", "Beige"],
 
