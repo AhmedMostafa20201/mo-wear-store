@@ -68,7 +68,7 @@ oldPrice: 400,
         sizes: ["M", "L", "XL","2XL","3XL"]
     },
 {
-        id: 5,
+        id: 6,
         name: "DARK Tee",
         category: "tshirts",
         price: 400,
@@ -87,7 +87,27 @@ oldPrice: 400,
         sizes: ["M", "L", "XL","2XL","3XL"]
     },
     {
-        id: 6,
+        id: 7,
+        name: "Hustle Tee",
+        category: "tshirts",
+        price: 400,
+        desc: "Oversized Hustle graphic tee with a clean streetwear look.",
+        image: "images/model-07.png",
+
+        colors: ["Black", "White", "Burgundy", "Beige"],
+
+        colorImages: {
+            White: "images/model-07-white.png",
+            Black: "images/model-07.png",
+             Burgundy:"images/model-07-burgundy.png",
+             Beige:"images/model-07-beige.png"
+        },
+
+        sizes: ["M", "L", "XL","2XL","3XL"]
+    },
+
+    {
+        id: 8,
         name: "Courage Tee",
         category: "tshirts",
         price: 400,
@@ -97,7 +117,7 @@ oldPrice: 400,
         sizes: ["M", "L", "XL"]
     },
     {
-        id: 7,
+        id: 9,
         name: "Basic White",
         category: "basic",
         price: 250,
@@ -108,7 +128,7 @@ oldPrice: 400,
     },
 
     {
-        id: 8,
+        id: 10,
         name: "Basic Black",
         category: "basic",
         price: 250,
@@ -119,7 +139,7 @@ oldPrice: 400,
     },
 
     {
-        id: 9,
+        id: 11,
         name: "Basic Burgundy",
         category: "basic",
         price: 250,
