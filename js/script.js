@@ -113,7 +113,7 @@ oldPrice: 400,
         desc: "Oversized deep forest green tee with Courage chest graphic.",
         image: "images/model-04.png",
         colors: ["Deep Forest Green"],
-        sizes: ["M", "L", "XL"]
+        sizes: ["M", "L", "XL","2XL","3XL"]
     },
     {
         id: 9,
@@ -123,7 +123,7 @@ oldPrice: 400,
         desc: "Clean slim basic white tee.",
         image: "images/Basic-01.png",
         colors: ["White"],
-        sizes: ["M", "L", "XL"]
+        sizes: ["M", "L", "XL","2XL","3XL"]
     },
 
     {
@@ -134,7 +134,7 @@ oldPrice: 400,
         desc: "Clean slim basic black tee.",
         image: "images/Basic-02.png",
         colors: ["Black"],
-        sizes: ["M", "L", "XL"]
+        sizes: ["M", "L", "XL","2XL","3XL"]
     },
 
     {
@@ -145,7 +145,7 @@ oldPrice: 400,
         desc: "Clean slim basic burgundy tee.",
         image: "images/Basic-03.png",
         colors: ["Burgundy"],
-        sizes: ["M", "L", "XL"]
+        sizes: ["M", "L", "XL","2XL","3XL"]
     }
 
 ];
