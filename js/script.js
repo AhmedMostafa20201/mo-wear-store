@@ -49,7 +49,6 @@ oldPrice: 400,
     },
         sizes: ["M", "L", "XL","2XL","3XL"]
     },
-
     {
         id: 4,
         name: "Future",
