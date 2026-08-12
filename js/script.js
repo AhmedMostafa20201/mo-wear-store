@@ -96,7 +96,6 @@ oldPrice: 400,
         colors: ["Deep Forest Green"],
         sizes: ["M", "L", "XL"]
     },
-
     {
         id: 7,
         name: "Basic White",
