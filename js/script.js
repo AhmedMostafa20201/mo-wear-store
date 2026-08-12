@@ -67,7 +67,7 @@ oldPrice: 400,
         sizes: ["M", "L", "XL","2XL","3XL"]
     },
 {
-        id: 6,
+        id: 5,
         name: "DARK Tee",
         category: "tshirts",
         price: 400,
@@ -86,7 +86,7 @@ oldPrice: 400,
         sizes: ["M", "L", "XL","2XL","3XL"]
     },
     {
-        id: 7,
+        id: 6,
         name: "Hustle Tee",
         category: "tshirts",
         price: 400,
@@ -104,7 +104,25 @@ oldPrice: 400,
 
         sizes: ["M", "L", "XL","2XL","3XL"]
     },
+    {
+         id: 7,
+        name: "Never Tee",
+        category: "tshirts",
+        price: 400,
+        desc: "Oversized NEVER graphic tee with a clean and minimal streetwear style.",
+        image: "images/model-08.png",
 
+        colors: ["Black", "White", "Burgundy", "Beige"],
+
+        colorImages: {
+            White: "images/model-08-white.png",
+            Black: "images/model-08.png",
+             Burgundy:"images/model-08-burgundy.png",
+             Beige:"images/model-08-beige.png"
+        },
+
+        sizes: ["M", "L", "XL","2XL","3XL"]
+    },
     {
         id: 8,
         name: "Courage Tee",
