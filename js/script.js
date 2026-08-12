@@ -1438,32 +1438,27 @@ if (checkoutForm) {
 
 
             const order = {
+    customer: Object.fromEntries(data.entries()),
 
-                customer:
-                    Object.fromEntries(
-                        data.entries()
-                    ),
+    items: cart.map(item => {
+        const p = products.find(p => p.id === item.id);
 
+        return {
+            productId: p ? p.id : null,
+            product: p ? p.name : "Unknown",
+            color: item.color || "—",
+            size: item.size || "—",
+            qty: item.qty,
+            unitPrice: p ? p.price : 0
+        };
+    }),
 
-                items:
+    total: cart.reduce((sum, item) => {
+        const p = products.find(p => p.id === item.id);
+        return sum + (p ? p.price * item.qty : 0);
+    }, 0),
 
-                    cart.map(item => {
-
-                        const p =
-                            products.find(
-                                p =>
-                                    p.id ===
-                                    item.id
-                            );
-
-
-                       return {
-    productId: p ? p.id : null,
-    product: p ? p.name : "Unknown",
-    color: item.color || "—",
-    size: item.size || "—",
-    qty: item.qty,
-    unitPrice: p ? p.price : 0
+    createdAt: new Date().toISOString()
 };
 
                     }),
