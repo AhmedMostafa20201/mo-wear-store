@@ -195,7 +195,6 @@ let cart = JSON.parse(
     localStorage.getItem("moWearCart") || "[]"
 );
 
-
 /* =========================================
    HTML ELEMENTS
 ========================================= */
