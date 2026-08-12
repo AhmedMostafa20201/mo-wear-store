@@ -1395,3 +1395,20 @@ h2 span{
     min-height:0 !important;
     height:auto !important;
   }
+.product-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.product-price del {
+    color: #777;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.product-price strong {
+    color: #ef0a15;
+    font-size: 20px;
+    font-weight: 800;
+}
