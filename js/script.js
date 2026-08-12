@@ -240,9 +240,9 @@ function renderProducts(category = "all") {
                     alt="${escapeHtml(p.name)}"
                 >
 
-                <div class="product-badge">
-                    NEW
-                </div>
+               <div class="product-badge ${p.oldPrice ? "discount-badge" : ""}">
+    ${p.oldPrice ? "DISCOUNT" : "NEW"}
+</div>
 
             </div>
 
