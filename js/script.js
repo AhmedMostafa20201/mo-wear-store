@@ -123,8 +123,27 @@ oldPrice: 400,
 
         sizes: ["M", "L", "XL","2XL","3XL"]
     },
+     {
+         id: 8,
+        name: "Brooklyn Hustlers Tee",
+        category: "tshirts",
+        price: 400,
+        desc: "Oversized Brooklyn graphic tee.",
+        image: "images/model-09.png",
+
+        colors: ["Black", "White", "Burgundy", "Beige"],
+
+        colorImages: {
+            White: "images/model-09-white.png",
+            Black: "images/model-08.png",
+             Burgundy:"images/model-09-burgundy.png",
+             Beige:"images/model-09-beige.png"
+        },
+
+        sizes: ["M", "L", "XL","2XL","3XL"]
+    },
     {
-        id: 8,
+        id: 9,
         name: "Courage Tee",
         category: "tshirts",
         price: 400,
@@ -134,7 +153,7 @@ oldPrice: 400,
         sizes: ["M", "L", "XL","2XL","3XL"]
     },
     {
-        id: 9,
+        id: 10,
         name: "Basic White",
         category: "basic",
         price: 250,
@@ -145,7 +164,7 @@ oldPrice: 400,
     },
 
     {
-        id: 10,
+        id: 11,
         name: "Basic Black",
         category: "basic",
         price: 250,
@@ -156,7 +175,7 @@ oldPrice: 400,
     },
 
     {
-        id: 11,
+        id: 12,
         name: "Basic Burgundy",
         category: "basic",
         price: 250,
