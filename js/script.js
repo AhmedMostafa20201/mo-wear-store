@@ -127,6 +127,82 @@ oldPrice: 800,
     },
      {
          id: 8,
+        name: "Life Tee",
+        category: "tshirts",
+        price: 400,
+        desc: "Minimalist oversized tee with a clean Life graphic.",
+        image: "images/model-10.png",
+
+        colors: ["Black", "White", "Burgundy", "Beige"],
+
+        colorImages: {
+            White: "images/model-10-white.png",
+            Black: "images/model-10.png",
+             Burgundy:"images/model-10-burgundy.png",
+             Beige:"images/model-10-beige.png"
+        },
+
+        sizes: ["M", "L", "XL","2XL","3XL"]
+    },
+     {
+         id: 9,
+        name: "Summer Paradise Tee",
+        category: "tshirts",
+        price: 400,
+        desc: "oversized tee with a bold summer graphic.",
+        image: "images/model-11.png",
+
+        colors: ["Black", "White", "Burgundy", "Beige"],
+
+        colorImages: {
+            White: "images/model-11-white.png",
+            Black: "images/model-11.png",
+             Burgundy:"images/model-11-burgundy.png",
+             Beige:"images/model-11-beige.png"
+        },
+
+        sizes: ["M", "L", "XL","2XL","3XL"]
+    },
+      {
+         id: 10,
+        name: "Dark Eclipse Tee",
+        category: "tshirts",
+        price: 400,
+        desc: "oversized tee with a bold lunar eclipse graphic.",
+        image: "images/model-12.png",
+
+        colors: ["Black", "White", "Burgundy", "Beige"],
+
+        colorImages: {
+            White: "images/model-12-white.png",
+            Black: "images/model-12.png",
+             Burgundy:"images/model-12-burgundy.png",
+             Beige:"images/model-12-beige.png"
+        },
+
+        sizes: ["M", "L", "XL","2XL","3XL"]
+    },
+     {
+         id: 11,
+        name: "Better Everyday Tee",
+        category: "tshirts",
+        price: 400,
+        desc: "oversized tee with a bold everyday graphic.",
+        image: "images/model-13.png",
+
+        colors: ["Black", "White", "Burgundy", "Beige"],
+
+        colorImages: {
+            White: "images/model-13-white.png",
+            Black: "images/model-13.png",
+             Burgundy:"images/model-13-burgundy.png",
+             Beige:"images/model-13-beige.png"
+        },
+
+        sizes: ["M", "L", "XL","2XL","3XL"]
+    },
+     {
+         id: 12,
         name: "Brooklyn Hustlers Tee",
         category: "tshirts",
         price: 400,
@@ -145,7 +221,7 @@ oldPrice: 800,
         sizes: ["M", "L", "XL","2XL","3XL"]
     },
     {
-        id: 9,
+        id: 13,
         name: "Courage Tee",
         category: "tshirts",
         price: 400,
@@ -155,7 +231,7 @@ oldPrice: 800,
         sizes: ["M", "L", "XL","2XL","3XL"]
     },
     {
-        id: 10,
+        id: 14,
         name: "Basic White",
         category: "basic",
         price: 250,
@@ -166,7 +242,7 @@ oldPrice: 800,
     },
 
     {
-        id: 11,
+        id: 15,
         name: "Basic Black",
         category: "basic",
         price: 250,
@@ -177,7 +253,7 @@ oldPrice: 800,
     },
 
     {
-        id: 12,
+        id: 16,
         name: "Basic Burgundy",
         category: "basic",
         price: 250,
