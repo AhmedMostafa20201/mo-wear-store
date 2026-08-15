@@ -1473,3 +1473,101 @@ h2 span{
     left: 16px !important;
     z-index: 20 !important;
 }
+/* =========================
+   HERO SALE BLOCK
+========================= */
+
+.hero-sale {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 360px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    border-left: 2px solid #ed0714;
+    padding-left: 28px;
+
+    z-index: 5;
+}
+
+.hero-sale-small {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #ed0714;
+}
+
+.hero-sale strong {
+    font-size: 52px;
+    line-height: .95;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -2px;
+}
+
+.hero-sale-text {
+    color: #aaa;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.hero-sale a {
+    display: inline-block;
+    width: fit-content;
+
+    margin-top: 8px;
+    padding: 13px 20px;
+
+    background: #ed0714;
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    transition: .2s ease;
+}
+
+.hero-sale a:hover {
+    background: #fff;
+    color: #000;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .hero-sale {
+        position: absolute;
+
+        right: 20px;
+        left: 20px;
+        bottom: 35px;
+        top: auto;
+
+        transform: none;
+
+        width: auto;
+
+        padding-left: 16px;
+    }
+
+    .hero-sale strong {
+        font-size: 34px;
+    }
+
+    .hero-sale-text {
+        font-size: 13px;
+    }
+
+}
