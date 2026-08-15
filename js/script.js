@@ -213,7 +213,7 @@ oldPrice: 800,
 
         colorImages: {
             White: "images/model-09-white.png",
-            Black: "images/model-08.png",
+            Black: "images/model-09.png",
              Burgundy:"images/model-09-burgundy.png",
              Beige:"images/model-09-beige.png"
         },
