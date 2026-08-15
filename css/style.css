@@ -1412,3 +1412,45 @@ h2 span{
     font-size: 20px;
     font-weight: 800;
 }
+/* =========================================
+   FIX PRODUCT CARD LAYOUT
+========================================= */
+
+.product-card {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100%;
+}
+
+.product-card .product-image {
+    width: 100% !important;
+    flex: none !important;
+}
+
+.product-card .product-info {
+    width: 100% !important;
+    flex: none !important;
+    box-sizing: border-box;
+}
+
+.product-price {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.product-price del {
+    color: #777;
+}
+
+.product-price strong {
+    color: #ed0b15;
+}
+
+.discount-percent {
+    font-size: 12px;
+    font-weight: 700;
+    color: #ed0b15;
+}
