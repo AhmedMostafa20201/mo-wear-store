@@ -374,16 +374,12 @@ function renderProducts(category = "all") {
 
     if (!productsEl) return;
 
-
-   const list =
-    category === "all"
-        ? products
-        : category === "sale"
-            ? products.filter(p => p.oldPrice)
+    const list =
+        category === "all"
+            ? products
             : products.filter(
                 p => p.category === category
             );
-
 
     productsEl.innerHTML = list.map(p => `
 
@@ -396,13 +392,15 @@ function renderProducts(category = "all") {
                     alt="${escapeHtml(p.name)}"
                 >
 
-      <div class="product-badge ${p.oldPrice ? "discount-badge" : ""}">
-    ${
-        p.oldPrice
-            ? `${getDiscountPercent(p.oldPrice, p.price)}% OFF`
-            : "NEW"
-    }
-</div>
+                <div class="product-badge">
+                    ${
+                        p.oldPrice
+                            ? `${getDiscountPercent(p.oldPrice, p.price)}% OFF`
+                            : "NEW"
+                    }
+                </div>
+
+            </div>
 
 
             <div class="product-info">
@@ -415,20 +413,28 @@ function renderProducts(category = "all") {
                 <div class="product-meta">
 
                     <span class="product-category">
-
                         ${
                             p.category === "basic"
                                 ? "BASIC"
                                 : "T-SHIRT"
                         }
-
                     </span>
 
 
                     <span class="product-price">
-    ${p.oldPrice ? `<del>${money(p.oldPrice)}</del>` : ""}
-    <strong>${money(p.price)}</strong>
-</span>
+
+                        ${
+                            p.oldPrice
+                                ? `<del>${money(p.oldPrice)}</del>`
+                                : ""
+                        }
+
+                        <strong>
+                            ${money(p.price)}
+                        </strong>
+
+                    </span>
+
                 </div>
 
 
