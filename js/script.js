@@ -319,7 +319,40 @@ function getDiscountPercent(oldPrice, price) {
 
     return Math.round(((oldPrice - price) / oldPrice) * 100);
 }
+function updateHeroDiscount() {
 
+    const discountElement =
+        document.getElementById("heroDiscount");
+
+    if (!discountElement) return;
+
+    const discounts = products
+        .filter(p =>
+            p.oldPrice &&
+            p.price &&
+            p.oldPrice > p.price
+        )
+        .map(p =>
+            getDiscountPercent(
+                p.oldPrice,
+                p.price
+            )
+        );
+
+    if (!discounts.length) {
+
+        discountElement.textContent =
+            "NEW DROP";
+
+        return;
+    }
+
+    const maxDiscount =
+        Math.max(...discounts);
+
+    discountElement.textContent =
+        `UP TO ${maxDiscount}% OFF`;
+}
 
 /* =========================================
    ESCAPE HTML
@@ -1861,5 +1894,5 @@ if (yearElement) {
 ========================================= */
 
 renderProducts();
-
 renderCart();
+updateHeroDiscount();
