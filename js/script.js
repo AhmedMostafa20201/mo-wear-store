@@ -302,7 +302,6 @@ const checkoutBackdrop =
     document.getElementById("checkoutBackdrop");
 
 
-
 /* =========================================
    MONEY
 ========================================= */
