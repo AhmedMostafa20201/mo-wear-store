@@ -374,11 +374,11 @@ function renderProducts(category = "all") {
     if (!productsEl) return;
 
     const list =
-        category === "all"
-            ? products
-            : products.filter(
-                p => p.category === category
-            );
+    category === "all"
+        ? products
+        : category === "sale"
+            ? products.filter(p => p.oldPrice && p.oldPrice > p.price)
+            : products.filter(p => p.category === category);
 
     productsEl.innerHTML = list.map(p => `
 
