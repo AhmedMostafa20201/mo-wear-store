@@ -1550,24 +1550,49 @@ h2 span{
     .hero-sale {
         position: absolute;
 
-        right: 20px;
-        left: 20px;
-        bottom: 35px;
-        top: auto;
-
-        transform: none;
+        left: 40px;
+        right: 40px;
+        bottom: 45px;
 
         width: auto;
+        max-width: none;
 
-        padding-left: 16px;
+        padding: 12px 0 12px 18px;
+
+        transform: none;
     }
 
     .hero-sale strong {
-        font-size: 34px;
+        display: block;
+
+        font-size: 30px;
+        line-height: 1.05;
+
+        white-space: nowrap;
+
+        margin: 8px 0;
     }
 
     .hero-sale-text {
         font-size: 13px;
+        line-height: 1.4;
+
+        white-space: normal;
     }
 
+    .hero-sale h3 {
+        font-size: 14px;
+        letter-spacing: 4px;
+        margin-bottom: 8px;
+    }
+
+    .hero-sale a,
+    .hero-sale button {
+        display: inline-block;
+
+        margin-top: 12px;
+
+        font-size: 13px;
+        padding: 14px 22px;
+    }
 }
