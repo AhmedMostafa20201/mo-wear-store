@@ -1413,84 +1413,63 @@ h2 span{
     font-weight: 800;
 }
 /* =========================================
-   MO-WEAR PRODUCT CARD - FINAL FIX
+   PRODUCT CARD FINAL FIX
 ========================================= */
 
-/* Product card */
 .products .product-card {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    grid-template-rows: auto auto !important;
+    display: block !important;
     width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
 }
 
-/* Product image */
+/* IMAGE */
 .products .product-card .product-image {
-    grid-column: 1 / -1 !important;
-    grid-row: 1 !important;
-
-    width: 100% !important;
-    max-width: 100% !important;
-
-    min-width: 0 !important;
-    margin: 0 !important;
-
+    display: block !important;
     position: relative !important;
-    box-sizing: border-box !important;
-}
-
-/* Product info BELOW image */
-.products .product-card .product-info {
-    grid-column: 1 / -1 !important;
-    grid-row: 2 !important;
-
     width: 100% !important;
-    max-width: 100% !important;
-
-    min-width: 0 !important;
-    box-sizing: border-box !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
 }
 
-/* Make sure image itself doesn't force the card wider */
+/* IMAGE ITSELF */
 .products .product-card .product-image img {
     display: block !important;
     width: 100% !important;
-    max-width: 100% !important;
     height: auto !important;
 }
 
-/* Discount badge */
+/* PRODUCT INFO */
+.products .product-card .product-info {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+}
+
+/* ACTION BUTTONS */
+.products .product-card .product-actions {
+    display: flex !important;
+    width: 100% !important;
+    gap: 10px !important;
+    margin-top: 20px !important;
+}
+
+.products .product-card .product-actions button {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    flex: 1 !important;
+}
+
+/* DISCOUNT BADGE */
 .products .product-card .product-badge {
     position: absolute !important;
     top: 16px !important;
     left: 16px !important;
-    z-index: 10 !important;
-}
-
-/* Price */
-.products .product-card .product-price {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    gap: 12px !important;
-    flex-wrap: wrap !important;
-}
-
-/* Old price */
-.products .product-card .product-price del {
-    color: #777 !important;
-}
-
-/* New price */
-.products .product-card .product-price strong {
-    color: #ed0b15 !important;
-}
-
-/* Discount percentage if you added it */
-.products .product-card .discount-percent {
-    color: #ed0b15 !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
+    z-index: 20 !important;
 }
