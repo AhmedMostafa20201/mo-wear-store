@@ -188,9 +188,9 @@ oldPrice: 750,
         category: "tshirts",
         price: 450,
         desc: "oversized tee with a bold everyday graphic.",
-        image: "images/model-13.png",
+        image: "images/model-13-white.png",
 
-        colors: ["Black", "White", "Burgundy", "Beige"],
+        colors: ["White", "Black", "Burgundy", "Beige"],
 
         colorImages: {
             White: "images/model-13-white.png",
