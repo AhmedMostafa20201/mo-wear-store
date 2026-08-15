@@ -1413,44 +1413,84 @@ h2 span{
     font-weight: 800;
 }
 /* =========================================
-   FIX PRODUCT CARD LAYOUT
+   MO-WEAR PRODUCT CARD - FINAL FIX
 ========================================= */
 
-.product-card {
+/* Product card */
+.products .product-card {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Product image */
+.products .product-card .product-image {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    min-width: 0 !important;
+    margin: 0 !important;
+
+    position: relative !important;
+    box-sizing: border-box !important;
+}
+
+/* Product info BELOW image */
+.products .product-card .product-info {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Make sure image itself doesn't force the card wider */
+.products .product-card .product-image img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Discount badge */
+.products .product-card .product-badge {
+    position: absolute !important;
+    top: 16px !important;
+    left: 16px !important;
+    z-index: 10 !important;
+}
+
+/* Price */
+.products .product-card .product-price {
     display: flex !important;
-    flex-direction: column !important;
-    width: 100%;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
 }
 
-.product-card .product-image {
-    width: 100% !important;
-    flex: none !important;
+/* Old price */
+.products .product-card .product-price del {
+    color: #777 !important;
 }
 
-.product-card .product-info {
-    width: 100% !important;
-    flex: none !important;
-    box-sizing: border-box;
+/* New price */
+.products .product-card .product-price strong {
+    color: #ed0b15 !important;
 }
 
-.product-price {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.product-price del {
-    color: #777;
-}
-
-.product-price strong {
-    color: #ed0b15;
-}
-
-.discount-percent {
-    font-size: 12px;
-    font-weight: 700;
-    color: #ed0b15;
+/* Discount percentage if you added it */
+.products .product-card .discount-percent {
+    color: #ed0b15 !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
 }
