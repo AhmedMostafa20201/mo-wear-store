@@ -312,7 +312,7 @@ function money(value) {
     return "EGP " +
         Number(value).toLocaleString("en-EG");
 
-},
+}
 function getDiscountPercent(oldPrice, price) {
     if (!oldPrice || !price || oldPrice <= price) {
         return 0;
