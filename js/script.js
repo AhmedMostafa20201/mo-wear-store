@@ -74,9 +74,9 @@ oldPrice: 750,
         category: "tshirts",
         price: 400,
         desc: "DARK eyes Tee",
-        image: "images/model-06-black.png",
+        image: "images/model-06.png",
 
-        colors: ["Black", "White", "Burgundy", "Beige"],
+        colors: ["white", "black", "Burgundy", "Beige"],
 
         colorImages: {
             White: "images/model-06.png",
@@ -112,9 +112,9 @@ oldPrice: 750,
         category: "tshirts",
         price: 400,
         desc: "Oversized NEVER graphic tee with a clean and minimal streetwear style.",
-        image: "images/model-08.png",
+        image: "images/model-08-white.png",
 
-        colors: ["Black", "White", "Burgundy", "Beige"],
+        colors: ["White", "Black", "Burgundy", "Beige"],
 
         colorImages: {
             White: "images/model-08-white.png",
