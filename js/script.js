@@ -396,11 +396,13 @@ function renderProducts(category = "all") {
                     alt="${escapeHtml(p.name)}"
                 >
 
-               <div class="product-badge ${p.oldPrice ? "discount-badge" : ""}">
-    ${p.oldPrice ? "DISCOUNT" : "NEW"}
+      <div class="product-badge ${p.oldPrice ? "discount-badge" : ""}">
+    ${
+        p.oldPrice
+            ? `${getDiscountPercent(p.oldPrice, p.price)}% OFF`
+            : "NEW"
+    }
 </div>
-
-            </div>
 
 
             <div class="product-info">
