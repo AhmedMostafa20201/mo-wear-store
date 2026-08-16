@@ -1594,3 +1594,164 @@ h2 span{
         font-size: 8px;
     }
 }
+/* =========================================
+   HERO SALE - DESKTOP FINAL FIX
+========================================= */
+
+.hero {
+    position: relative !important;
+}
+
+/* خلي العرض ظاهر فوق كل عناصر الـ Hero */
+.hero-sale {
+    position: absolute !important;
+
+    top: 50% !important;
+    right: 6vw !important;
+    left: auto !important;
+
+    transform: translateY(-50%) !important;
+
+    width: 360px !important;
+    max-width: 360px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+
+    padding-left: 28px !important;
+
+    border-left: 2px solid var(--red) !important;
+
+    z-index: 100 !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.hero-sale-small {
+    display: block !important;
+    color: var(--red) !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    letter-spacing: 4px !important;
+}
+
+.hero-sale strong {
+    display: block !important;
+    color: #fff !important;
+    font-size: 52px !important;
+    line-height: .95 !important;
+    font-weight: 900 !important;
+    letter-spacing: -2px !important;
+    white-space: normal !important;
+}
+
+.hero-sale-text {
+    display: block !important;
+    color: #aaa !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+}
+
+.hero-sale a {
+    display: inline-block !important;
+    width: fit-content !important;
+
+    margin-top: 8px !important;
+    padding: 13px 20px !important;
+
+    background: var(--red) !important;
+    color: #fff !important;
+
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px !important;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .hero-sale {
+        right: 4vw !important;
+        width: 300px !important;
+        max-width: 300px !important;
+    }
+
+    .hero-sale strong {
+        font-size: 42px !important;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+    .hero-sale {
+        position: absolute !important;
+
+        left: 6vw !important;
+        right: 6vw !important;
+        bottom: 25px !important;
+        top: auto !important;
+
+        width: auto !important;
+        max-width: none !important;
+
+        transform: none !important;
+
+        padding: 12px 0 12px 18px !important;
+
+        gap: 8px !important;
+
+        border-left: 2px solid var(--red) !important;
+    }
+
+    .hero-sale-small {
+        font-size: 9px !important;
+        letter-spacing: 2.5px !important;
+    }
+
+    .hero-sale strong {
+        font-size: 30px !important;
+        white-space: nowrap !important;
+    }
+
+    .hero-sale-text {
+        font-size: 10px !important;
+        max-width: 260px !important;
+    }
+
+    .hero-sale a {
+        font-size: 9px !important;
+        padding: 10px 15px !important;
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 420px) {
+
+    .hero-sale {
+        left: 5vw !important;
+        right: 5vw !important;
+        bottom: 20px !important;
+        padding-left: 14px !important;
+    }
+
+    .hero-sale strong {
+        font-size: 26px !important;
+    }
+
+}
