@@ -1202,16 +1202,19 @@ h2 span{
   display:block;
   object-fit:cover
 }
-
 /* =========================================
-/* =========================================
-   TABLET
+   RESPONSIVE FIX - FINAL
 ========================================= */
+
+/* =========================
+   TABLET
+========================= */
 
 @media (max-width: 900px) {
 
     .products {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
     }
 
     .category-grid {
@@ -1229,26 +1232,37 @@ h2 span{
         gap: 35px;
     }
 
-    /* Product Modal Tablet */
+    /* Product modal */
     .product-modal {
-        width: min(900px, 94vw) !important;
+        width: 94vw !important;
         grid-template-columns:
             minmax(0, 1.1fr)
             minmax(280px, .9fr) !important;
         gap: 18px !important;
     }
+
+    /* HERO SALE - TABLET */
+    .hero-sale {
+        right: 5%;
+        width: 300px;
+        padding-left: 22px;
+    }
+
+    .hero-sale strong {
+        font-size: 42px;
+    }
+
+    .hero-sale-text {
+        font-size: 13px;
+    }
 }
 
 
-/* =========================================
-   MOBILE - ALL RULES UNDER 650px
-========================================= */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 650px) {
-
-    /* =========================
-       HEADER
-    ========================= */
 
     .header {
         height: 70px;
@@ -1280,20 +1294,14 @@ h2 span{
         margin-right: 12px;
     }
 
-
-    /* =========================
-       HERO
-    ========================= */
+    /* HERO */
 
     .hero {
         min-height: 72vh;
         padding: 60px 7vw;
     }
 
-
-    /* =========================
-       SECTIONS
-    ========================= */
+    /* SECTIONS */
 
     .section {
         padding: 70px 6vw;
@@ -1304,67 +1312,55 @@ h2 span{
         flex-direction: column;
     }
 
-
     /* =========================
-       PRODUCTS GRID
+       PRODUCTS
     ========================= */
 
     .products {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
     }
 
     .product-card {
-        display: block !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        overflow: visible !important;
+        display: block;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        overflow: hidden;
     }
-
-    /* Product Image */
 
     .product-image,
     .product-image.real-product-image {
-        display: block !important;
-        position: relative !important;
-        width: 100% !important;
-        aspect-ratio: 3 / 2 !important;
-        height: auto !important;
-        min-height: 0 !important;
-        overflow: hidden !important;
+        display: block;
+        position: relative;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 2;
+        min-height: 0;
+        overflow: hidden;
     }
 
     .product-image.real-product-image img,
     .product-card .product-image img {
-        display: block !important;
-        width: 100% !important;
-        height: 100% !important;
-        max-width: 100% !important;
-        max-height: 100% !important;
-        object-fit: contain !important;
-        object-position: center !important;
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        object-position: center;
     }
-
-
-    /* =========================
-       PRODUCT INFO
-    ========================= */
 
     .product-info {
-        display: block !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        padding: 12px !important;
-        overflow: visible !important;
-        box-sizing: border-box !important;
+        display: block;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        padding: 12px;
+        overflow: visible;
     }
 
-
-    /* =========================
-       PRODUCT PRICE
-    ========================= */
+    /* PRICE */
 
     .product-price {
         display: flex;
@@ -1385,58 +1381,45 @@ h2 span{
         font-weight: 800;
     }
 
-
-    /* =========================
-       PRODUCT ACTIONS
-    ========================= */
+    /* BUTTONS */
 
     .product-actions {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        gap: 8px !important;
-        margin-top: 15px !important;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+        margin-top: 15px;
     }
 
     .product-actions button {
-        display: block !important;
-        width: 100% !important;
-        flex: none !important;
-        visibility: visible !important;
-        opacity: 1 !important;
+        display: block;
+        width: 100%;
+        flex: none;
+        visibility: visible;
+        opacity: 1;
     }
 
-
-    /* =========================
-       DISCOUNT BADGE
-    ========================= */
+    /* DISCOUNT BADGE */
 
     .products .product-card .product-badge {
-        position: absolute !important;
-        top: 12px !important;
-        left: 12px !important;
-        z-index: 20 !important;
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        z-index: 20;
     }
 
-
-    /* =========================
-       STATEMENT
-    ========================= */
+    /* STATEMENT */
 
     .statement {
         padding: 70px 6vw;
     }
 
-
-    /* =========================
-       FOOTER
-    ========================= */
+    /* FOOTER */
 
     .footer {
         flex-direction: column;
         align-items: flex-start;
     }
-
 
     /* =========================
        PRODUCT MODAL
@@ -1456,7 +1439,6 @@ h2 span{
         aspect-ratio: 3 / 2 !important;
         height: auto !important;
         min-height: 0 !important;
-        max-height: none !important;
         overflow: hidden !important;
     }
 
@@ -1464,18 +1446,15 @@ h2 span{
         display: block !important;
         width: 100% !important;
         height: 100% !important;
-        min-width: 0 !important;
-        min-height: 0 !important;
         max-width: 100% !important;
         max-height: 100% !important;
         object-fit: contain !important;
-        object-position: center center !important;
+        object-position: center !important;
     }
 
     .product-modal-copy {
         padding: 20px 10px !important;
     }
-
 
     /* =========================
        MO-WEAR MODAL
@@ -1495,14 +1474,12 @@ h2 span{
         padding: 5px 10px 20px;
     }
 
-
     /* =========================
-       HERO SALE
+       HERO SALE - MOBILE
     ========================= */
 
     .hero-sale {
         position: absolute;
-
         left: 6vw;
         right: 6vw;
         bottom: 25px;
@@ -1552,30 +1529,22 @@ h2 span{
     .hero-sale a {
         display: inline-block;
         width: fit-content;
-
         margin-top: 5px;
         padding: 10px 15px;
-
         background: var(--red);
         color: #fff;
-
         font-size: 9px;
         font-weight: 800;
         letter-spacing: 1px;
-
-        transition: .2s ease;
     }
-
 }
 
 
-/* =========================================
-   SMALL PHONES - 420px
-========================================= */
+/* =========================
+   SMALL PHONES
+========================= */
 
 @media (max-width: 420px) {
-
-    /* Products become one column */
 
     .products {
         grid-template-columns: 1fr;
@@ -1583,20 +1552,13 @@ h2 span{
 
     .product-image,
     .product-image.real-product-image {
-        aspect-ratio: 3 / 2 !important;
+        aspect-ratio: 3 / 2;
     }
-
-
-    /* Hero */
 
     .hero h1 {
         font-size: 52px;
         line-height: .9;
-        letter-spacing: 0;
     }
-
-
-    /* Product modal */
 
     .product-modal {
         width: 95vw !important;
@@ -1605,12 +1567,7 @@ h2 span{
 
     .product-modal-image {
         aspect-ratio: 3 / 2 !important;
-        min-height: 0 !important;
-        height: auto !important;
     }
-
-
-    /* Hero Sale */
 
     .hero-sale {
         left: 5vw;
@@ -1636,5 +1593,4 @@ h2 span{
         padding: 9px 13px;
         font-size: 8px;
     }
-
 }
