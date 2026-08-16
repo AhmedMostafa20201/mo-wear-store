@@ -1437,8 +1437,11 @@ h2 span{
 .products .product-card .product-image img {
     display: block !important;
     width: 100% !important;
-    height: auto !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
 }
+
 
 /* PRODUCT INFO */
 .products .product-card .product-info {
